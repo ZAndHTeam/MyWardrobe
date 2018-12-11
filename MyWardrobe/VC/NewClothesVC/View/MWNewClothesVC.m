@@ -16,6 +16,7 @@
 #import "UIView+MWFrame.h"
 #import "UIViewController+NavExtension.h"
 #import "ReactiveCocoa.h"
+#import "SysMacro.h"
 
 @interface MWNewClothesVC () <UITableViewDelegate, UITableViewDataSource>
 
@@ -35,7 +36,7 @@
     // navi
     [self layoutNavi];
     // 主view
-    [self layoutScrollView];
+    [self layoutTableView];
     
     
 }
@@ -49,9 +50,11 @@
                                                       }];
 }
 
-- (void)layoutScrollView {
-    self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0,
-                                                                   NAV_BAR_HEIGHT,
+- (void)layoutTableView {
+    CGFloat tabbarHeight = isIPhoneXSeries ? 83.f : self.tabBarController.tabBar.mw_height;
+    
+    self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0.f,
+                                                                   NAV_BAR_HEIGHT + 20.f,
                                                                    SCREEN_SIZE_WIDTH,
                                                                    SCREEN_SIZE_HEIGHT - NAV_BAR_HEIGHT)
                                                   style:UITableViewStylePlain];
@@ -59,8 +62,14 @@
     
     self.tableView.estimatedRowHeight = 100;
     self.tableView.rowHeight = UITableViewAutomaticDimension;
+    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
+    self.tableView.tableFooterView = ({
+        UIView *footerView = [UIView new];
+        footerView.frame =CGRectMake(0, 0, SCREEN_SIZE_WIDTH, tabbarHeight);
+        footerView;
+    });
     [self.view addSubview:self.tableView];
 }
 
