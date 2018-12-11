@@ -1,5 +1,5 @@
 //
-//  ViewController.h
+//  UIColor+YCEX.h
 //  MyWardrobe
 //
 //  Created by Simon Mr on 2018/12/10.
@@ -8,8 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController
+@interface UIColor (MWEX)
 
++ (UIColor *)colorWithHexString:(NSString *)hexColorString;
 
 @end
-

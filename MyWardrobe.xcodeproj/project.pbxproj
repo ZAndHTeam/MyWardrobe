@@ -28,9 +28,10 @@
 		F455445D21BE9DDD000A37E5 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F455445821BE9DDD000A37E5 /* AppDelegate.m */; };
 		F455445E21BE9DDD000A37E5 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F455445821BE9DDD000A37E5 /* AppDelegate.m */; };
 		F455445F21BE9DDD000A37E5 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F455445821BE9DDD000A37E5 /* AppDelegate.m */; };
-		F455446021BE9DDD000A37E5 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F455445B21BE9DDD000A37E5 /* ViewController.m */; };
-		F455446121BE9DDD000A37E5 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F455445B21BE9DDD000A37E5 /* ViewController.m */; };
-		F455446221BE9DDD000A37E5 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F455445B21BE9DDD000A37E5 /* ViewController.m */; };
+		F4FCD1A321BFEB900052BAFF /* MWNewClothesVC.m in Sources */ = {isa = PBXBuildFile; fileRef = F4FCD1A221BFEB900052BAFF /* MWNewClothesVC.m */; };
+		F4FCD1A621BFEFA60052BAFF /* UIViewController+NavExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = F4FCD1A521BFEFA60052BAFF /* UIViewController+NavExtension.m */; };
+		F4FCD1AA21BFF0220052BAFF /* MWNavigationView.m in Sources */ = {isa = PBXBuildFile; fileRef = F4FCD1A921BFF0220052BAFF /* MWNavigationView.m */; };
+		F4FCD1AD21BFF2AD0052BAFF /* UIColor+MWEX.m in Sources */ = {isa = PBXBuildFile; fileRef = F4FCD1AB21BFF2AD0052BAFF /* UIColor+MWEX.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -98,8 +99,14 @@
 		F455444A21BE9D41000A37E5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F455445721BE9DDD000A37E5 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		F455445821BE9DDD000A37E5 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		F455445B21BE9DDD000A37E5 /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
-		F455445C21BE9DDD000A37E5 /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		F4FCD1A121BFEB900052BAFF /* MWNewClothesVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MWNewClothesVC.h; sourceTree = "<group>"; };
+		F4FCD1A221BFEB900052BAFF /* MWNewClothesVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MWNewClothesVC.m; sourceTree = "<group>"; };
+		F4FCD1A421BFEFA60052BAFF /* UIViewController+NavExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+NavExtension.h"; sourceTree = "<group>"; };
+		F4FCD1A521BFEFA60052BAFF /* UIViewController+NavExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+NavExtension.m"; sourceTree = "<group>"; };
+		F4FCD1A821BFF0220052BAFF /* MWNavigationView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MWNavigationView.h; sourceTree = "<group>"; };
+		F4FCD1A921BFF0220052BAFF /* MWNavigationView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MWNavigationView.m; sourceTree = "<group>"; };
+		F4FCD1AB21BFF2AD0052BAFF /* UIColor+MWEX.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+MWEX.m"; sourceTree = "<group>"; };
+		F4FCD1AC21BFF2AD0052BAFF /* UIColor+MWEX.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+MWEX.h"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -182,6 +189,7 @@
 		F433EC3821BEA56000DC057E /* Tools */ = {
 			isa = PBXGroup;
 			children = (
+				F4FCD1A721BFEFFF0052BAFF /* CommonViews */,
 				F433EC3E21BEA91800DC057E /* SysToos */,
 				F433EC3921BEA56000DC057E /* UITools */,
 			);
@@ -191,6 +199,10 @@
 		F433EC3921BEA56000DC057E /* UITools */ = {
 			isa = PBXGroup;
 			children = (
+				F4FCD1AC21BFF2AD0052BAFF /* UIColor+MWEX.h */,
+				F4FCD1AB21BFF2AD0052BAFF /* UIColor+MWEX.m */,
+				F4FCD1A421BFEFA60052BAFF /* UIViewController+NavExtension.h */,
+				F4FCD1A521BFEFA60052BAFF /* UIViewController+NavExtension.m */,
 				F433EC3A21BEA59B00DC057E /* UIView+MWFrame.h */,
 				F433EC3B21BEA59B00DC057E /* UIView+MWFrame.m */,
 				F433EC3D21BEA75A00DC057E /* MacroLayout.h */,
@@ -273,9 +285,8 @@
 		F455445921BE9DDD000A37E5 /* VC */ = {
 			isa = PBXGroup;
 			children = (
+				F4FCD19E21BFEB740052BAFF /* NewClothesVC */,
 				F455445A21BE9DDD000A37E5 /* MWTabBarVC */,
-				F455445B21BE9DDD000A37E5 /* ViewController.m */,
-				F455445C21BE9DDD000A37E5 /* ViewController.h */,
 			);
 			path = VC;
 			sourceTree = "<group>";
@@ -295,6 +306,40 @@
 				F433EC4421BEAA3B00DC057E /* MWTabBarVC.m */,
 			);
 			path = MWTabBarVC;
+			sourceTree = "<group>";
+		};
+		F4FCD19E21BFEB740052BAFF /* NewClothesVC */ = {
+			isa = PBXGroup;
+			children = (
+				F4FCD19F21BFEB740052BAFF /* ViewModel */,
+				F4FCD1A021BFEB740052BAFF /* View */,
+			);
+			path = NewClothesVC;
+			sourceTree = "<group>";
+		};
+		F4FCD19F21BFEB740052BAFF /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		F4FCD1A021BFEB740052BAFF /* View */ = {
+			isa = PBXGroup;
+			children = (
+				F4FCD1A121BFEB900052BAFF /* MWNewClothesVC.h */,
+				F4FCD1A221BFEB900052BAFF /* MWNewClothesVC.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		F4FCD1A721BFEFFF0052BAFF /* CommonViews */ = {
+			isa = PBXGroup;
+			children = (
+				F4FCD1A821BFF0220052BAFF /* MWNavigationView.h */,
+				F4FCD1A921BFF0220052BAFF /* MWNavigationView.m */,
+			);
+			path = CommonViews;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -587,16 +632,19 @@
 			buildActionMask = 2147483647;
 			files = (
 				F433EC2921BEA2B800DC057E /* UIView+Yoga.m in Sources */,
-				F455446021BE9DDD000A37E5 /* ViewController.m in Sources */,
 				F433EC2B21BEA2B800DC057E /* YGNodeList.c in Sources */,
 				F455445D21BE9DDD000A37E5 /* AppDelegate.m in Sources */,
 				F433EC3321BEA34400DC057E /* MWTabBarItem.m in Sources */,
+				F4FCD1A621BFEFA60052BAFF /* UIViewController+NavExtension.m in Sources */,
 				F433EC4521BEAA3B00DC057E /* MWTabBarVC.m in Sources */,
 				F433EC3421BEA34400DC057E /* MWTabBarButton.m in Sources */,
+				F4FCD1AA21BFF0220052BAFF /* MWNavigationView.m in Sources */,
 				F433EC3721BEA3C000DC057E /* UIViewController+MWTabBarItem.m in Sources */,
 				F433EC2A21BEA2B800DC057E /* Yoga.c in Sources */,
+				F4FCD1AD21BFF2AD0052BAFF /* UIColor+MWEX.m in Sources */,
 				F433EC3221BEA34400DC057E /* MWTabBar.m in Sources */,
 				F455443421BE9D41000A37E5 /* main.m in Sources */,
+				F4FCD1A321BFEB900052BAFF /* MWNewClothesVC.m in Sources */,
 				F433EC3C21BEA59B00DC057E /* UIView+MWFrame.m in Sources */,
 				F433EC2821BEA2B800DC057E /* YGLayout.m in Sources */,
 			);
@@ -606,7 +654,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F455446121BE9DDD000A37E5 /* ViewController.m in Sources */,
 				F455445E21BE9DDD000A37E5 /* AppDelegate.m in Sources */,
 				F455443E21BE9D41000A37E5 /* MyWardrobeTests.m in Sources */,
 			);
@@ -616,7 +663,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F455446221BE9DDD000A37E5 /* ViewController.m in Sources */,
 				F455445F21BE9DDD000A37E5 /* AppDelegate.m in Sources */,
 				F455444921BE9D41000A37E5 /* MyWardrobeUITests.m in Sources */,
 			);

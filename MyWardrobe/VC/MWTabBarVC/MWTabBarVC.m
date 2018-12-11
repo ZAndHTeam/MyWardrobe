@@ -11,6 +11,7 @@
 #pragma mark - views
 #import "MWTabBarItem.h"
 #import "MWTabBar.h"
+#import "MWNewClothesVC.h"
 
 #pragma mark - utils
 #import "UIViewController+MWTabBarItem.h"
@@ -79,6 +80,15 @@ static const CGFloat kTabItemImageOffsetY = 5;
 }
 
 - (void)didSelectPlusItemAtIndex:(NSUInteger)index {
+    MWNewClothesVC *newClothesVC = [MWNewClothesVC new];
+    
+    UINavigationController *controllerToPresent = [[UINavigationController alloc] initWithRootViewController:newClothesVC];
+    [controllerToPresent setNavigationBarHidden:YES];
+    
+    [controllerToPresent setModalTransitionStyle:UIModalTransitionStyleCoverVertical];
+    [self presentViewController:controllerToPresent
+                       animated:YES
+                     completion:NULL];
     
 }
 
