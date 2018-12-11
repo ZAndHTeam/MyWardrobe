@@ -8,15 +8,20 @@
 
 #import "MWNewClothesVC.h"
 
-#import "UIView+Yoga.h"
+#pragma mark - viewModels
+#import "MWNewClothesVM.h"
+
+#pragma mark - utils
 #import "MacroLayout.h"
 #import "UIView+MWFrame.h"
 #import "UIViewController+NavExtension.h"
 #import "ReactiveCocoa.h"
 
-@interface MWNewClothesVC ()
+@interface MWNewClothesVC () <UITableViewDelegate, UITableViewDataSource>
 
-@property (nonatomic, strong) UIScrollView *scrollView;
+@property (nonatomic, strong) UITableView *tableView;
+
+@property (nonatomic, strong) MWNewClothesVM *viewModel;
 
 @end
 
@@ -33,8 +38,6 @@
     [self layoutScrollView];
     
     
-    // 布局
-    [self.scrollView.yoga applyLayoutPreservingOrigin:YES];
 }
 
 - (void)layoutNavi {
@@ -47,17 +50,23 @@
 }
 
 - (void)layoutScrollView {
-    self.scrollView = [UIScrollView new];
-    self.scrollView.mw_top = NAV_BAR_HEIGHT;
-    self.scrollView.backgroundColor = [UIColor redColor];
+    self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0,
+                                                                   NAV_BAR_HEIGHT,
+                                                                   SCREEN_SIZE_WIDTH,
+                                                                   SCREEN_SIZE_HEIGHT - NAV_BAR_HEIGHT)
+                                                  style:UITableViewStylePlain];
+    self.tableView.backgroundColor = [UIColor redColor];
     
-    [self.scrollView configureLayoutWithBlock:^(YGLayout * _Nonnull layout) {
-        layout.isEnabled = YES;
-        layout.width = YGPointValue(SCREEN_SIZE_WIDTH);
-        layout.height = YGPointValue(SCREEN_SIZE_HEIGHT - NAV_BAR_HEIGHT);
-    }];
-    
-    [self.view addSubview:self.scrollView];
+    self.tableView.estimatedRowHeight = 100;
+    self.tableView.rowHeight = UITableViewAutomaticDimension;
+    self.tableView.delegate = self;
+    self.tableView.dataSource = self;
+    [self.view addSubview:self.tableView];
+}
+
+#pragma mark - tableView delegate && dataSource
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return self.viewModel.dataSource.count;
 }
 
 @end
