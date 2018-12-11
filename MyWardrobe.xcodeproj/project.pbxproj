@@ -33,6 +33,8 @@
 		F4FCD1AA21BFF0220052BAFF /* MWNavigationView.m in Sources */ = {isa = PBXBuildFile; fileRef = F4FCD1A921BFF0220052BAFF /* MWNavigationView.m */; };
 		F4FCD1AD21BFF2AD0052BAFF /* UIColor+MWEX.m in Sources */ = {isa = PBXBuildFile; fileRef = F4FCD1AB21BFF2AD0052BAFF /* UIColor+MWEX.m */; };
 		F4FCD1B021C000780052BAFF /* MWNewClothesVM.m in Sources */ = {isa = PBXBuildFile; fileRef = F4FCD1AF21C000780052BAFF /* MWNewClothesVM.m */; };
+		F4FCD1B321C0100A0052BAFF /* MWPickPictureCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F4FCD1B221C0100A0052BAFF /* MWPickPictureCell.m */; };
+		F4FCD1B621C0139D0052BAFF /* MWPickPictureCellVM.m in Sources */ = {isa = PBXBuildFile; fileRef = F4FCD1B521C0139D0052BAFF /* MWPickPictureCellVM.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -110,6 +112,11 @@
 		F4FCD1AC21BFF2AD0052BAFF /* UIColor+MWEX.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+MWEX.h"; sourceTree = "<group>"; };
 		F4FCD1AE21C000780052BAFF /* MWNewClothesVM.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MWNewClothesVM.h; sourceTree = "<group>"; };
 		F4FCD1AF21C000780052BAFF /* MWNewClothesVM.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MWNewClothesVM.m; sourceTree = "<group>"; };
+		F4FCD1B121C0100A0052BAFF /* MWPickPictureCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MWPickPictureCell.h; sourceTree = "<group>"; };
+		F4FCD1B221C0100A0052BAFF /* MWPickPictureCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MWPickPictureCell.m; sourceTree = "<group>"; };
+		F4FCD1B421C0139D0052BAFF /* MWPickPictureCellVM.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MWPickPictureCellVM.h; sourceTree = "<group>"; };
+		F4FCD1B521C0139D0052BAFF /* MWPickPictureCellVM.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MWPickPictureCellVM.m; sourceTree = "<group>"; };
+		F4FCD1B721C0176D0052BAFF /* MWHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MWHeader.pch; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -192,6 +199,7 @@
 		F433EC3821BEA56000DC057E /* Tools */ = {
 			isa = PBXGroup;
 			children = (
+				F4FCD1B721C0176D0052BAFF /* MWHeader.pch */,
 				F4FCD1A721BFEFFF0052BAFF /* CommonViews */,
 				F433EC3E21BEA91800DC057E /* SysToos */,
 				F433EC3921BEA56000DC057E /* UITools */,
@@ -325,6 +333,8 @@
 			children = (
 				F4FCD1AE21C000780052BAFF /* MWNewClothesVM.h */,
 				F4FCD1AF21C000780052BAFF /* MWNewClothesVM.m */,
+				F4FCD1B421C0139D0052BAFF /* MWPickPictureCellVM.h */,
+				F4FCD1B521C0139D0052BAFF /* MWPickPictureCellVM.m */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -334,6 +344,8 @@
 			children = (
 				F4FCD1A121BFEB900052BAFF /* MWNewClothesVC.h */,
 				F4FCD1A221BFEB900052BAFF /* MWNewClothesVC.m */,
+				F4FCD1B121C0100A0052BAFF /* MWPickPictureCell.h */,
+				F4FCD1B221C0100A0052BAFF /* MWPickPictureCell.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -651,6 +663,8 @@
 				F455443421BE9D41000A37E5 /* main.m in Sources */,
 				F4FCD1A321BFEB900052BAFF /* MWNewClothesVC.m in Sources */,
 				F433EC3C21BEA59B00DC057E /* UIView+MWFrame.m in Sources */,
+				F4FCD1B621C0139D0052BAFF /* MWPickPictureCellVM.m in Sources */,
+				F4FCD1B321C0100A0052BAFF /* MWPickPictureCell.m in Sources */,
 				F4FCD1B021C000780052BAFF /* MWNewClothesVM.m in Sources */,
 				F433EC2821BEA2B800DC057E /* YGLayout.m in Sources */,
 			);
@@ -819,6 +833,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SRCROOT)/MyWardrobe/Tools/MWHeader.pch";
 				INFOPLIST_FILE = MyWardrobe/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -836,6 +852,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SRCROOT)/MyWardrobe/Tools/MWHeader.pch";
 				INFOPLIST_FILE = MyWardrobe/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

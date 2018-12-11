@@ -11,8 +11,6 @@
 #import "UIView+Yoga.h"
 #import "ReactiveCocoa.h"
 #import "UIViewController+MWTabBarItem.h"
-#import "UIView+MWFrame.h"
-#import "MacroLayout.h"
 
 @interface MWTabBar ()
 

@@ -21,10 +21,13 @@
     
     self.window = [[UIWindow alloc]initWithFrame:[[UIScreen mainScreen] bounds]];
     
-    MWTabBarVC *mainView = [[MWTabBarVC alloc] init];
     
-    _window.rootViewController = mainView;
+    MWTabBarVC *tabVC = [[MWTabBarVC alloc] init];
     
+    UINavigationController *navi = [[UINavigationController alloc] initWithRootViewController:tabVC];
+    navi.navigationBarHidden = YES;
+    
+    _window.rootViewController = navi;
     [_window makeKeyAndVisible];
     
     return YES;

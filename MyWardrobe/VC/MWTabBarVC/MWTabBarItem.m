@@ -3,13 +3,12 @@
 // Copyright (c) 2018 光合. All rights reserved.
 //
 
-#import <ReactiveCocoa/RACSignal.h>
-#import "ReactiveCocoa.h"
-#import <ReactiveCocoa/UIControl+RACSignalSupport.h>
+
 #import "MWTabBarItem.h"
+
 #import "UIView+Yoga.h"
 #import "MWTabBarButton.h"
-
+#import "ReactiveCocoa.h"
 
 @interface MWTabBarItem ()
 

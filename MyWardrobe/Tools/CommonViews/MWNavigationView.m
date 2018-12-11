@@ -9,8 +9,6 @@
 #import "MWNavigationView.h"
 
 #pragma mark - utils
-#import "MacroLayout.h"
-#import "UIView+MWFrame.h"
 #import "UIColor+MWEX.h"
 
 @interface MWNavigationView ()

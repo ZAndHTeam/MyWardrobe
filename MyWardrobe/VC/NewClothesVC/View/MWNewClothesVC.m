@@ -12,11 +12,7 @@
 #import "MWNewClothesVM.h"
 
 #pragma mark - utils
-#import "MacroLayout.h"
-#import "UIView+MWFrame.h"
-#import "UIViewController+NavExtension.h"
 #import "ReactiveCocoa.h"
-#import "SysMacro.h"
 
 @interface MWNewClothesVC () <UITableViewDelegate, UITableViewDataSource>
 
@@ -58,17 +54,14 @@
                                                                    SCREEN_SIZE_WIDTH,
                                                                    SCREEN_SIZE_HEIGHT - NAV_BAR_HEIGHT)
                                                   style:UITableViewStylePlain];
-    self.tableView.backgroundColor = [UIColor redColor];
-    
     self.tableView.estimatedRowHeight = 100;
     self.tableView.rowHeight = UITableViewAutomaticDimension;
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     self.tableView.tableFooterView = ({
-        UIView *footerView = [UIView new];
-        footerView.frame =CGRectMake(0, 0, SCREEN_SIZE_WIDTH, tabbarHeight);
-        footerView;
+        UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.tableView.mw_width, 33.f + tabbarHeight)];
+        view;
     });
     [self.view addSubview:self.tableView];
 }
