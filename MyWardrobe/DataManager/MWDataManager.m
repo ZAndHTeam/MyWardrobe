@@ -272,6 +272,10 @@ static NSString * const kBrandKey = @"brand";
     } else {
         // 已有类别中加入新单品
         NSMutableArray *clothesArr = [catoryModel.clothesArr mutableCopy];
+        if (!clothesArr) {
+            clothesArr = [NSMutableArray array];
+        }
+        
         if ([clothesArr containsObject:signalClothesModel]) {
             [clothesArr replaceObjectAtIndex:[clothesArr indexOfObject:signalClothesModel] withObject:signalClothesModel];
         } else {

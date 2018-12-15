@@ -12,6 +12,9 @@ typedef void (^MWNavigationPopBlock)(void);
 
 @interface MWNavigationView : UIView
 
+/** 导航栏的标题 */
+@property (nonatomic, strong) UILabel *navTitleLabel;
+
 /**
  初始化导航栏,目前只是支持一种样式,如有以后有需求,在增加
  

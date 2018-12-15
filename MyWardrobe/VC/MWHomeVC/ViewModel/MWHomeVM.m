@@ -32,6 +32,10 @@
 }
 
 #pragma mark - public method
+- (void)refreshData {
+    self.titleArr = [[MWDataManager dataManager].catogaryNameArr copy];
+}
+
 - (NSArray <MWSignalClothesModel *>*)returnClothesArrWithCatogaryName:(NSString *)catogaryName {
     if (!catogaryName
         || catogaryName.length == 0) {

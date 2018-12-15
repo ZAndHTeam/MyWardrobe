@@ -7,14 +7,18 @@
 //
 
 #import "MWSettingVC.h"
+
+#pragma mark - utils
 #import "UITextView+MWPlaceholder.h"
+#import "MBProgressHUD+SimpleLoad.h"
+#import "MWDataManager.h"
+
 @interface MWSettingVC ()<UITableViewDelegate,UITableViewDataSource,UITextViewDelegate>
 
 @property (nonatomic,strong) UILabel *headerLabel; //设置二字
 @property (nonatomic,strong) UITableView *tableView; //主view
 @property (nonatomic,strong) NSArray *dataArray;//数据源
 @property (nonatomic,strong) UIButton *postBtn;//发送button
-
 
 @end
 
@@ -46,6 +50,7 @@
     feedBackView.delegate = self;
     [feedBackView setPlaceholder:@"想要私人定制APP？快来点击输入意见建议" placeholdColor:[[UIColor colorWithHexString:@"#333333"] colorWithAlphaComponent:0.4]];
     [footView addSubview:feedBackView];
+    
     //发送button
     self.postBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     [feedBackView addSubview:self.postBtn];
@@ -59,6 +64,16 @@
     self.postBtn.layer.shadowColor = [UIColor colorWithRed:255/255.0 green:65/255.0 blue:65/255.0 alpha:0.33].CGColor;
     self.postBtn.layer.shadowOffset = CGSizeMake(0,2);
     self.postBtn.layer.shadowOpacity = 1;
+    @weakify(self, feedBackView);
+    [[self.postBtn rac_signalForControlEvents:UIControlEventTouchUpInside]
+     subscribeNext:^(id x) {
+         @strongify(self, feedBackView);
+         self.postBtn.hidden = YES;
+         feedBackView.text = nil;
+         [self.view endEditing:YES];
+         
+         [MBProgressHUD showLoadingWithTitle:@"感谢您的反馈哦，祝您生活愉快~"];
+     }];
     [footView addSubview:self.postBtn];
 
     self.postBtn.hidden = YES;
@@ -74,7 +89,7 @@
 }
 
 - (void)crateHeaderView {
-    self.headerLabel = [[UILabel alloc]initWithFrame:CGRectMake(15, NAV_BAR_HEIGHT - 64 + 19, 82, 28)];
+    self.headerLabel = [[UILabel alloc]initWithFrame:CGRectMake(15, NAV_BAR_HEIGHT - 24.f, 82, 28)];
     [self.view addSubview:self.headerLabel];
     self.headerLabel.textColor = [UIColor colorWithHexString:@"#333333"];
     self.headerLabel.font = [UIFont fontWithName:MEDIUM_FONT size:20];
@@ -107,9 +122,11 @@
     }else {
         cell.accessoryType = UITableViewCellAccessoryNone;
         if (indexPath.row == 0) {
-            cell.detailTextLabel.text = @"共计12件";
+            // 数量
+            cell.detailTextLabel.text = [NSString stringWithFormat:@"共计 %ld 件", [MWDataManager dataManager].returnAllClothesNumber];
         }else {
-            cell.detailTextLabel.text = @"共计1249.3元";
+            // 价钱
+            cell.detailTextLabel.text = [NSString stringWithFormat:@"共计 %@ 元", [MWDataManager dataManager].returnTotalPrice];
         }
     }
     cell.selectionStyle = UITableViewCellSelectionStyleNone;

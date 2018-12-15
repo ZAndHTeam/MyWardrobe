@@ -14,8 +14,6 @@
 @interface MWNavigationView ()
 
 @property (nonatomic, copy) MWNavigationPopBlock navPopBlock;
-/** 导航栏的标题 */
-@property (nonatomic, strong) UILabel *navTitleLabel;
 
 @end
 

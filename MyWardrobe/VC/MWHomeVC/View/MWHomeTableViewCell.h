@@ -8,11 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
-NS_ASSUME_NONNULL_BEGIN
-
 @interface MWHomeTableViewCell : UITableViewCell
 
-@property (nonatomic, assign)BOOL isZero;
-@end
+@property (nonatomic, assign) BOOL isZero;
 
-NS_ASSUME_NONNULL_END
+- (void)configData:(NSArray *)clothesArr;
+
+@end

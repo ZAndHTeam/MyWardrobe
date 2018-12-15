@@ -7,12 +7,24 @@
 //
 
 #import "MWHomeTableViewCell.h"
+
+#pragma mark - views
 #import "MWHomeCollectionViewCell.h"
+
+#pragma mark - models
+#import "MWSignalClothesModel.h"
+
+#pragma mark - utils
+#import "UIImage+ScaleSize.h"
+
 @interface MWHomeTableViewCell()<UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout>
 
-@property (nonatomic,strong) UICollectionView *collectionView;
+@property (nonatomic, strong) UICollectionView *collectionView;
+
+@property (nonatomic, strong) NSArray <MWSignalClothesModel *>*clothesArr;
 
 @end
+
 @implementation MWHomeTableViewCell
 
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
@@ -21,14 +33,22 @@
     }
     return self;
 }
+
 - (void)createUI {
     //添加collectionView
     [self.contentView addSubview:self.collectionView];
 }
+
 - (void)setIsZero:(BOOL)isZero {
     _isZero = isZero;
     [self.collectionView reloadData];
 }
+
+- (void)configData:(NSArray *)clothesArr {
+    _clothesArr = clothesArr.copy;
+    [self.collectionView reloadData];
+}
+
 #pragma mark -- collectionView代理
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
     if (_isZero) {
@@ -36,16 +56,22 @@
         return 0;
     }
     self.collectionView.hidden = NO;
-    return 10;
+    return self.clothesArr.count;
 }
+
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-    UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"cell" forIndexPath:indexPath];
-    cell.backgroundColor = [UIColor colorWithRed:arc4random()%255/255.0 green:arc4random()%255/255.0 blue:arc4random()%255/255.0 alpha:1];
+    MWHomeCollectionViewCell *cell = (MWHomeCollectionViewCell *)[collectionView dequeueReusableCellWithReuseIdentifier:@"cell"
+                                                                                                           forIndexPath:indexPath];
+    
+    cell.clothesImage = [[UIImage imageWithData:self.clothesArr[indexPath.row].imageDataArr.firstObject] imageByScalingAndCroppingForSize:CGSizeMake(90, 120)];
+    
     return cell;
 }
+
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     
 }
+
 #pragma mark -- 懒加载
 - (UICollectionView *)collectionView {
     if (!_collectionView) {

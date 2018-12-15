@@ -33,6 +33,7 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     
+    [self.viewModel refreshData];
     [self.tableView reloadData];
 }
 
@@ -47,7 +48,7 @@
 }
 
 - (void)crateHeaderView {
-    UILabel *headerLabelName = [[UILabel alloc]initWithFrame:CGRectMake(15, NAV_BAR_HEIGHT - 64 + 19, 82, 28)];
+    UILabel *headerLabelName = [[UILabel alloc]initWithFrame:CGRectMake(15, NAV_BAR_HEIGHT - 24.f, 82, 28)];
     [self.view addSubview:headerLabelName];
     headerLabelName.textColor = [UIColor colorWithHexString:@"#333333"];
     headerLabelName.font = [UIFont fontWithName:MEDIUM_FONT size:20];
@@ -57,7 +58,8 @@
     [self.view addSubview:self.headerLabel];
     self.headerLabel.textColor = [[UIColor colorWithHexString:@"#333333"] colorWithAlphaComponent:0.4];
     self.headerLabel.font = [UIFont fontWithName:LIGHT_FONT size:12];
-    self.headerLabel.text = @"0/5";
+    self.headerLabel.text = [NSString stringWithFormat:@"%ld/%ld", [MWDataManager dataManager].returnAllClothesNumber,
+                             [MWDataManager dataManager].catogaryNameArr.count];
     
 }
 
@@ -72,15 +74,22 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     MWHomeTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"MWHomeTableViewCell"];
+    
     if (!cell) {
-        cell = [[MWHomeTableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"MWHomeTableViewCell"];
+        cell = [[MWHomeTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"MWHomeTableViewCell"];
     }
+    
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    
     if ([self.viewModel returnClothesArrWithCatogaryName:self.viewModel.titleArr[indexPath.section]].count == 0) {
         cell.isZero = YES;
     }else {
         cell.isZero = NO;
     }
+    
+    NSString *catogaryName = [self.viewModel.titleArr[indexPath.section] copy];
+    [cell configData:[self.viewModel returnClothesArrWithCatogaryName:catogaryName]];
+    
     return cell;
 }
 
@@ -115,12 +124,20 @@
 #pragma mark -- 懒加载
 - (UITableView *)tableView {
     if (!_tableView) {
-        _tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, CGRectGetMaxY(self.headerLabel.frame), SCREEN_SIZE_WIDTH, SCREEN_SIZE_HEIGHT) style:UITableViewStyleGrouped];
+        _tableView = [[UITableView alloc]initWithFrame:CGRectMake(0,
+                                                                  self.headerLabel.mw_bottom,
+                                                                  SCREEN_SIZE_WIDTH,
+                                                                  SCREEN_SIZE_HEIGHT - HOME_INDICATOR_HEIGHT - 44.f - self.headerLabel.mw_height)
+                                                 style:UITableViewStyleGrouped];
         _tableView.delegate = self;
         _tableView.dataSource = self;
         _tableView.sectionFooterHeight = 2;
         _tableView.backgroundColor = [UIColor whiteColor];
         _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+        _tableView.tableFooterView = ({
+            UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_SIZE_WIDTH, 20.f)];
+            view;
+        });
     }
     return _tableView;
 }

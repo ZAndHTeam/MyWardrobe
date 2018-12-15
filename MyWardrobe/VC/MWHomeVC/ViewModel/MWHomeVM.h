@@ -16,6 +16,11 @@
 @property (nonatomic, copy, readonly) NSArray *titleArr;
 
 /**
+ 刷新数据
+ */
+- (void)refreshData;
+
+/**
  获取分类下 衣服数组
 
  @param catogaryName 分类名

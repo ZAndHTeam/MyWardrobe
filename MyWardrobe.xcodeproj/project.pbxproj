@@ -22,6 +22,8 @@
 		F4015D9F21C2847A00AC6C58 /* MWSignalClothesModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F4015D9E21C2847A00AC6C58 /* MWSignalClothesModel.m */; };
 		F41D156921C523B200F62B0F /* MBProgressHUD+SimpleLoad.m in Sources */ = {isa = PBXBuildFile; fileRef = F41D156821C523B100F62B0F /* MBProgressHUD+SimpleLoad.m */; };
 		F41D156A21C5243F00F62B0F /* UIImage+ScaleSize.m in Sources */ = {isa = PBXBuildFile; fileRef = F41D156321C5181600F62B0F /* UIImage+ScaleSize.m */; };
+		F41D157621C5443600F62B0F /* MWChooseClothesVC.m in Sources */ = {isa = PBXBuildFile; fileRef = F41D157521C5443600F62B0F /* MWChooseClothesVC.m */; };
+		F41D157921C5445200F62B0F /* MWChooseClothesVM.m in Sources */ = {isa = PBXBuildFile; fileRef = F41D157821C5445200F62B0F /* MWChooseClothesVM.m */; };
 		F433EC2821BEA2B800DC057E /* YGLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = F433EC2421BEA2B800DC057E /* YGLayout.m */; };
 		F433EC2921BEA2B800DC057E /* UIView+Yoga.m in Sources */ = {isa = PBXBuildFile; fileRef = F433EC2521BEA2B800DC057E /* UIView+Yoga.m */; };
 		F433EC2A21BEA2B800DC057E /* Yoga.c in Sources */ = {isa = PBXBuildFile; fileRef = F433EC2621BEA2B800DC057E /* Yoga.c */; };
@@ -103,6 +105,10 @@
 		F41D156321C5181600F62B0F /* UIImage+ScaleSize.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIImage+ScaleSize.m"; sourceTree = "<group>"; };
 		F41D156721C523B100F62B0F /* MBProgressHUD+SimpleLoad.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MBProgressHUD+SimpleLoad.h"; sourceTree = "<group>"; };
 		F41D156821C523B100F62B0F /* MBProgressHUD+SimpleLoad.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MBProgressHUD+SimpleLoad.m"; sourceTree = "<group>"; };
+		F41D157421C5443600F62B0F /* MWChooseClothesVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MWChooseClothesVC.h; sourceTree = "<group>"; };
+		F41D157521C5443600F62B0F /* MWChooseClothesVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MWChooseClothesVC.m; sourceTree = "<group>"; };
+		F41D157721C5445200F62B0F /* MWChooseClothesVM.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MWChooseClothesVM.h; sourceTree = "<group>"; };
+		F41D157821C5445200F62B0F /* MWChooseClothesVM.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MWChooseClothesVM.m; sourceTree = "<group>"; };
 		F433EC1D21BEA2B800DC057E /* YGLayout+Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "YGLayout+Private.h"; sourceTree = "<group>"; };
 		F433EC1E21BEA2B800DC057E /* YGLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YGLayout.h; sourceTree = "<group>"; };
 		F433EC1F21BEA2B800DC057E /* YGEnums.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YGEnums.h; sourceTree = "<group>"; };
@@ -308,6 +314,33 @@
 			name = "Recovered References";
 			sourceTree = "<group>";
 		};
+		F41D156E21C5414700F62B0F /* ChooseClothesVC */ = {
+			isa = PBXGroup;
+			children = (
+				F41D157221C5443600F62B0F /* ViewModels */,
+				F41D157321C5443600F62B0F /* Views */,
+			);
+			path = ChooseClothesVC;
+			sourceTree = "<group>";
+		};
+		F41D157221C5443600F62B0F /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				F41D157721C5445200F62B0F /* MWChooseClothesVM.h */,
+				F41D157821C5445200F62B0F /* MWChooseClothesVM.m */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		F41D157321C5443600F62B0F /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				F41D157421C5443600F62B0F /* MWChooseClothesVC.h */,
+				F41D157521C5443600F62B0F /* MWChooseClothesVC.m */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		F433EC0C21BEA19F00DC057E /* Vendors */ = {
 			isa = PBXGroup;
 			children = (
@@ -443,6 +476,7 @@
 		F455445921BE9DDD000A37E5 /* VC */ = {
 			isa = PBXGroup;
 			children = (
+				F41D156E21C5414700F62B0F /* ChooseClothesVC */,
 				7B755B5D21C5122B00975D04 /* MWSettingVC */,
 				7B755B4E21C4A6F200975D04 /* MWHomeVC */,
 				F4FCD19E21BFEB740052BAFF /* NewClothesVC */,
@@ -823,11 +857,13 @@
 				F455445D21BE9DDD000A37E5 /* AppDelegate.m in Sources */,
 				F4015D9421C27E5B00AC6C58 /* MWDataManager.m in Sources */,
 				7B755B6521C519B200975D04 /* UITextView+MWPlaceholder.m in Sources */,
+				F41D157621C5443600F62B0F /* MWChooseClothesVC.m in Sources */,
 				7B755B5C21C4ABD500975D04 /* MWHomeCollectionViewCell.m in Sources */,
 				7B755B5321C4A77100975D04 /* MWHomeVM.m in Sources */,
 				F4E43E2B21C4206500333B92 /* MWColorPickerView.m in Sources */,
 				F433EC3321BEA34400DC057E /* MWTabBarItem.m in Sources */,
 				F4FCD1A621BFEFA60052BAFF /* UIViewController+NavExtension.m in Sources */,
+				F41D157921C5445200F62B0F /* MWChooseClothesVM.m in Sources */,
 				F4015D9821C27E9900AC6C58 /* MWClothesCatogaryModel.m in Sources */,
 				F433EC4521BEAA3B00DC057E /* MWTabBarVC.m in Sources */,
 				F433EC3421BEA34400DC057E /* MWTabBarButton.m in Sources */,
