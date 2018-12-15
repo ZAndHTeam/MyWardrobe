@@ -71,7 +71,7 @@
     return cell;
 }
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
-    NSString *string = [NSString stringWithFormat:@"%@ %lu",[self.viewModel returnClothesArrWithCatogaryName:self.viewModel.titleArr[section]],(unsigned long)[self.viewModel returnClothesArrWithCatogaryName:self.viewModel.titleArr[section]].count];
+    NSString *string = [NSString stringWithFormat:@"%@ %lu",self.viewModel.titleArr[section],(unsigned long)[self.viewModel returnClothesArrWithCatogaryName:self.viewModel.titleArr[section]].count];
     NSArray *strArr = [string componentsSeparatedByString:@" "];
     UIView *view = [UIView new];
     UILabel *headerLabel = [[UILabel alloc]initWithFrame:CGRectMake(15, 18, SCREEN_SIZE_WIDTH - 30, 24)];
