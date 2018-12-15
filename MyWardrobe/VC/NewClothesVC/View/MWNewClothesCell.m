@@ -17,6 +17,7 @@
 
 #pragma mark - utils
 #import "UIView+Yoga.h"
+#import "MWAlertView.h"
 
 @interface MWNewClothesCell ()
 
@@ -50,7 +51,11 @@
 }
 
 - (void)configCellWithData:(id)data {
+    if (![data isKindOfClass:[MWNewClothesVM class]]) {
+        return;
+    }
     
+    self.viewModel = data;
 }
 
 #pragma mark - private method
@@ -156,15 +161,16 @@
     
     MWScrollTagView *tagScrollView = [[MWScrollTagView alloc] initWithTagArr:[MWDataManager dataManager].catogaryNameArr
                                                                 maxLeftWidth:SCREEN_SIZE_WIDTH - 77.f];
+    
+    tagScrollView.alertTitle = @"添加分类";
+    tagScrollView.alertConfirmString = @"添加";
+    tagScrollView.alertCancelString = @"放弃";
+    
     [tagScrollView configureLayoutWithBlock:^(YGLayout * _Nonnull layout) {
         layout.isEnabled = YES;
         layout.height = YGPointValue(26.f);
         layout.marginLeft = YGPointValue(15.f);
     }];
-    
-    tagScrollView.addNewLabelBlock = ^NSString *{
-        return @"新加了";
-    };
     
     @weakify(self, tagScrollView);
     tagScrollView.sizeChangeBlock = ^{
@@ -233,15 +239,15 @@
     
     MWScrollTagView *tagScrollView = [[MWScrollTagView alloc] initWithTagArr:[MWDataManager dataManager].brandArr
                                                                 maxLeftWidth:SCREEN_SIZE_WIDTH - 77.f];
+    tagScrollView.alertTitle = @"添加分类";
+    tagScrollView.alertConfirmString = @"添加";
+    tagScrollView.alertCancelString = @"放弃";
+    
     [tagScrollView configureLayoutWithBlock:^(YGLayout * _Nonnull layout) {
         layout.isEnabled = YES;
         layout.height = YGPointValue(26.f);
         layout.marginLeft = YGPointValue(15.f);
     }];
-    
-    tagScrollView.addNewLabelBlock = ^NSString *{
-        return @"新加了";
-    };
     
     @weakify(self, tagScrollView);
     tagScrollView.sizeChangeBlock = ^{

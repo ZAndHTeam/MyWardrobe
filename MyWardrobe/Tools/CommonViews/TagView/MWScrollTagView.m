@@ -10,6 +10,7 @@
 
 #pragma mark - utils
 #import "UIView+Yoga.h"
+#import "MWAlertView.h"
 
 static NSInteger const kScrollTagViewBeginNumner = 100;
 
@@ -111,34 +112,45 @@ static NSInteger const kScrollTagViewBeginNumner = 100;
         [[self.addButton rac_signalForControlEvents:UIControlEventTouchUpInside]
          subscribeNext:^(id x) {
              @strongify(self);
-             [self addNewTag];
+             [[[MWAlertView alloc] initWithTitle:self.alertTitle
+                                       inputText:@""
+                                   confirmString:self.alertConfirmString
+                                    cancelString:self.alertCancelString
+                                     confirBlock:^(NSString *inputString) {
+                                         @strongify(self);
+                                         if (inputString.length > 0) {
+                                             [self addNewTagWithText:inputString];
+                                         }
+                                     } cancelBlock:^{}] showAlert];
          }];
         self.addButton;
     })];
 }
 
-- (void)addNewTag {
+// 添加新标签
+- (void)addNewTagWithText:(NSString *)text {
+    UIView *label = [self createLabelWithText:text];
+    [self.scrollContentView addSubview:label];
+    
+    CGSize leftSize = self.scrollContentView.yoga.intrinsicSize;
+    if (leftSize.width > self.leftMaxWidth) {
+        leftSize = CGSizeMake(self.leftMaxWidth, leftSize.height);
+    }
+    
+    [self.scrollView configureLayoutWithBlock:^(YGLayout * _Nonnull layout) {
+        layout.width = YGPointValue(leftSize.width);
+    }];
+    
+    self.scrollView.contentSize = self.scrollContentView.yoga.intrinsicSize;
+    
+    [self.tagArr addObject:text];
+    
     if (self.addNewLabelBlock) {
-        NSString *text = self.addNewLabelBlock();
-        UIView *label = [self createLabelWithText:text];
-        [self.scrollContentView addSubview:label];
-        
-        CGSize leftSize = self.scrollContentView.yoga.intrinsicSize;
-        if (leftSize.width > self.leftMaxWidth) {
-            leftSize = CGSizeMake(self.leftMaxWidth, leftSize.height);
-        }
-        
-        [self.scrollView configureLayoutWithBlock:^(YGLayout * _Nonnull layout) {
-            layout.width = YGPointValue(leftSize.width);
-        }];
-        
-        self.scrollView.contentSize = self.scrollContentView.yoga.intrinsicSize;
-        
-        [self.tagArr addObject:text];
-        
-        if (self.sizeChangeBlock) {
-            self.sizeChangeBlock();
-        }
+        self.addNewLabelBlock(text);
+    }
+    
+    if (self.sizeChangeBlock) {
+        self.sizeChangeBlock();
     }
 }
 
@@ -183,7 +195,7 @@ static NSInteger const kScrollTagViewBeginNumner = 100;
         div;
     })];
     
-    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(clickOneColor:)];
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(clickOneTag:)];
     [tap setNumberOfTapsRequired:1];
     [labelBg addGestureRecognizer:tap];
     
@@ -217,7 +229,7 @@ static NSInteger const kScrollTagViewBeginNumner = 100;
     }
 }
 
-- (void)clickOneColor:(UITapGestureRecognizer *)tap {
+- (void)clickOneTag:(UITapGestureRecognizer *)tap {
     UIImageView *targetView = (UIImageView *)tap.view;
     NSString *catogaryName = self.tagArr[targetView.tag - kScrollTagViewBeginNumner];
     

@@ -14,6 +14,7 @@
 
 #pragma mark - utils
 #import "ReactiveCocoa.h"
+#import "MBProgressHUD.h"
 
 @interface MWNewClothesVC () <UITableViewDelegate, UITableViewDataSource>
 
@@ -30,12 +31,14 @@
     
     self.view.backgroundColor = [UIColor whiteColor];
     
-    self.viewModel = [MWNewClothesVM new];
+    self.viewModel = [[MWNewClothesVM alloc] initWithData:nil];
     
     // navi
     [self layoutNavi];
     // 主view
     [self layoutTableView];
+    // 加入按钮
+    [self layoutAddButton];
 }
 
 - (void)layoutNavi {
@@ -66,6 +69,44 @@
     [self.view addSubview:self.tableView];
 }
 
+- (void)layoutAddButton {
+    UIButton *addButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    addButton.frame = CGRectMake(0, 0, 190.f, 44.f);
+    [addButton setTitle:@"放入衣橱" forState:UIControlStateNormal];
+    addButton.titleLabel.font = [UIFont fontWithName:MEDIUM_FONT size:20.f];
+    addButton.mw_centerX = self.view.mw_centerX;
+    addButton.mw_bottom = self.view.mw_bottom - HOME_INDICATOR_HEIGHT - 44.f;
+    addButton.backgroundColor = [UIColor colorWithHexString:@"#FF4141"];
+    
+    // 阴影 && 圆角
+    addButton.layer.cornerRadius = 24.f;
+    addButton.layer.shadowColor = [[UIColor colorWithHexString:@"#FF4141"] colorWithAlphaComponent:0.33].CGColor;
+    addButton.layer.shadowOffset = CGSizeMake(0,2);
+    addButton.layer.shadowOpacity = 1.f;
+    addButton.layer.shadowRadius = 8.f;
+    
+    @weakify(self);
+    [[addButton rac_signalForControlEvents:UIControlEventTouchUpInside]
+     subscribeNext:^(id x) {
+         @strongify(self);
+         if (self.viewModel.signalClothesModel.imageDataArr.count == 0) {
+             MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+             hud.mode = MBProgressHUDModeAnnularDeterminate;
+             hud.label.text = @"忘记拍照了呦，只有先拍照才能放入衣橱里~";
+             
+             dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, 0.01 * NSEC_PER_SEC);
+             dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+                 // Do something...
+                 [MBProgressHUD hideHUDForView:self.view animated:YES];
+             });
+             return;
+         }
+     }];
+    
+    [self.view addSubview:addButton];
+    [self.view bringSubviewToFront:addButton];
+}
+
 #pragma mark - tableView delegate && dataSource
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return self.viewModel.dataSource.count;
@@ -89,7 +130,7 @@
                                                          type:self.viewModel.dataSource[indexPath.row]];
     }
     
-    [pictureCell configCellWithData:nil];
+    [pictureCell configCellWithData:self.viewModel];
     
     [self.viewModel.cellHeightDic setObject:@([pictureCell getCellSize].height)
                                      forKey:[NSString stringWithFormat:@"%ld-%ld", indexPath.section, indexPath.row]];

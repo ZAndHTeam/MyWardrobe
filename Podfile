@@ -10,6 +10,7 @@ target 'MyWardrobe' do
   pod 'ReactiveCocoa', '~> 2.5.0'
   pod 'MJExtension'
   pod 'IQKeyboardManager'
+  pod 'MBProgressHUD', '~> 1.1.0'
 
   target 'MyWardrobeTests' do
     inherit! :search_paths

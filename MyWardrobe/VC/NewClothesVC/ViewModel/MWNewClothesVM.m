@@ -26,17 +26,17 @@
         if (data
             && [data isKindOfClass:[MWSignalClothesModel class]]) {
             _signalClothesModel = (MWSignalClothesModel *)data;
+        } else if (!data) {
+            _signalClothesModel = [MWSignalClothesModel new];
+        } else {
+            NSAssert([data isKindOfClass:[MWSignalClothesModel class]], @"data需为单品模型");
         }
-        
-        NSAssert([data isKindOfClass:[MWSignalClothesModel class]], @"data需为单品模型");
-        
-        _signalClothesModel = [MWSignalClothesModel new];
     }
     
     return self;
 }
 
-#pragma mark - table view 相关
+#pragma mark - table view相关
 // 数据源
 - (NSArray *)dataSource {
     return @[@"picture", @"分类", @"季节", @"颜色", @"品牌", @"价格", @"备注"];

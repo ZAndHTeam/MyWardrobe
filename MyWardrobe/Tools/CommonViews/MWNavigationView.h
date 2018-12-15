@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-typedef void (^MWNavigationPopBlock)();
+typedef void (^MWNavigationPopBlock)(void);
 
 @interface MWNavigationView : UIView
 
