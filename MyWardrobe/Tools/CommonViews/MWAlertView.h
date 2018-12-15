@@ -34,4 +34,8 @@ typedef void(^CancelCallback)(void);
                   confirBlock:(ConfirmCallback)confirmBlock
                   cancelBlock:(CancelCallback)cancelBlock;
 
+#pragma mark - show和dismiss
+- (void)showAlert;
+- (void)dismissAlert;
+
 @end

@@ -11,6 +11,8 @@
 #import "MWClothesCatogaryModel.h"
 #import "MWSignalClothesModel.h"
 
+#import "MJExtension.h"
+
 static NSString * const kUserDataKey = @"user_clothes";
 static NSString * const kCatogaryKey = @"catogary_name";
 static NSString * const kBrandKey = @"brand";
@@ -34,114 +36,146 @@ static NSString * const kBrandKey = @"brand";
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         instance = [[MWDataManager alloc] init];
+        [instance initData];
     });
     return instance;
+}
+
+- (void)initData {
+    [self initCatogaryNameArr];
+    [self initBrandArr];
+    [self initUserData];
+}
+
+#pragma mark - 懒加载
+- (void)initUserData {
+    @synchronized (self) {
+        if (!_userData) {
+            NSMutableDictionary *userDic = [(NSDictionary*)[NSKeyedUnarchiver unarchiveObjectWithData:[[NSUserDefaults standardUserDefaults]
+                                                                                                       objectForKey:kUserDataKey]] mutableCopy];
+            
+            if (!userDic) {
+                // 本地查询失败 ，则新建数据
+                userDic = [NSMutableDictionary dictionary];
+                
+                [self.catogaryNameArr enumerateObjectsUsingBlock:^(NSString * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+                    MWClothesCatogaryModel *catoryModel = [MWClothesCatogaryModel new];
+                    catoryModel.catogaryName = obj.copy;
+                    catoryModel.clothesArr = [NSArray array];
+                    
+                    [userDic setObject:catoryModel forKey:obj];
+                }];
+                
+                _userData = userDic;
+                [self recordUserData];
+            } else {
+                // 分类信息字典-->model
+                [self.catogaryNameArr enumerateObjectsUsingBlock:^(NSString * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+                    MWClothesCatogaryModel *catoryModel = [MWClothesCatogaryModel mj_objectWithKeyValues:[userDic objectForKey:@"obj"]];
+                    if (catoryModel) {
+                        [userDic setObject:catoryModel forKey:obj];
+                    }
+                }];
+                
+                _userData = userDic;
+            }
+            
+        }
+    }
+}
+
+- (void)initCatogaryNameArr {
+    @synchronized (self) {
+        if (!_catogaryNameArr) {
+            NSArray *catogaryData = (NSArray *)[NSKeyedUnarchiver unarchiveObjectWithData:[[NSUserDefaults standardUserDefaults]
+                                                                                           objectForKey:kCatogaryKey]];
+            if (!catogaryData
+                || catogaryData.count == 0) {
+                // 本地查询失败 ，则新建数据
+                _catogaryNameArr = [NSMutableArray arrayWithObjects:@"未分类", @"外套", @"上衣", @"下装", @"鞋", @"包", nil];
+                
+                [self recordCatogaryData];
+            } else {
+                _catogaryNameArr = catogaryData.mutableCopy;
+            }
+        }
+    }
+    
+}
+
+- (void)initBrandArr {
+    @synchronized (self) {
+        if (!_brandArr) {
+            NSArray *brandData = (NSArray *)[NSKeyedUnarchiver unarchiveObjectWithData:[[NSUserDefaults standardUserDefaults]
+                                                                                           objectForKey:kBrandKey]];
+            if (!brandData) {
+                // 本地查询失败 ，则新建数据
+                _brandArr = [NSMutableArray array];
+                [self recordBrandData];
+            } else {
+                _brandArr = brandData.mutableCopy;
+            }
+        }
+    }
 }
 
 #pragma mark - 压缩数据
 // 记录用户数据
 - (void)recordUserData {
-    if ([self.userData isKindOfClass:[NSDictionary class]]
-        || self.userData.allKeys.count == 0) {
+    if (![_userData isKindOfClass:[NSDictionary class]]
+        || _userData.allKeys.count == 0) {
         return;
     }
     
-    // 存储data
-    NSData *userData = [NSKeyedArchiver archivedDataWithRootObject:self.userData];
-    if (userData) {
-        [[NSUserDefaults standardUserDefaults] setObject:userData forKey:kUserDataKey];
-        [[NSUserDefaults standardUserDefaults] synchronize];
+    @synchronized (self) {
+        __block NSMutableDictionary *userDic = [NSMutableDictionary dictionary];
+        [self.userData.allKeys enumerateObjectsUsingBlock:^(NSString * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+            MWClothesCatogaryModel *clothesCatogaryModel = [self.userData objectForKey:obj];
+            if (clothesCatogaryModel) {
+                [userDic setObject:[clothesCatogaryModel mj_keyValues] forKey:obj];
+            }
+        }];
+        
+        // 存储data
+        NSData *userData = [NSKeyedArchiver archivedDataWithRootObject:userDic];
+        if (userData) {
+            [[NSUserDefaults standardUserDefaults] setObject:userData forKey:kUserDataKey];
+            [[NSUserDefaults standardUserDefaults] synchronize];
+        }
     }
 }
 
 // 记录类型数据
 - (void)recordCatogaryData {
-    if (!self.catogaryNameArr) {
+    if (!_catogaryNameArr) {
         return;
     }
     
-    // 存储类别名称
-    NSData *catogaryNameData = [NSKeyedArchiver archivedDataWithRootObject:self.catogaryNameArr];
-    if (catogaryNameData) {
-        [[NSUserDefaults standardUserDefaults] setObject:catogaryNameData forKey:kCatogaryKey];
-        [[NSUserDefaults standardUserDefaults] synchronize];
+    @synchronized (self) {
+        // 存储类别名称
+        NSData *catogaryNameData = [NSKeyedArchiver archivedDataWithRootObject:self.catogaryNameArr];
+        if (catogaryNameData) {
+            [[NSUserDefaults standardUserDefaults] setObject:catogaryNameData forKey:kCatogaryKey];
+            [[NSUserDefaults standardUserDefaults] synchronize];
+        }
     }
 }
 
 // 记录品牌
 - (void)recordBrandData {
-    if (!self.brandArr) {
+    if (!_brandArr) {
         return;
     }
     
-    // 存储类别名称
-    NSData *catogaryNameData = [NSKeyedArchiver archivedDataWithRootObject:self.brandArr];
-    if (catogaryNameData) {
-        [[NSUserDefaults standardUserDefaults] setObject:catogaryNameData forKey:kBrandKey];
-        [[NSUserDefaults standardUserDefaults] synchronize];
-    }
-}
-
-#pragma mark - 懒加载
-- (NSMutableDictionary *)userData {
-    if (!_userData) {
-        NSDictionary *userData = (NSDictionary*)[NSKeyedUnarchiver unarchiveObjectWithData:[[NSUserDefaults standardUserDefaults]
-                                                                                            objectForKey:kUserDataKey]];
-        if (!userData) {
-            // 本地查询失败 ，则新建数据
-            _userData = [NSMutableDictionary dictionary];
-            
-            [self.catogaryNameArr enumerateObjectsUsingBlock:^(NSString * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-                MWClothesCatogaryModel *catoryModel =
-                catoryModel = [MWClothesCatogaryModel new];
-                catoryModel.catogaryName = obj.copy;
-                catoryModel.clothesArr = [NSArray array];
-                
-                [self.userData setObject:catoryModel forKey:obj];
-            }];
-            
-            [self recordUserData];
-        } else {
-            _userData = userData.mutableCopy;
-        }
-        
-    }
-    
-    return _userData;
-}
-
-- (NSMutableArray<NSString *> *)catogaryNameArr {
-    if (!_catogaryNameArr) {
-        NSArray *catogaryData = (NSArray *)[NSKeyedUnarchiver unarchiveObjectWithData:[[NSUserDefaults standardUserDefaults]
-                                                                                       objectForKey:kCatogaryKey]];
-        if (!catogaryData
-            || catogaryData.count == 0) {
-            // 本地查询失败 ，则新建数据
-            _catogaryNameArr = [NSMutableArray arrayWithObjects:@"未分类", @"外套", @"上衣", @"下装", @"鞋", @"包", nil];
-            
-            [self recordCatogaryData];
-        } else {
-            _catogaryNameArr = catogaryData.mutableCopy;
+    @synchronized (self) {
+        // 存储类别名称
+        NSData *catogaryNameData = [NSKeyedArchiver archivedDataWithRootObject:self.brandArr];
+        if (catogaryNameData) {
+            [[NSUserDefaults standardUserDefaults] setObject:catogaryNameData forKey:kBrandKey];
+            [[NSUserDefaults standardUserDefaults] synchronize];
         }
     }
     
-    return _catogaryNameArr;
-}
-
-- (NSMutableArray<NSString *> *)brandArr {
-    if (!_brandArr) {
-        NSArray *catogaryData = (NSArray *)[NSKeyedUnarchiver unarchiveObjectWithData:[[NSUserDefaults standardUserDefaults]
-                                                                                       objectForKey:kBrandKey]];
-        if (!catogaryData) {
-            // 本地查询失败 ，则新建数据
-            _catogaryNameArr = [NSMutableArray array];
-            [self recordCatogaryData];
-        } else {
-            _catogaryNameArr = catogaryData.mutableCopy;
-        }
-    }
-    
-    return _catogaryNameArr;
 }
 
 #pragma mark - 添加
@@ -161,9 +195,6 @@ static NSString * const kBrandKey = @"brand";
     catoryModel.catogaryName = catogaryName;
     
     [self.userData setObject:catoryModel forKey:catogaryName];
-    
-    // 更新用户数据
-    [self recordUserData];
     
     // 更新类别
     [self.catogaryNameArr addObject:catogaryName];
@@ -193,8 +224,9 @@ static NSString * const kBrandKey = @"brand";
     [self.catogaryNameArr replaceObjectAtIndex:[self.catogaryNameArr indexOfObject:oldName] withObject:newName];
     
     // 更新本地数据
-    [self recordUserData];
     [self recordCatogaryData];
+    // 更新用户数据
+    [self recordUserData];
     
     return MWDataSaveResult_Success;
 }
@@ -210,6 +242,10 @@ static NSString * const kBrandKey = @"brand";
     NSAssert(signalClothesModel.imageDataArr.count > 0, @"需要有图片");
     if (!signalClothesModel
         || signalClothesModel.imageDataArr.count == 0) {
+        return MWDataSaveResult_Error;
+    }
+    
+    if (!signalClothesModel) {
         return MWDataSaveResult_Error;
     }
     
@@ -246,14 +282,14 @@ static NSString * const kBrandKey = @"brand";
         [self.userData setObject:catoryModel forKey:signalClothesModel.catogaryName];
     }
     
-    // 更新用户数据
-    [self recordUserData];
-    
-    // 更新品牌数据
+    // 更新品牌数据l
     if (signalClothesModel.brand
         && ![self.brandArr containsObject:signalClothesModel.brand]) {
         [self addNewBrand:signalClothesModel.brand];
     }
+    
+    // 更新用户数据
+    [self recordUserData];
     
     return MWDataSaveResult_Success;
 }
@@ -292,10 +328,10 @@ static NSString * const kBrandKey = @"brand";
     
     // 更新品牌数组
     [self.brandArr replaceObjectAtIndex:[self.brandArr indexOfObject:oldName] withObject:newName];
+    [self recordBrandData];
     
     // 更新本地数据
     [self recordUserData];
-    [self recordBrandData];
     
     return MWDataSaveResult_Success;
 }

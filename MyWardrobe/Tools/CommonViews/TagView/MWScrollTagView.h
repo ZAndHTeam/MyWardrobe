@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-typedef NSString *(^AddNewLabelBlock)(void);
+typedef void(^AddNewLabelBlock)(NSString *tagName);
 typedef void(^SizeChangeBlock)(void);
 typedef void(^TagChooseBlock)(NSString *tagName);
 
@@ -20,6 +20,10 @@ typedef void(^TagChooseBlock)(NSString *tagName);
 @property (nonatomic, copy) AddNewLabelBlock addNewLabelBlock;
 @property (nonatomic, copy) SizeChangeBlock sizeChangeBlock;
 @property (nonatomic, copy) TagChooseBlock tagChooseBlock;
+
+@property (nonatomic, copy) NSString *alertTitle;
+@property (nonatomic, copy) NSString *alertConfirmString;
+@property (nonatomic, copy) NSString *alertCancelString;
 
 @property (nonatomic, assign) BOOL haveAddButton;
 

@@ -20,6 +20,8 @@
 /** cell高度字典 */
 @property (nonatomic, strong) NSMutableDictionary *cellHeightDic;
 
+- (instancetype)initWithData:(id)data;
+
 - (void)saveCatogaryName:(NSString *)catogaryName;
 
 - (void)saveSeason:(NSString *)season;

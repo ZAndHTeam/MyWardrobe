@@ -30,7 +30,7 @@
     
     self.view.backgroundColor = [UIColor whiteColor];
     
-    self.viewModel = [MWNewClothesVM new];
+    self.viewModel = [[MWNewClothesVM alloc] initWithData:nil];
     
     // navi
     [self layoutNavi];
@@ -89,7 +89,7 @@
                                                          type:self.viewModel.dataSource[indexPath.row]];
     }
     
-    [pictureCell configCellWithData:nil];
+    [pictureCell configCellWithData:self.viewModel];
     
     [self.viewModel.cellHeightDic setObject:@([pictureCell getCellSize].height)
                                      forKey:[NSString stringWithFormat:@"%ld-%ld", indexPath.section, indexPath.row]];
