@@ -43,7 +43,7 @@
     self = [super init];
     if (self) {
         _title = title.copy;
-        _inputText = inputText.copy;
+        _inputText = inputText.length > 0 ? inputText.copy : nil;
         _confirmString = confirmString.copy;
         _cancelString = cancelString.copy;
         _confirmBlock = [confirmBlock copy];;
@@ -54,41 +54,66 @@
     return self;
 }
 
+- (instancetype)initWithTitle:(NSString *)title
+                confirmString:(NSString *)confirmString
+                 cancelString:(NSString *)cancelString
+                  confirBlock:(ConfirmCallback)confirmBlock
+                  cancelBlock:(CancelCallback)cancelBlock {
+    self = [super init];
+    if (self) {
+        _title = title.copy;
+        _confirmString = confirmString.copy;
+        _cancelString = cancelString.copy;
+        _confirmBlock = [confirmBlock copy];;
+        _cancelBlock = [cancelBlock copy];
+        [self configUI];
+    }
+    return self;
+}
+
 - (void)configUI {
+    CGSize labelSize;
+    if (self.title.length > 0) {
+        labelSize = [self getLabelHeightWithText:self.title width:270.f];
+    }
+    
     self.backgroundColor = [UIColor whiteColor];
     self.layer.cornerRadius = 12.f;
-    self.frame = CGRectMake(0, 0, 270.f, 145.f);
+    self.frame = CGRectMake(0, 0, 270.f + labelSize.height - 24.f, 145.f);
     
     // title
     UILabel *titleLabel = ({
         UILabel *label  = [UILabel new];
         label.text = self.title;
+        label.numberOfLines = 0;
         label.textAlignment = NSTextAlignmentCenter;
         label.font = [UIFont fontWithName:MEDIUM_FONT size:17.f];
-        label.frame = CGRectMake(0, 20.f, self.mw_width, 24.f);
+        label.frame = CGRectMake(0, 20.f, self.mw_width - 20.f, 24.f);
         label;
     });
     [self addSubview:titleLabel];
     
-    // 输入框
-    [self addSubview:({
-        self.inputTextField = [UITextField new];
-        self.inputTextField.mw_width = 238.f;
-        self.inputTextField.mw_left = 16.f;
-        self.inputTextField.mw_top = titleLabel.mw_bottom + 21.f;
-        self.inputTextField.mw_height = 24.f;
-        
-        UIView *paddingView = [[UIView alloc] initWithFrame:CGRectMake(0.f, 0.f, 4.f, 24.f)];
-        self.inputTextField.leftView = paddingView;
-        self.inputTextField.leftViewMode = UITextFieldViewModeAlways;
-        
-        self.inputTextField.backgroundColor = [[UIColor colorWithHexString:@"#333333"] colorWithAlphaComponent:0.06];
-        self.inputTextField.text = self.inputText;
-        
-        self.inputTextField.font = [UIFont fontWithName:REGULAR_FONT size:14.f];
-        
-        self.inputTextField;
-    })];
+    if (self.inputText) {
+        // 输入框
+        [self addSubview:({
+            self.inputTextField = [UITextField new];
+            self.inputTextField.mw_width = 238.f;
+            self.inputTextField.mw_left = 16.f;
+            self.inputTextField.mw_top = titleLabel.mw_bottom + 21.f;
+            self.inputTextField.mw_height = labelSize.height;
+            
+            UIView *paddingView = [[UIView alloc] initWithFrame:CGRectMake(0.f, 0.f, 4.f, 24.f)];
+            self.inputTextField.leftView = paddingView;
+            self.inputTextField.leftViewMode = UITextFieldViewModeAlways;
+            
+            self.inputTextField.backgroundColor = [[UIColor colorWithHexString:@"#333333"] colorWithAlphaComponent:0.06];
+            self.inputTextField.text = self.inputText;
+            
+            self.inputTextField.font = [UIFont fontWithName:REGULAR_FONT size:14.f];
+            
+            self.inputTextField;
+        })];
+    }
     
     // 横竖线
     [self addSubview:({
@@ -186,6 +211,14 @@
 
 - (void)dismissAlert {
     [self.becloudView removeFromSuperview];
+}
+
+#pragma mark - 计算
+- (CGSize)getLabelHeightWithText:(NSString *)text
+                           width:(CGFloat)width {
+    CGRect rect = [text boundingRectWithSize:CGSizeMake(width, MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:[UIFont fontWithName:REGULAR_FONT size:14.f]} context:nil];
+    
+    return rect.size;
 }
 
 @end

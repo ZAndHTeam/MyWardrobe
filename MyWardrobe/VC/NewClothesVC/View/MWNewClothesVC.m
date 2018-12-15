@@ -14,9 +14,11 @@
 
 #pragma mark - utils
 #import "ReactiveCocoa.h"
-#import "MBProgressHUD.h"
+#import "MBProgressHUD+SimpleLoad.h"
+#import <AVFoundation/AVFoundation.h>
+#import "MWAlertView.h"
 
-@interface MWNewClothesVC () <UITableViewDelegate, UITableViewDataSource>
+@interface MWNewClothesVC () <UITableViewDelegate, UITableViewDataSource, UIActionSheetDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate>
 
 @property (nonatomic, strong) UITableView *tableView;
 
@@ -43,10 +45,16 @@
 
 - (void)layoutNavi {
     @weakify(self);
-    self.navigationView = [MWNavigationView navigationWithTitle:@"添加单品"
+    NSString *naviTitle = (self.viewModel.viewType == MWNewClothesVMType_New) ? @"添加单品" : @"编辑单品";
+    self.navigationView = [MWNavigationView navigationWithTitle:naviTitle
                                                       popAction:^{
                                                           @strongify(self);
-                                                          [self dismissViewControllerAnimated:YES completion:nil];
+                                                          if (self.viewModel.viewType == MWNewClothesVMType_New) {
+                                                              [self dismissViewControllerAnimated:YES completion:nil];
+                                                          } else {
+                                                              [self.navigationController popToRootViewControllerAnimated:YES];
+                                                          }
+                                                          
                                                       }];
 }
 
@@ -85,26 +93,28 @@
     addButton.layer.shadowOpacity = 1.f;
     addButton.layer.shadowRadius = 8.f;
     
+    // 加入衣橱操作
     @weakify(self);
     [[addButton rac_signalForControlEvents:UIControlEventTouchUpInside]
      subscribeNext:^(id x) {
          @strongify(self);
-         if (self.viewModel.signalClothesModel.imageDataArr.count == 0) {
-             MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-             hud.mode = MBProgressHUDModeAnnularDeterminate;
-             hud.label.text = @"忘记拍照了呦，只有先拍照才能放入衣橱里~";
-             
-             dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, 0.01 * NSEC_PER_SEC);
-             dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
-                 // Do something...
-                 [MBProgressHUD hideHUDForView:self.view animated:YES];
-             });
-             return;
-         }
+         [self addOneClothes];
      }];
     
     [self.view addSubview:addButton];
     [self.view bringSubviewToFront:addButton];
+}
+
+#pragma mark - 加入衣橱
+- (void)addOneClothes {
+    if (self.viewModel.signalClothesModel.imageDataArr.count == 0) {
+        [MBProgressHUD showLoadingWithTitle:@"需要先拍照，才能放入衣橱哦~"];
+        return;
+    } else {
+        [self dismissViewControllerAnimated:YES completion:^{
+            [MBProgressHUD showLoadingWithTitle:[self.viewModel saveClothes]];
+        }];
+    }
 }
 
 #pragma mark - tableView delegate && dataSource
@@ -127,10 +137,9 @@
     if (!pictureCell) {
         pictureCell = [[MWNewClothesCell alloc] initWithStyle:UITableViewCellStyleDefault
                                               reuseIdentifier:identifier
-                                                         type:self.viewModel.dataSource[indexPath.row]];
+                                                         type:self.viewModel.dataSource[indexPath.row]
+                                                         data:self.viewModel];
     }
-    
-    [pictureCell configCellWithData:self.viewModel];
     
     [self.viewModel.cellHeightDic setObject:@([pictureCell getCellSize].height)
                                      forKey:[NSString stringWithFormat:@"%ld-%ld", indexPath.section, indexPath.row]];
@@ -144,7 +153,119 @@
         [self.tableView endUpdates];
     };
     
+    pictureCell.takePictureBlock = ^{
+        @strongify(self);
+        UIAlertController *actionSheetController = [UIAlertController alertControllerWithTitle:nil
+                                                                                       message:nil
+                                                                                preferredStyle:UIAlertControllerStyleActionSheet];
+        
+        UIAlertAction *pickAction = [UIAlertAction actionWithTitle:@"从相册添加"
+                                                             style:UIAlertActionStyleDefault
+                                                           handler:^(UIAlertAction * _Nonnull action) {
+                                                               [self configAlbumSession];
+                                                           }];
+        
+        UIAlertAction *takeAction = [UIAlertAction actionWithTitle:@"拍照"
+                                                             style:UIAlertActionStyleDefault
+                                                           handler:^(UIAlertAction * _Nonnull action) {
+                                                               [self configCameraSession];
+                                                           }];
+        
+        UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"取消"
+                                                               style:UIAlertActionStyleCancel
+                                                             handler:^(UIAlertAction * _Nonnull action) {}];
+        [cancelAction setValue:[UIColor colorWithHexString:@"#FF4141"] forKey:@"_titleTextColor"];
+        
+        [actionSheetController addAction:pickAction];
+        [actionSheetController addAction:takeAction];
+        [actionSheetController addAction:cancelAction];
+        
+        [self presentViewController:actionSheetController animated:YES completion:nil];
+    };
+    
     return pictureCell;
+}
+
+// 相册
+- (void)configAlbumSession {
+    // 首先查看当前设备是否支持相册
+    if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypePhotoLibrary]) {
+        [self presentToImagePickerController:UIImagePickerControllerSourceTypePhotoLibrary];
+    } else {
+        [MBProgressHUD showLoadingWithTitle:@"当前设备不支持相册"];
+    }
+}
+
+
+- (void)presentToImagePickerController:(UIImagePickerControllerSourceType)type {
+    UIImagePickerController *picker = [[UIImagePickerController alloc] init];
+    picker.delegate = self;
+    picker.sourceType = type;
+    [self presentViewController:picker animated:YES completion:nil];
+}
+
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
+    [picker dismissViewControllerAnimated:YES completion:^{}];
+    UIImage *image = [info objectForKey:UIImagePickerControllerOriginalImage]; //通过key值获取到图片
+    [self.viewModel savePicture:UIImageJPEGRepresentation(image , 0.1)];
+}
+
+// 相机
+- (void)configCameraSession {
+    @weakify(self);
+    // 读取媒体类型
+    NSString *mediaType = AVMediaTypeVideo;
+    // 读取设备授权状态
+    AVAuthorizationStatus authStatus = [AVCaptureDevice authorizationStatusForMediaType:mediaType];
+    if(![self isRearCameraAvailable]) {
+        NSString *errorStr = @"设备摄像头不可用";
+        [[[MWAlertView alloc] initWithTitle:errorStr
+                              confirmString:@"确定"
+                               cancelString:@"取消"
+                                confirBlock:^(NSString *inputString) {}
+                                cancelBlock:^{}] showAlert];
+        return;
+    } else if(authStatus == AVAuthorizationStatusRestricted
+              || authStatus == AVAuthorizationStatusDenied) {
+        NSString *errorStr = @"请在设备的\"设置-隐私-相机\"中允许访问相机。";
+        
+        [[[MWAlertView alloc] initWithTitle:errorStr
+                              confirmString:@"确定"
+                               cancelString:@"取消"
+                                confirBlock:^(NSString *inputString) {
+                                    
+                                } cancelBlock:^{}] showAlert];
+        
+        return;
+    } else if (authStatus == AVAuthorizationStatusNotDetermined) {
+        // 以"弹窗要求用户选择是否授权"为例
+        [AVCaptureDevice requestAccessForMediaType:mediaType completionHandler:^(BOOL granted) {
+            [[RACScheduler mainThreadScheduler] schedule:^{
+                @strongify(self);
+                if (granted) {
+                    // 授权使用
+                    [self configInputOutput];
+                } else {
+                   [MBProgressHUD showLoadingWithTitle:@"已取消"];
+                }
+            }];
+        }];
+        return;
+    } else if (authStatus == AVAuthorizationStatusAuthorized) {
+        [self configInputOutput];
+    } else {
+        // 用户禁止使用
+        [MBProgressHUD showLoadingWithTitle:@"已取消"];
+    }
+}
+
+// 后摄像头是否可用
+- (BOOL) isRearCameraAvailable {
+    return [UIImagePickerController isCameraDeviceAvailable:UIImagePickerControllerCameraDeviceRear];
+}
+
+- (void)configInputOutput {
+    [self presentToImagePickerController:UIImagePickerControllerSourceTypeCamera];
 }
 
 @end

@@ -16,6 +16,23 @@ typedef void(^CancelCallback)(void);
 
 @interface MWAlertView : UIView
 
+
+/**
+ 简单弹框
+
+ @param title title
+ @param confirmString confirmString
+ @param cancelString cancelString
+ @param confirmBlock confirmBlock
+ @param cancelBlock cancelBlock
+ @return 实例化对象
+ */
+- (instancetype)initWithTitle:(NSString *)title
+                confirmString:(NSString *)confirmString
+                 cancelString:(NSString *)cancelString
+                  confirBlock:(ConfirmCallback)confirmBlock
+                  cancelBlock:(CancelCallback)cancelBlock;
+
 /**
  初始化输入弹框
  

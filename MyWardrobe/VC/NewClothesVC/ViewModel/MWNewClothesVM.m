@@ -16,6 +16,8 @@
 
 @property (nonatomic, strong) MWSignalClothesModel *signalClothesModel;
 
+@property (nonatomic, assign) MWNewClothesVMType viewType;
+
 @end
 
 @implementation MWNewClothesVM
@@ -25,8 +27,10 @@
     if (self) {
         if (data
             && [data isKindOfClass:[MWSignalClothesModel class]]) {
+            self.viewType = MWNewClothesVMType_Edit;
             _signalClothesModel = (MWSignalClothesModel *)data;
         } else if (!data) {
+            self.viewType = MWNewClothesVMType_New;
             _signalClothesModel = [MWSignalClothesModel new];
         } else {
             NSAssert([data isKindOfClass:[MWSignalClothesModel class]], @"data需为单品模型");
@@ -56,6 +60,13 @@
     self.signalClothesModel.catogaryName = catogaryName.copy;
 }
 
+- (void)savePicture:(NSData *)picture {
+    if (!picture) {
+        return;
+    }
+    self.signalClothesModel.imageDataArr = [NSArray arrayWithObject:picture];
+}
+
 - (void)saveSeason:(NSString *)season {
     self.signalClothesModel.season = season.copy;
 }
@@ -74,6 +85,19 @@
 
 - (void)saveMark:(NSString *)mark {
     self.signalClothesModel.mark = mark.copy;
+}
+
+- (NSString *)saveClothes {
+    if (!self.signalClothesModel) {
+        return @"放入失败，请重新尝试";
+    }
+    
+    MWDataSaveResult result = [[MWDataManager dataManager] updateSignalClothes:self.signalClothesModel];
+    if (result == MWDataSaveResult_Error) {
+        return @"放入失败，请重新尝试";
+    }
+    
+    return @"衣橱里有更新哦！";
 }
 
 @end

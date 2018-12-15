@@ -19,9 +19,13 @@ typedef NS_ENUM(NSUInteger, MWNewClothesCellType) {
 
 typedef void (^MWPickPictureCellHeightChangeBlock)(CGSize);
 
+typedef void (^MWNewClothesCellTakePictureBlock)(void);
+
 @interface MWNewClothesCell : UITableViewCell
 
 @property (nonatomic, copy) MWPickPictureCellHeightChangeBlock heightChangeBlock;
+
+@property (nonatomic, copy) MWNewClothesCellTakePictureBlock takePictureBlock;
 
 /**
  初始化
@@ -29,11 +33,13 @@ typedef void (^MWPickPictureCellHeightChangeBlock)(CGSize);
  @param style style
  @param reuseIdentifier reuseIdentifier
  @param type cell类型
+ @param data vm
  @return 实例化对象
  */
 - (instancetype)initWithStyle:(UITableViewCellStyle)style
               reuseIdentifier:(NSString *)reuseIdentifier
-                         type:(NSString *)type;
+                         type:(NSString *)type
+                         data:(id)data;
 
 - (void)configCellWithData:(id)data;
 

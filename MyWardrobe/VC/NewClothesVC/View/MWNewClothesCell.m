@@ -18,6 +18,7 @@
 #pragma mark - utils
 #import "UIView+Yoga.h"
 #import "MWAlertView.h"
+#import "UIImage+ScaleSize.h"
 
 @interface MWNewClothesCell ()
 
@@ -36,26 +37,24 @@
 
 @implementation MWNewClothesCell
 
-- (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier type:(NSString *)type {
+- (instancetype)initWithStyle:(UITableViewCellStyle)style
+              reuseIdentifier:(NSString *)reuseIdentifier
+                         type:(NSString *)type
+                         data:(id)data {
     self = [super initWithStyle:UITableViewCellStyleDefault reuseIdentifier:reuseIdentifier];
     if (!self) {
         return nil;
     }
     
     self.selectionStyle = UITableViewCellSelectionStyleNone;
+    if ([data isKindOfClass:[MWNewClothesVM class]]) {
+        self.viewModel = (MWNewClothesVM *)data;
+    }
     _type = type.copy;
     
     [self configUI];
     
     return self;
-}
-
-- (void)configCellWithData:(id)data {
-    if (![data isKindOfClass:[MWNewClothesVM class]]) {
-        return;
-    }
-    
-    self.viewModel = data;
 }
 
 #pragma mark - private method
@@ -140,19 +139,51 @@
 - (void)configPicture {
     [self.bgView addSubview:({
         self.pictureImageView = [UIImageView new];
+        self.pictureImageView.userInteractionEnabled = YES;
         [self.pictureImageView configureLayoutWithBlock:^(YGLayout * _Nonnull layout) {
             layout.isEnabled = YES;
+            layout.justifyContent = YGJustifyCenter;
+            layout.alignItems = YGAlignCenter;
             layout.width = YGPointValue(255.f);
             layout.height = YGPointValue(340.f);
         }];
         
-        // TODO: 需要数据判断
-//        self.pictureImageView.image = [UIImage imageNamed:@""];
+        self.pictureImageView.backgroundColor = [[UIColor colorWithHexString:@"#333333"] colorWithAlphaComponent:0.06];
+        UIImageView *addImageView = [UIImageView new];
+        addImageView.image = [[UIImage imageNamed:@"icon_add_slices"] imageByScalingAndCroppingForSize:CGSizeMake(255.f, 340.f)];
+        addImageView.userInteractionEnabled = YES;
+        [addImageView configureLayoutWithBlock:^(YGLayout * _Nonnull layout) {
+            layout.isEnabled = YES;
+            layout.width = layout.height = YGPointValue(48.f);
+            layout.display = YGDisplayNone;
+        }];
+        [self.pictureImageView addSubview:addImageView];
         
-        self.pictureImageView.backgroundColor = [[UIColor colorWithHexString:@"#333333"] colorWithAlphaComponent:0.3];
+        @weakify(self);
+        [RACObserve(self.viewModel.signalClothesModel, imageDataArr)
+         subscribeNext:^(NSArray *imageDataArr) {
+             @strongify(self);
+             if (imageDataArr > 0
+                 && imageDataArr.firstObject) {
+                 self.pictureImageView.image = [UIImage imageWithData:imageDataArr.firstObject];
+                 [addImageView configureLayoutWithBlock:^(YGLayout * _Nonnull layout) {
+                     layout.isEnabled = YES;
+                     layout.display = YGDisplayNone;
+                 }];
+             } else {
+                 [addImageView configureLayoutWithBlock:^(YGLayout * _Nonnull layout) {
+                     layout.isEnabled = YES;
+                     layout.display = YGDisplayFlex;
+                 }];
+             }
+             [self.contentView.yoga applyLayoutPreservingOrigin:NO];
+         }];
         
         self.pictureImageView;
     })];
+    
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(takePicture:)];
+    [self.pictureImageView addGestureRecognizer:tap];
 }
 
 // 分类
@@ -317,6 +348,13 @@
     frame.size.width = SCREEN_SIZE_WIDTH;
     frame.origin.x = 0;
     [super setFrame:frame];
+}
+
+#pragma mark - action
+- (void)takePicture:(UITapGestureRecognizer *)sender {
+    if (self.takePictureBlock) {
+        self.takePictureBlock();
+    }
 }
 
 @end

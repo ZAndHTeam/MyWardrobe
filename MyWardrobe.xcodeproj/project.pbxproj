@@ -18,6 +18,8 @@
 		F4015D9821C27E9900AC6C58 /* MWClothesCatogaryModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F4015D9721C27E9900AC6C58 /* MWClothesCatogaryModel.m */; };
 		F4015D9C21C27FC500AC6C58 /* MWIDGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = F4015D9B21C27FC500AC6C58 /* MWIDGenerator.m */; };
 		F4015D9F21C2847A00AC6C58 /* MWSignalClothesModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F4015D9E21C2847A00AC6C58 /* MWSignalClothesModel.m */; };
+		F41D156121C4FABD00F62B0F /* MBProgressHUD+SimpleLoad.m in Sources */ = {isa = PBXBuildFile; fileRef = F41D156021C4FABD00F62B0F /* MBProgressHUD+SimpleLoad.m */; };
+		F41D156421C5181600F62B0F /* UIImage+ScaleSize.m in Sources */ = {isa = PBXBuildFile; fileRef = F41D156321C5181600F62B0F /* UIImage+ScaleSize.m */; };
 		F433EC2821BEA2B800DC057E /* YGLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = F433EC2421BEA2B800DC057E /* YGLayout.m */; };
 		F433EC2921BEA2B800DC057E /* UIView+Yoga.m in Sources */ = {isa = PBXBuildFile; fileRef = F433EC2521BEA2B800DC057E /* UIView+Yoga.m */; };
 		F433EC2A21BEA2B800DC057E /* Yoga.c in Sources */ = {isa = PBXBuildFile; fileRef = F433EC2621BEA2B800DC057E /* Yoga.c */; };
@@ -91,6 +93,10 @@
 		F4015D9B21C27FC500AC6C58 /* MWIDGenerator.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MWIDGenerator.m; sourceTree = "<group>"; };
 		F4015D9D21C2847A00AC6C58 /* MWSignalClothesModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MWSignalClothesModel.h; sourceTree = "<group>"; };
 		F4015D9E21C2847A00AC6C58 /* MWSignalClothesModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MWSignalClothesModel.m; sourceTree = "<group>"; };
+		F41D155F21C4FABD00F62B0F /* MBProgressHUD+SimpleLoad.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MBProgressHUD+SimpleLoad.h"; sourceTree = "<group>"; };
+		F41D156021C4FABD00F62B0F /* MBProgressHUD+SimpleLoad.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "MBProgressHUD+SimpleLoad.m"; sourceTree = "<group>"; };
+		F41D156221C5181600F62B0F /* UIImage+ScaleSize.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIImage+ScaleSize.h"; sourceTree = "<group>"; };
+		F41D156321C5181600F62B0F /* UIImage+ScaleSize.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIImage+ScaleSize.m"; sourceTree = "<group>"; };
 		F433EC1D21BEA2B800DC057E /* YGLayout+Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "YGLayout+Private.h"; sourceTree = "<group>"; };
 		F433EC1E21BEA2B800DC057E /* YGLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YGLayout.h; sourceTree = "<group>"; };
 		F433EC1F21BEA2B800DC057E /* YGEnums.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YGEnums.h; sourceTree = "<group>"; };
@@ -312,6 +318,8 @@
 				F433EC3A21BEA59B00DC057E /* UIView+MWFrame.h */,
 				F433EC3B21BEA59B00DC057E /* UIView+MWFrame.m */,
 				F433EC3D21BEA75A00DC057E /* MacroLayout.h */,
+				F41D156221C5181600F62B0F /* UIImage+ScaleSize.h */,
+				F41D156321C5181600F62B0F /* UIImage+ScaleSize.m */,
 			);
 			path = UITools;
 			sourceTree = "<group>";
@@ -466,6 +474,8 @@
 				F4E43E2A21C4206500333B92 /* MWColorPickerView.m */,
 				F4E43E2C21C498D700333B92 /* MWAlertView.h */,
 				F4E43E2D21C498D700333B92 /* MWAlertView.m */,
+				F41D155F21C4FABD00F62B0F /* MBProgressHUD+SimpleLoad.h */,
+				F41D156021C4FABD00F62B0F /* MBProgressHUD+SimpleLoad.m */,
 			);
 			path = CommonViews;
 			sourceTree = "<group>";
@@ -482,6 +492,7 @@
 				F455441E21BE9D3F000A37E5 /* Frameworks */,
 				F455441F21BE9D3F000A37E5 /* Resources */,
 				4D81547AFA22374E6EBF90C0 /* [CP] Embed Pods Frameworks */,
+				91B2DE4E505F52B65E69ECCA /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -500,6 +511,8 @@
 				F455443521BE9D41000A37E5 /* Sources */,
 				F455443621BE9D41000A37E5 /* Frameworks */,
 				F455443721BE9D41000A37E5 /* Resources */,
+				AF28EA3A8A8791114DF2B1FE /* [CP] Embed Pods Frameworks */,
+				2D765D7FBA153604F5C7133D /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -519,6 +532,8 @@
 				F455444021BE9D41000A37E5 /* Sources */,
 				F455444121BE9D41000A37E5 /* Frameworks */,
 				F455444221BE9D41000A37E5 /* Resources */,
+				089E9296090A0BCC1BCEFC72 /* [CP] Embed Pods Frameworks */,
+				D5D2703898141B9F773102AC /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -600,6 +615,21 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		089E9296090A0BCC1BCEFC72 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MyWardrobeUITests/Pods-MyWardrobeUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		0D3E16E7487039656E8D1FA5 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -634,6 +664,21 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		2D765D7FBA153604F5C7133D /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MyWardrobeTests/Pods-MyWardrobeTests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		4D81547AFA22374E6EBF90C0 /* [CP] Embed Pods Frameworks */ = {
@@ -678,6 +723,51 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		91B2DE4E505F52B65E69ECCA /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MyWardrobe/Pods-MyWardrobe-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		AF28EA3A8A8791114DF2B1FE /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MyWardrobeTests/Pods-MyWardrobeTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D5D2703898141B9F773102AC /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MyWardrobeUITests/Pods-MyWardrobeUITests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -704,6 +794,7 @@
 				F4FCD1AD21BFF2AD0052BAFF /* UIColor+MWEX.m in Sources */,
 				F4E43E2E21C498D700333B92 /* MWAlertView.m in Sources */,
 				7B755B5921C4AB0900975D04 /* MWHomeTableViewCell.m in Sources */,
+				F41D156121C4FABD00F62B0F /* MBProgressHUD+SimpleLoad.m in Sources */,
 				F433EC3221BEA34400DC057E /* MWTabBar.m in Sources */,
 				F455443421BE9D41000A37E5 /* main.m in Sources */,
 				F4E43E2521C398E700333B92 /* MWScrollTagView.m in Sources */,
@@ -713,6 +804,7 @@
 				7B755B5621C4A79300975D04 /* MWHomeVC.m in Sources */,
 				F4FCD1B321C0100A0052BAFF /* MWNewClothesCell.m in Sources */,
 				F4FCD1B021C000780052BAFF /* MWNewClothesVM.m in Sources */,
+				F41D156421C5181600F62B0F /* UIImage+ScaleSize.m in Sources */,
 				F4E43E2821C41DFB00333B92 /* AppDelegateManager.m in Sources */,
 				F433EC2821BEA2B800DC057E /* YGLayout.m in Sources */,
 			);
@@ -886,7 +978,10 @@
 				GCC_PREFIX_HEADER = "$(SRCROOT)/MyWardrobe/Tools/MWHeader.pch";
 				INFOPLIST_FILE = MyWardrobe/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.simon.MyWardrobe;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = 1;
@@ -904,7 +999,10 @@
 				GCC_PREFIX_HEADER = "$(SRCROOT)/MyWardrobe/Tools/MWHeader.pch";
 				INFOPLIST_FILE = MyWardrobe/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.simon.MyWardrobe;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = 1;
@@ -918,7 +1016,11 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = MyWardrobeTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.simon.MyWardrobeTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -933,7 +1035,11 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = MyWardrobeTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.simon.MyWardrobeTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -947,7 +1053,11 @@
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = MyWardrobeUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.simon.MyWardrobeUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -961,7 +1071,11 @@
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = MyWardrobeUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.simon.MyWardrobeUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";

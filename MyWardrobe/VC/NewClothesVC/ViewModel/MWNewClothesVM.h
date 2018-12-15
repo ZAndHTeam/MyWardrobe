@@ -12,6 +12,11 @@
 #import "MWClothesCatogaryModel.h"
 #import "MWSignalClothesModel.h"
 
+typedef NS_ENUM(NSUInteger, MWNewClothesVMType) {
+    MWNewClothesVMType_New,
+    MWNewClothesVMType_Edit,
+};
+
 @interface MWNewClothesVM : NSObject
 /** 单品数据 */
 @property (nonatomic, strong, readonly) MWSignalClothesModel *signalClothesModel;
@@ -20,7 +25,11 @@
 /** cell高度字典 */
 @property (nonatomic, strong) NSMutableDictionary *cellHeightDic;
 
+@property (nonatomic, assign, readonly) MWNewClothesVMType viewType;
+
 - (instancetype)initWithData:(id)data;
+
+- (void)savePicture:(NSData *)picture;
 
 - (void)saveCatogaryName:(NSString *)catogaryName;
 
@@ -33,5 +42,7 @@
 - (void)savePrice:(NSString *)price;
 
 - (void)saveMark:(NSString *)mark;
+
+- (NSString *)saveClothes;
 
 @end
