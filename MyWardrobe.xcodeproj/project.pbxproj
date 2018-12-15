@@ -13,6 +13,8 @@
 		7B755B5621C4A79300975D04 /* MWHomeVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B755B5521C4A79300975D04 /* MWHomeVC.m */; };
 		7B755B5921C4AB0900975D04 /* MWHomeTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B755B5821C4AB0900975D04 /* MWHomeTableViewCell.m */; };
 		7B755B5C21C4ABD500975D04 /* MWHomeCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B755B5B21C4ABD500975D04 /* MWHomeCollectionViewCell.m */; };
+		7B755B6221C5128000975D04 /* MWSettingVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B755B6121C5128000975D04 /* MWSettingVC.m */; };
+		7B755B6521C519B200975D04 /* UITextView+MWPlaceholder.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B755B6421C519B200975D04 /* UITextView+MWPlaceholder.m */; };
 		D5486F164E5FB5F7650916AC /* Pods_MyWardrobeTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C91D797BCF81B5D464C2A51C /* Pods_MyWardrobeTests.framework */; };
 		F4015D9421C27E5B00AC6C58 /* MWDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F4015D9321C27E5B00AC6C58 /* MWDataManager.m */; };
 		F4015D9821C27E9900AC6C58 /* MWClothesCatogaryModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F4015D9721C27E9900AC6C58 /* MWClothesCatogaryModel.m */; };
@@ -77,6 +79,10 @@
 		7B755B5821C4AB0900975D04 /* MWHomeTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MWHomeTableViewCell.m; sourceTree = "<group>"; };
 		7B755B5A21C4ABD500975D04 /* MWHomeCollectionViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MWHomeCollectionViewCell.h; sourceTree = "<group>"; };
 		7B755B5B21C4ABD500975D04 /* MWHomeCollectionViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MWHomeCollectionViewCell.m; sourceTree = "<group>"; };
+		7B755B6021C5128000975D04 /* MWSettingVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MWSettingVC.h; sourceTree = "<group>"; };
+		7B755B6121C5128000975D04 /* MWSettingVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MWSettingVC.m; sourceTree = "<group>"; };
+		7B755B6321C519B200975D04 /* UITextView+MWPlaceholder.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UITextView+MWPlaceholder.h"; sourceTree = "<group>"; };
+		7B755B6421C519B200975D04 /* UITextView+MWPlaceholder.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UITextView+MWPlaceholder.m"; sourceTree = "<group>"; };
 		8C0715FD2EC151B6F206F0F3 /* Pods-MyWardrobeTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyWardrobeTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-MyWardrobeTests/Pods-MyWardrobeTests.release.xcconfig"; sourceTree = "<group>"; };
 		97B6E8C78CA9C45974F61223 /* Pods_MyWardrobe.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MyWardrobe.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C91D797BCF81B5D464C2A51C /* Pods_MyWardrobeTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MyWardrobeTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -234,6 +240,31 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		7B755B5D21C5122B00975D04 /* MWSettingVC */ = {
+			isa = PBXGroup;
+			children = (
+				7B755B5F21C5126600975D04 /* View */,
+				7B755B5E21C5126600975D04 /* ViewModel */,
+			);
+			path = MWSettingVC;
+			sourceTree = "<group>";
+		};
+		7B755B5E21C5126600975D04 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		7B755B5F21C5126600975D04 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				7B755B6021C5128000975D04 /* MWSettingVC.h */,
+				7B755B6121C5128000975D04 /* MWSettingVC.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		F4015D9121C27E4900AC6C58 /* DataManager */ = {
 			isa = PBXGroup;
 			children = (
@@ -312,6 +343,8 @@
 				F433EC3A21BEA59B00DC057E /* UIView+MWFrame.h */,
 				F433EC3B21BEA59B00DC057E /* UIView+MWFrame.m */,
 				F433EC3D21BEA75A00DC057E /* MacroLayout.h */,
+				7B755B6321C519B200975D04 /* UITextView+MWPlaceholder.h */,
+				7B755B6421C519B200975D04 /* UITextView+MWPlaceholder.m */,
 			);
 			path = UITools;
 			sourceTree = "<group>";
@@ -394,6 +427,7 @@
 		F455445921BE9DDD000A37E5 /* VC */ = {
 			isa = PBXGroup;
 			children = (
+				7B755B5D21C5122B00975D04 /* MWSettingVC */,
 				7B755B4E21C4A6F200975D04 /* MWHomeVC */,
 				F4FCD19E21BFEB740052BAFF /* NewClothesVC */,
 				F455445A21BE9DDD000A37E5 /* MWTabBarVC */,
@@ -690,6 +724,7 @@
 				F433EC2B21BEA2B800DC057E /* YGNodeList.c in Sources */,
 				F455445D21BE9DDD000A37E5 /* AppDelegate.m in Sources */,
 				F4015D9421C27E5B00AC6C58 /* MWDataManager.m in Sources */,
+				7B755B6521C519B200975D04 /* UITextView+MWPlaceholder.m in Sources */,
 				7B755B5C21C4ABD500975D04 /* MWHomeCollectionViewCell.m in Sources */,
 				7B755B5321C4A77100975D04 /* MWHomeVM.m in Sources */,
 				F4E43E2B21C4206500333B92 /* MWColorPickerView.m in Sources */,
@@ -699,6 +734,7 @@
 				F433EC4521BEAA3B00DC057E /* MWTabBarVC.m in Sources */,
 				F433EC3421BEA34400DC057E /* MWTabBarButton.m in Sources */,
 				F4FCD1AA21BFF0220052BAFF /* MWNavigationView.m in Sources */,
+				7B755B6221C5128000975D04 /* MWSettingVC.m in Sources */,
 				F433EC3721BEA3C000DC057E /* UIViewController+MWTabBarItem.m in Sources */,
 				F433EC2A21BEA2B800DC057E /* Yoga.c in Sources */,
 				F4FCD1AD21BFF2AD0052BAFF /* UIColor+MWEX.m in Sources */,
@@ -886,7 +922,10 @@
 				GCC_PREFIX_HEADER = "$(SRCROOT)/MyWardrobe/Tools/MWHeader.pch";
 				INFOPLIST_FILE = MyWardrobe/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.simon.MyWardrobe;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = 1;
@@ -904,7 +943,10 @@
 				GCC_PREFIX_HEADER = "$(SRCROOT)/MyWardrobe/Tools/MWHeader.pch";
 				INFOPLIST_FILE = MyWardrobe/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.simon.MyWardrobe;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = 1;
@@ -918,7 +960,11 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = MyWardrobeTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.simon.MyWardrobeTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -933,7 +979,11 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = MyWardrobeTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.simon.MyWardrobeTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -947,7 +997,11 @@
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = MyWardrobeUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.simon.MyWardrobeUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -961,7 +1015,11 @@
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = MyWardrobeUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.simon.MyWardrobeUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
