@@ -13,13 +13,15 @@
 		7B755B5621C4A79300975D04 /* MWHomeVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B755B5521C4A79300975D04 /* MWHomeVC.m */; };
 		7B755B5921C4AB0900975D04 /* MWHomeTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B755B5821C4AB0900975D04 /* MWHomeTableViewCell.m */; };
 		7B755B5C21C4ABD500975D04 /* MWHomeCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B755B5B21C4ABD500975D04 /* MWHomeCollectionViewCell.m */; };
+		7B755B6221C5128000975D04 /* MWSettingVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B755B6121C5128000975D04 /* MWSettingVC.m */; };
+		7B755B6521C519B200975D04 /* UITextView+MWPlaceholder.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B755B6421C519B200975D04 /* UITextView+MWPlaceholder.m */; };
 		D5486F164E5FB5F7650916AC /* Pods_MyWardrobeTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C91D797BCF81B5D464C2A51C /* Pods_MyWardrobeTests.framework */; };
 		F4015D9421C27E5B00AC6C58 /* MWDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F4015D9321C27E5B00AC6C58 /* MWDataManager.m */; };
 		F4015D9821C27E9900AC6C58 /* MWClothesCatogaryModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F4015D9721C27E9900AC6C58 /* MWClothesCatogaryModel.m */; };
 		F4015D9C21C27FC500AC6C58 /* MWIDGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = F4015D9B21C27FC500AC6C58 /* MWIDGenerator.m */; };
 		F4015D9F21C2847A00AC6C58 /* MWSignalClothesModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F4015D9E21C2847A00AC6C58 /* MWSignalClothesModel.m */; };
-		F41D156121C4FABD00F62B0F /* MBProgressHUD+SimpleLoad.m in Sources */ = {isa = PBXBuildFile; fileRef = F41D156021C4FABD00F62B0F /* MBProgressHUD+SimpleLoad.m */; };
-		F41D156421C5181600F62B0F /* UIImage+ScaleSize.m in Sources */ = {isa = PBXBuildFile; fileRef = F41D156321C5181600F62B0F /* UIImage+ScaleSize.m */; };
+		F41D156921C523B200F62B0F /* MBProgressHUD+SimpleLoad.m in Sources */ = {isa = PBXBuildFile; fileRef = F41D156821C523B100F62B0F /* MBProgressHUD+SimpleLoad.m */; };
+		F41D156A21C5243F00F62B0F /* UIImage+ScaleSize.m in Sources */ = {isa = PBXBuildFile; fileRef = F41D156321C5181600F62B0F /* UIImage+ScaleSize.m */; };
 		F433EC2821BEA2B800DC057E /* YGLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = F433EC2421BEA2B800DC057E /* YGLayout.m */; };
 		F433EC2921BEA2B800DC057E /* UIView+Yoga.m in Sources */ = {isa = PBXBuildFile; fileRef = F433EC2521BEA2B800DC057E /* UIView+Yoga.m */; };
 		F433EC2A21BEA2B800DC057E /* Yoga.c in Sources */ = {isa = PBXBuildFile; fileRef = F433EC2621BEA2B800DC057E /* Yoga.c */; };
@@ -79,6 +81,10 @@
 		7B755B5821C4AB0900975D04 /* MWHomeTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MWHomeTableViewCell.m; sourceTree = "<group>"; };
 		7B755B5A21C4ABD500975D04 /* MWHomeCollectionViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MWHomeCollectionViewCell.h; sourceTree = "<group>"; };
 		7B755B5B21C4ABD500975D04 /* MWHomeCollectionViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MWHomeCollectionViewCell.m; sourceTree = "<group>"; };
+		7B755B6021C5128000975D04 /* MWSettingVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MWSettingVC.h; sourceTree = "<group>"; };
+		7B755B6121C5128000975D04 /* MWSettingVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MWSettingVC.m; sourceTree = "<group>"; };
+		7B755B6321C519B200975D04 /* UITextView+MWPlaceholder.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UITextView+MWPlaceholder.h"; sourceTree = "<group>"; };
+		7B755B6421C519B200975D04 /* UITextView+MWPlaceholder.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UITextView+MWPlaceholder.m"; sourceTree = "<group>"; };
 		8C0715FD2EC151B6F206F0F3 /* Pods-MyWardrobeTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyWardrobeTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-MyWardrobeTests/Pods-MyWardrobeTests.release.xcconfig"; sourceTree = "<group>"; };
 		97B6E8C78CA9C45974F61223 /* Pods_MyWardrobe.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MyWardrobe.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C91D797BCF81B5D464C2A51C /* Pods_MyWardrobeTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MyWardrobeTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -93,10 +99,10 @@
 		F4015D9B21C27FC500AC6C58 /* MWIDGenerator.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MWIDGenerator.m; sourceTree = "<group>"; };
 		F4015D9D21C2847A00AC6C58 /* MWSignalClothesModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MWSignalClothesModel.h; sourceTree = "<group>"; };
 		F4015D9E21C2847A00AC6C58 /* MWSignalClothesModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MWSignalClothesModel.m; sourceTree = "<group>"; };
-		F41D155F21C4FABD00F62B0F /* MBProgressHUD+SimpleLoad.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MBProgressHUD+SimpleLoad.h"; sourceTree = "<group>"; };
-		F41D156021C4FABD00F62B0F /* MBProgressHUD+SimpleLoad.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "MBProgressHUD+SimpleLoad.m"; sourceTree = "<group>"; };
 		F41D156221C5181600F62B0F /* UIImage+ScaleSize.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIImage+ScaleSize.h"; sourceTree = "<group>"; };
 		F41D156321C5181600F62B0F /* UIImage+ScaleSize.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIImage+ScaleSize.m"; sourceTree = "<group>"; };
+		F41D156721C523B100F62B0F /* MBProgressHUD+SimpleLoad.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MBProgressHUD+SimpleLoad.h"; sourceTree = "<group>"; };
+		F41D156821C523B100F62B0F /* MBProgressHUD+SimpleLoad.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MBProgressHUD+SimpleLoad.m"; sourceTree = "<group>"; };
 		F433EC1D21BEA2B800DC057E /* YGLayout+Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "YGLayout+Private.h"; sourceTree = "<group>"; };
 		F433EC1E21BEA2B800DC057E /* YGLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YGLayout.h; sourceTree = "<group>"; };
 		F433EC1F21BEA2B800DC057E /* YGEnums.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YGEnums.h; sourceTree = "<group>"; };
@@ -240,6 +246,31 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		7B755B5D21C5122B00975D04 /* MWSettingVC */ = {
+			isa = PBXGroup;
+			children = (
+				7B755B5F21C5126600975D04 /* View */,
+				7B755B5E21C5126600975D04 /* ViewModel */,
+			);
+			path = MWSettingVC;
+			sourceTree = "<group>";
+		};
+		7B755B5E21C5126600975D04 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		7B755B5F21C5126600975D04 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				7B755B6021C5128000975D04 /* MWSettingVC.h */,
+				7B755B6121C5128000975D04 /* MWSettingVC.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		F4015D9121C27E4900AC6C58 /* DataManager */ = {
 			isa = PBXGroup;
 			children = (
@@ -268,6 +299,13 @@
 				F4015D9B21C27FC500AC6C58 /* MWIDGenerator.m */,
 			);
 			path = IdGenerator;
+			sourceTree = "<group>";
+		};
+		F41D156621C5235000F62B0F /* Recovered References */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "Recovered References";
 			sourceTree = "<group>";
 		};
 		F433EC0C21BEA19F00DC057E /* Vendors */ = {
@@ -320,6 +358,8 @@
 				F433EC3D21BEA75A00DC057E /* MacroLayout.h */,
 				F41D156221C5181600F62B0F /* UIImage+ScaleSize.h */,
 				F41D156321C5181600F62B0F /* UIImage+ScaleSize.m */,
+				7B755B6321C519B200975D04 /* UITextView+MWPlaceholder.h */,
+				7B755B6421C519B200975D04 /* UITextView+MWPlaceholder.m */,
 			);
 			path = UITools;
 			sourceTree = "<group>";
@@ -341,6 +381,7 @@
 				F455442221BE9D3F000A37E5 /* Products */,
 				5E6039CBB671DB7F858BF9D1 /* Pods */,
 				279C47F6D87710618584A410 /* Frameworks */,
+				F41D156621C5235000F62B0F /* Recovered References */,
 			);
 			sourceTree = "<group>";
 		};
@@ -402,6 +443,7 @@
 		F455445921BE9DDD000A37E5 /* VC */ = {
 			isa = PBXGroup;
 			children = (
+				7B755B5D21C5122B00975D04 /* MWSettingVC */,
 				7B755B4E21C4A6F200975D04 /* MWHomeVC */,
 				F4FCD19E21BFEB740052BAFF /* NewClothesVC */,
 				F455445A21BE9DDD000A37E5 /* MWTabBarVC */,
@@ -468,14 +510,14 @@
 			isa = PBXGroup;
 			children = (
 				F4E43E1F21C3984000333B92 /* TagView */,
+				F41D156721C523B100F62B0F /* MBProgressHUD+SimpleLoad.h */,
+				F41D156821C523B100F62B0F /* MBProgressHUD+SimpleLoad.m */,
 				F4FCD1A821BFF0220052BAFF /* MWNavigationView.h */,
 				F4FCD1A921BFF0220052BAFF /* MWNavigationView.m */,
 				F4E43E2921C4206500333B92 /* MWColorPickerView.h */,
 				F4E43E2A21C4206500333B92 /* MWColorPickerView.m */,
 				F4E43E2C21C498D700333B92 /* MWAlertView.h */,
 				F4E43E2D21C498D700333B92 /* MWAlertView.m */,
-				F41D155F21C4FABD00F62B0F /* MBProgressHUD+SimpleLoad.h */,
-				F41D156021C4FABD00F62B0F /* MBProgressHUD+SimpleLoad.m */,
 			);
 			path = CommonViews;
 			sourceTree = "<group>";
@@ -492,7 +534,7 @@
 				F455441E21BE9D3F000A37E5 /* Frameworks */,
 				F455441F21BE9D3F000A37E5 /* Resources */,
 				4D81547AFA22374E6EBF90C0 /* [CP] Embed Pods Frameworks */,
-				91B2DE4E505F52B65E69ECCA /* [CP] Copy Pods Resources */,
+				073F16D0970B0B15A9BF4643 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -511,8 +553,8 @@
 				F455443521BE9D41000A37E5 /* Sources */,
 				F455443621BE9D41000A37E5 /* Frameworks */,
 				F455443721BE9D41000A37E5 /* Resources */,
-				AF28EA3A8A8791114DF2B1FE /* [CP] Embed Pods Frameworks */,
-				2D765D7FBA153604F5C7133D /* [CP] Copy Pods Resources */,
+				E90F758F890874A7A03CB4D1 /* [CP] Embed Pods Frameworks */,
+				E213CBABA059E5523E21B751 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -532,8 +574,8 @@
 				F455444021BE9D41000A37E5 /* Sources */,
 				F455444121BE9D41000A37E5 /* Frameworks */,
 				F455444221BE9D41000A37E5 /* Resources */,
-				089E9296090A0BCC1BCEFC72 /* [CP] Embed Pods Frameworks */,
-				D5D2703898141B9F773102AC /* [CP] Copy Pods Resources */,
+				76B93178FFE96970CF93E80C /* [CP] Embed Pods Frameworks */,
+				D06EE663A7AB788E79913482 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -615,19 +657,19 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		089E9296090A0BCC1BCEFC72 /* [CP] Embed Pods Frameworks */ = {
+		073F16D0970B0B15A9BF4643 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "[CP] Embed Pods Frameworks";
+			name = "[CP] Copy Pods Resources";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MyWardrobeUITests/Pods-MyWardrobeUITests-frameworks.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MyWardrobe/Pods-MyWardrobe-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		0D3E16E7487039656E8D1FA5 /* [CP] Check Pods Manifest.lock */ = {
@@ -666,21 +708,6 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		2D765D7FBA153604F5C7133D /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MyWardrobeTests/Pods-MyWardrobeTests-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		4D81547AFA22374E6EBF90C0 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -705,6 +732,21 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MyWardrobe/Pods-MyWardrobe-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		76B93178FFE96970CF93E80C /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MyWardrobeUITests/Pods-MyWardrobeUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		78AF670883CDD711284D4E79 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -723,37 +765,7 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		91B2DE4E505F52B65E69ECCA /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MyWardrobe/Pods-MyWardrobe-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		AF28EA3A8A8791114DF2B1FE /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MyWardrobeTests/Pods-MyWardrobeTests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		D5D2703898141B9F773102AC /* [CP] Copy Pods Resources */ = {
+		D06EE663A7AB788E79913482 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -768,6 +780,36 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MyWardrobeUITests/Pods-MyWardrobeUITests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		E213CBABA059E5523E21B751 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MyWardrobeTests/Pods-MyWardrobeTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E90F758F890874A7A03CB4D1 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MyWardrobeTests/Pods-MyWardrobeTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -780,6 +822,7 @@
 				F433EC2B21BEA2B800DC057E /* YGNodeList.c in Sources */,
 				F455445D21BE9DDD000A37E5 /* AppDelegate.m in Sources */,
 				F4015D9421C27E5B00AC6C58 /* MWDataManager.m in Sources */,
+				7B755B6521C519B200975D04 /* UITextView+MWPlaceholder.m in Sources */,
 				7B755B5C21C4ABD500975D04 /* MWHomeCollectionViewCell.m in Sources */,
 				7B755B5321C4A77100975D04 /* MWHomeVM.m in Sources */,
 				F4E43E2B21C4206500333B92 /* MWColorPickerView.m in Sources */,
@@ -789,22 +832,23 @@
 				F433EC4521BEAA3B00DC057E /* MWTabBarVC.m in Sources */,
 				F433EC3421BEA34400DC057E /* MWTabBarButton.m in Sources */,
 				F4FCD1AA21BFF0220052BAFF /* MWNavigationView.m in Sources */,
+				7B755B6221C5128000975D04 /* MWSettingVC.m in Sources */,
+				F41D156921C523B200F62B0F /* MBProgressHUD+SimpleLoad.m in Sources */,
 				F433EC3721BEA3C000DC057E /* UIViewController+MWTabBarItem.m in Sources */,
 				F433EC2A21BEA2B800DC057E /* Yoga.c in Sources */,
 				F4FCD1AD21BFF2AD0052BAFF /* UIColor+MWEX.m in Sources */,
 				F4E43E2E21C498D700333B92 /* MWAlertView.m in Sources */,
 				7B755B5921C4AB0900975D04 /* MWHomeTableViewCell.m in Sources */,
-				F41D156121C4FABD00F62B0F /* MBProgressHUD+SimpleLoad.m in Sources */,
 				F433EC3221BEA34400DC057E /* MWTabBar.m in Sources */,
 				F455443421BE9D41000A37E5 /* main.m in Sources */,
 				F4E43E2521C398E700333B92 /* MWScrollTagView.m in Sources */,
 				F4FCD1A321BFEB900052BAFF /* MWNewClothesVC.m in Sources */,
 				F4015D9C21C27FC500AC6C58 /* MWIDGenerator.m in Sources */,
+				F41D156A21C5243F00F62B0F /* UIImage+ScaleSize.m in Sources */,
 				F433EC3C21BEA59B00DC057E /* UIView+MWFrame.m in Sources */,
 				7B755B5621C4A79300975D04 /* MWHomeVC.m in Sources */,
 				F4FCD1B321C0100A0052BAFF /* MWNewClothesCell.m in Sources */,
 				F4FCD1B021C000780052BAFF /* MWNewClothesVM.m in Sources */,
-				F41D156421C5181600F62B0F /* UIImage+ScaleSize.m in Sources */,
 				F4E43E2821C41DFB00333B92 /* AppDelegateManager.m in Sources */,
 				F433EC2821BEA2B800DC057E /* YGLayout.m in Sources */,
 			);

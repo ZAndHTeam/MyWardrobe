@@ -43,7 +43,7 @@
     self = [super init];
     if (self) {
         _title = title.copy;
-        _inputText = inputText.length > 0 ? inputText.copy : nil;
+        _inputText = inputText.length > 0 ? inputText.copy : @"";
         _confirmString = confirmString.copy;
         _cancelString = cancelString.copy;
         _confirmBlock = [confirmBlock copy];;

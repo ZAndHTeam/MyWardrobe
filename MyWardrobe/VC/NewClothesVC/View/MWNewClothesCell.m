@@ -150,7 +150,7 @@
         
         self.pictureImageView.backgroundColor = [[UIColor colorWithHexString:@"#333333"] colorWithAlphaComponent:0.06];
         UIImageView *addImageView = [UIImageView new];
-        addImageView.image = [[UIImage imageNamed:@"icon_add_slices"] imageByScalingAndCroppingForSize:CGSizeMake(255.f, 340.f)];
+        addImageView.image = [UIImage imageNamed:@"icon_add_slices"];
         addImageView.userInteractionEnabled = YES;
         [addImageView configureLayoutWithBlock:^(YGLayout * _Nonnull layout) {
             layout.isEnabled = YES;
@@ -159,18 +159,19 @@
         }];
         [self.pictureImageView addSubview:addImageView];
         
-        @weakify(self);
+        @weakify(self, addImageView);
         [RACObserve(self.viewModel.signalClothesModel, imageDataArr)
          subscribeNext:^(NSArray *imageDataArr) {
-             @strongify(self);
+             @strongify(self, addImageView);
              if (imageDataArr > 0
                  && imageDataArr.firstObject) {
-                 self.pictureImageView.image = [UIImage imageWithData:imageDataArr.firstObject];
+                 self.pictureImageView.image = [[UIImage imageWithData:imageDataArr.firstObject] imageByScalingAndCroppingForSize:CGSizeMake(255.f, 340.f)];
                  [addImageView configureLayoutWithBlock:^(YGLayout * _Nonnull layout) {
                      layout.isEnabled = YES;
                      layout.display = YGDisplayNone;
                  }];
              } else {
+                 addImageView.image = [UIImage imageNamed:@"icon_add_slices"];
                  [addImageView configureLayoutWithBlock:^(YGLayout * _Nonnull layout) {
                      layout.isEnabled = YES;
                      layout.display = YGDisplayFlex;
