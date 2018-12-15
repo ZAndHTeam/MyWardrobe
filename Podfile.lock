@@ -14,6 +14,12 @@ DEPENDENCIES:
   - MJExtension
   - ReactiveCocoa (~> 2.5.0)
 
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - IQKeyboardManager
+    - MJExtension
+    - ReactiveCocoa
+
 SPEC CHECKSUMS:
   IQKeyboardManager: 6194101620b73af5e67900b8f89707a99de0b804
   MJExtension: 19bc33ce2eee2d319760f5622562cf581a6ff756
@@ -21,4 +27,4 @@ SPEC CHECKSUMS:
 
 PODFILE CHECKSUM: 762e064368413843384c47120483b71c43772743
 
-COCOAPODS: 1.4.0
+COCOAPODS: 1.5.3

@@ -12,6 +12,7 @@
 #import "MWTabBarItem.h"
 #import "MWTabBar.h"
 #import "MWNewClothesVC.h"
+#import "MWHomeVC.h"
 
 #pragma mark - utils
 #import "UIViewController+MWTabBarItem.h"
@@ -37,8 +38,8 @@ static const CGFloat kTabItemImageOffsetY = 5;
 - (void)configTabBar {
     NSMutableArray *childViewControllers = @[].mutableCopy;
     // 衣橱首页
-    UIViewController *allClothes = [UIViewController new];
-    allClothes.view.backgroundColor = [UIColor redColor];
+    MWHomeVC *allClothes = [MWHomeVC new];
+    allClothes.view.backgroundColor = [UIColor whiteColor];
     allClothes.tabBarItem.imageInsets = UIEdgeInsetsMake(kTabItemImageOffsetY, 0, -kTabItemImageOffsetY, 0);
     allClothes.mw_tabBarItem = [[MWTabBarItem alloc] initWithNormalImage:[UIImage imageNamed:@"tabbar_icon_clothes_normal"]
                                                            selectedImage:[UIImage imageNamed:@"tabbar_icon_clothes_highlighted"]
