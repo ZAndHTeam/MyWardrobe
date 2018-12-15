@@ -71,7 +71,7 @@ static NSString * const kBrandKey = @"brand";
             } else {
                 // 分类信息字典-->model
                 [self.catogaryNameArr enumerateObjectsUsingBlock:^(NSString * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-                    MWClothesCatogaryModel *catoryModel = [MWClothesCatogaryModel mj_objectWithKeyValues:[userDic objectForKey:@"obj"]];
+                    MWClothesCatogaryModel *catoryModel = [MWClothesCatogaryModel mj_objectWithKeyValues:[userDic objectForKey:obj]];
                     if (catoryModel) {
                         [userDic setObject:catoryModel forKey:obj];
                     }
