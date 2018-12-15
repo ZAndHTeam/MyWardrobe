@@ -15,5 +15,8 @@
 #import "MacroLayout.h"
 #import "UIView+MWFrame.h"
 #import "UIViewController+NavExtension.h"
+#import "UIColor+MWEX.h"
+#import "ReactiveCocoa.h"
+#import "MWDataManager.h"
 
 #endif

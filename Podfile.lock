@@ -1,4 +1,6 @@
 PODS:
+  - IQKeyboardManager (6.2.0)
+  - MJExtension (3.0.15.1)
   - ReactiveCocoa (2.5):
     - ReactiveCocoa/UI (= 2.5)
   - ReactiveCocoa/Core (2.5):
@@ -8,11 +10,15 @@ PODS:
     - ReactiveCocoa/Core
 
 DEPENDENCIES:
+  - IQKeyboardManager
+  - MJExtension
   - ReactiveCocoa (~> 2.5.0)
 
 SPEC CHECKSUMS:
+  IQKeyboardManager: 6194101620b73af5e67900b8f89707a99de0b804
+  MJExtension: 19bc33ce2eee2d319760f5622562cf581a6ff756
   ReactiveCocoa: e2db045570aa97c695e7aa97c2bcab222ae51f4a
 
-PODFILE CHECKSUM: 13d6c96f9fbb38a301df53707c82c10df6a41353
+PODFILE CHECKSUM: 762e064368413843384c47120483b71c43772743
 
 COCOAPODS: 1.4.0

@@ -10,6 +10,10 @@
 		1F30846412DE9E4C087C696B /* Pods_MyWardrobe.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 97B6E8C78CA9C45974F61223 /* Pods_MyWardrobe.framework */; };
 		3BB43088C2191EE857D38844 /* Pods_MyWardrobeUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E8254A3F0C101901BEB85102 /* Pods_MyWardrobeUITests.framework */; };
 		D5486F164E5FB5F7650916AC /* Pods_MyWardrobeTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C91D797BCF81B5D464C2A51C /* Pods_MyWardrobeTests.framework */; };
+		F4015D9421C27E5B00AC6C58 /* MWDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F4015D9321C27E5B00AC6C58 /* MWDataManager.m */; };
+		F4015D9821C27E9900AC6C58 /* MWClothesCatogaryModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F4015D9721C27E9900AC6C58 /* MWClothesCatogaryModel.m */; };
+		F4015D9C21C27FC500AC6C58 /* MWIDGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = F4015D9B21C27FC500AC6C58 /* MWIDGenerator.m */; };
+		F4015D9F21C2847A00AC6C58 /* MWSignalClothesModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F4015D9E21C2847A00AC6C58 /* MWSignalClothesModel.m */; };
 		F433EC2821BEA2B800DC057E /* YGLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = F433EC2421BEA2B800DC057E /* YGLayout.m */; };
 		F433EC2921BEA2B800DC057E /* UIView+Yoga.m in Sources */ = {isa = PBXBuildFile; fileRef = F433EC2521BEA2B800DC057E /* UIView+Yoga.m */; };
 		F433EC2A21BEA2B800DC057E /* Yoga.c in Sources */ = {isa = PBXBuildFile; fileRef = F433EC2621BEA2B800DC057E /* Yoga.c */; };
@@ -28,13 +32,16 @@
 		F455445D21BE9DDD000A37E5 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F455445821BE9DDD000A37E5 /* AppDelegate.m */; };
 		F455445E21BE9DDD000A37E5 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F455445821BE9DDD000A37E5 /* AppDelegate.m */; };
 		F455445F21BE9DDD000A37E5 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F455445821BE9DDD000A37E5 /* AppDelegate.m */; };
+		F4E43E2521C398E700333B92 /* MWScrollTagView.m in Sources */ = {isa = PBXBuildFile; fileRef = F4E43E2421C398E700333B92 /* MWScrollTagView.m */; };
+		F4E43E2821C41DFB00333B92 /* AppDelegateManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F4E43E2721C41DFB00333B92 /* AppDelegateManager.m */; };
+		F4E43E2B21C4206500333B92 /* MWColorPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = F4E43E2A21C4206500333B92 /* MWColorPickerView.m */; };
+		F4E43E2E21C498D700333B92 /* MWAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = F4E43E2D21C498D700333B92 /* MWAlertView.m */; };
 		F4FCD1A321BFEB900052BAFF /* MWNewClothesVC.m in Sources */ = {isa = PBXBuildFile; fileRef = F4FCD1A221BFEB900052BAFF /* MWNewClothesVC.m */; };
 		F4FCD1A621BFEFA60052BAFF /* UIViewController+NavExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = F4FCD1A521BFEFA60052BAFF /* UIViewController+NavExtension.m */; };
 		F4FCD1AA21BFF0220052BAFF /* MWNavigationView.m in Sources */ = {isa = PBXBuildFile; fileRef = F4FCD1A921BFF0220052BAFF /* MWNavigationView.m */; };
 		F4FCD1AD21BFF2AD0052BAFF /* UIColor+MWEX.m in Sources */ = {isa = PBXBuildFile; fileRef = F4FCD1AB21BFF2AD0052BAFF /* UIColor+MWEX.m */; };
 		F4FCD1B021C000780052BAFF /* MWNewClothesVM.m in Sources */ = {isa = PBXBuildFile; fileRef = F4FCD1AF21C000780052BAFF /* MWNewClothesVM.m */; };
-		F4FCD1B321C0100A0052BAFF /* MWPickPictureCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F4FCD1B221C0100A0052BAFF /* MWPickPictureCell.m */; };
-		F4FCD1B621C0139D0052BAFF /* MWPickPictureCellVM.m in Sources */ = {isa = PBXBuildFile; fileRef = F4FCD1B521C0139D0052BAFF /* MWPickPictureCellVM.m */; };
+		F4FCD1B321C0100A0052BAFF /* MWNewClothesCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F4FCD1B221C0100A0052BAFF /* MWNewClothesCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -64,6 +71,14 @@
 		DACC6C6E28C86B5994E0BAE1 /* Pods-MyWardrobe.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyWardrobe.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MyWardrobe/Pods-MyWardrobe.debug.xcconfig"; sourceTree = "<group>"; };
 		E09A77843896EAC216F8E926 /* Pods-MyWardrobe.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyWardrobe.release.xcconfig"; path = "Pods/Target Support Files/Pods-MyWardrobe/Pods-MyWardrobe.release.xcconfig"; sourceTree = "<group>"; };
 		E8254A3F0C101901BEB85102 /* Pods_MyWardrobeUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MyWardrobeUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F4015D9221C27E5B00AC6C58 /* MWDataManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MWDataManager.h; sourceTree = "<group>"; };
+		F4015D9321C27E5B00AC6C58 /* MWDataManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MWDataManager.m; sourceTree = "<group>"; };
+		F4015D9621C27E9900AC6C58 /* MWClothesCatogaryModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MWClothesCatogaryModel.h; sourceTree = "<group>"; };
+		F4015D9721C27E9900AC6C58 /* MWClothesCatogaryModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MWClothesCatogaryModel.m; sourceTree = "<group>"; };
+		F4015D9A21C27FC500AC6C58 /* MWIDGenerator.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MWIDGenerator.h; sourceTree = "<group>"; };
+		F4015D9B21C27FC500AC6C58 /* MWIDGenerator.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MWIDGenerator.m; sourceTree = "<group>"; };
+		F4015D9D21C2847A00AC6C58 /* MWSignalClothesModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MWSignalClothesModel.h; sourceTree = "<group>"; };
+		F4015D9E21C2847A00AC6C58 /* MWSignalClothesModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MWSignalClothesModel.m; sourceTree = "<group>"; };
 		F433EC1D21BEA2B800DC057E /* YGLayout+Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "YGLayout+Private.h"; sourceTree = "<group>"; };
 		F433EC1E21BEA2B800DC057E /* YGLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YGLayout.h; sourceTree = "<group>"; };
 		F433EC1F21BEA2B800DC057E /* YGEnums.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YGEnums.h; sourceTree = "<group>"; };
@@ -102,6 +117,14 @@
 		F455444A21BE9D41000A37E5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F455445721BE9DDD000A37E5 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		F455445821BE9DDD000A37E5 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		F4E43E2321C398E700333B92 /* MWScrollTagView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MWScrollTagView.h; sourceTree = "<group>"; };
+		F4E43E2421C398E700333B92 /* MWScrollTagView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MWScrollTagView.m; sourceTree = "<group>"; };
+		F4E43E2621C41DFB00333B92 /* AppDelegateManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegateManager.h; sourceTree = "<group>"; };
+		F4E43E2721C41DFB00333B92 /* AppDelegateManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegateManager.m; sourceTree = "<group>"; };
+		F4E43E2921C4206500333B92 /* MWColorPickerView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MWColorPickerView.h; sourceTree = "<group>"; };
+		F4E43E2A21C4206500333B92 /* MWColorPickerView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MWColorPickerView.m; sourceTree = "<group>"; };
+		F4E43E2C21C498D700333B92 /* MWAlertView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MWAlertView.h; sourceTree = "<group>"; };
+		F4E43E2D21C498D700333B92 /* MWAlertView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MWAlertView.m; sourceTree = "<group>"; };
 		F4FCD1A121BFEB900052BAFF /* MWNewClothesVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MWNewClothesVC.h; sourceTree = "<group>"; };
 		F4FCD1A221BFEB900052BAFF /* MWNewClothesVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MWNewClothesVC.m; sourceTree = "<group>"; };
 		F4FCD1A421BFEFA60052BAFF /* UIViewController+NavExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+NavExtension.h"; sourceTree = "<group>"; };
@@ -112,10 +135,8 @@
 		F4FCD1AC21BFF2AD0052BAFF /* UIColor+MWEX.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+MWEX.h"; sourceTree = "<group>"; };
 		F4FCD1AE21C000780052BAFF /* MWNewClothesVM.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MWNewClothesVM.h; sourceTree = "<group>"; };
 		F4FCD1AF21C000780052BAFF /* MWNewClothesVM.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MWNewClothesVM.m; sourceTree = "<group>"; };
-		F4FCD1B121C0100A0052BAFF /* MWPickPictureCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MWPickPictureCell.h; sourceTree = "<group>"; };
-		F4FCD1B221C0100A0052BAFF /* MWPickPictureCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MWPickPictureCell.m; sourceTree = "<group>"; };
-		F4FCD1B421C0139D0052BAFF /* MWPickPictureCellVM.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MWPickPictureCellVM.h; sourceTree = "<group>"; };
-		F4FCD1B521C0139D0052BAFF /* MWPickPictureCellVM.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MWPickPictureCellVM.m; sourceTree = "<group>"; };
+		F4FCD1B121C0100A0052BAFF /* MWNewClothesCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MWNewClothesCell.h; sourceTree = "<group>"; };
+		F4FCD1B221C0100A0052BAFF /* MWNewClothesCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MWNewClothesCell.m; sourceTree = "<group>"; };
 		F4FCD1B721C0176D0052BAFF /* MWHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MWHeader.pch; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -170,9 +191,40 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		F4015D9121C27E4900AC6C58 /* DataManager */ = {
+			isa = PBXGroup;
+			children = (
+				F4015D9521C27E7300AC6C58 /* Model */,
+				F4015D9221C27E5B00AC6C58 /* MWDataManager.h */,
+				F4015D9321C27E5B00AC6C58 /* MWDataManager.m */,
+			);
+			path = DataManager;
+			sourceTree = "<group>";
+		};
+		F4015D9521C27E7300AC6C58 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				F4015D9621C27E9900AC6C58 /* MWClothesCatogaryModel.h */,
+				F4015D9721C27E9900AC6C58 /* MWClothesCatogaryModel.m */,
+				F4015D9D21C2847A00AC6C58 /* MWSignalClothesModel.h */,
+				F4015D9E21C2847A00AC6C58 /* MWSignalClothesModel.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		F4015D9921C27FB100AC6C58 /* IdGenerator */ = {
+			isa = PBXGroup;
+			children = (
+				F4015D9A21C27FC500AC6C58 /* MWIDGenerator.h */,
+				F4015D9B21C27FC500AC6C58 /* MWIDGenerator.m */,
+			);
+			path = IdGenerator;
+			sourceTree = "<group>";
+		};
 		F433EC0C21BEA19F00DC057E /* Vendors */ = {
 			isa = PBXGroup;
 			children = (
+				F4015D9921C27FB100AC6C58 /* IdGenerator */,
 				F433EC1C21BEA2B800DC057E /* Yoga */,
 			);
 			path = Vendors;
@@ -254,6 +306,7 @@
 		F455442321BE9D3F000A37E5 /* MyWardrobe */ = {
 			isa = PBXGroup;
 			children = (
+				F4015D9121C27E4900AC6C58 /* DataManager */,
 				F433EC3821BEA56000DC057E /* Tools */,
 				F433EC0C21BEA19F00DC057E /* Vendors */,
 				F455445621BE9DDD000A37E5 /* AppDelegate */,
@@ -289,6 +342,8 @@
 			children = (
 				F455445721BE9DDD000A37E5 /* AppDelegate.h */,
 				F455445821BE9DDD000A37E5 /* AppDelegate.m */,
+				F4E43E2621C41DFB00333B92 /* AppDelegateManager.h */,
+				F4E43E2721C41DFB00333B92 /* AppDelegateManager.m */,
 			);
 			path = AppDelegate;
 			sourceTree = "<group>";
@@ -319,6 +374,15 @@
 			path = MWTabBarVC;
 			sourceTree = "<group>";
 		};
+		F4E43E1F21C3984000333B92 /* TagView */ = {
+			isa = PBXGroup;
+			children = (
+				F4E43E2321C398E700333B92 /* MWScrollTagView.h */,
+				F4E43E2421C398E700333B92 /* MWScrollTagView.m */,
+			);
+			path = TagView;
+			sourceTree = "<group>";
+		};
 		F4FCD19E21BFEB740052BAFF /* NewClothesVC */ = {
 			isa = PBXGroup;
 			children = (
@@ -333,8 +397,6 @@
 			children = (
 				F4FCD1AE21C000780052BAFF /* MWNewClothesVM.h */,
 				F4FCD1AF21C000780052BAFF /* MWNewClothesVM.m */,
-				F4FCD1B421C0139D0052BAFF /* MWPickPictureCellVM.h */,
-				F4FCD1B521C0139D0052BAFF /* MWPickPictureCellVM.m */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -344,8 +406,8 @@
 			children = (
 				F4FCD1A121BFEB900052BAFF /* MWNewClothesVC.h */,
 				F4FCD1A221BFEB900052BAFF /* MWNewClothesVC.m */,
-				F4FCD1B121C0100A0052BAFF /* MWPickPictureCell.h */,
-				F4FCD1B221C0100A0052BAFF /* MWPickPictureCell.m */,
+				F4FCD1B121C0100A0052BAFF /* MWNewClothesCell.h */,
+				F4FCD1B221C0100A0052BAFF /* MWNewClothesCell.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -353,8 +415,13 @@
 		F4FCD1A721BFEFFF0052BAFF /* CommonViews */ = {
 			isa = PBXGroup;
 			children = (
+				F4E43E1F21C3984000333B92 /* TagView */,
 				F4FCD1A821BFF0220052BAFF /* MWNavigationView.h */,
 				F4FCD1A921BFF0220052BAFF /* MWNavigationView.m */,
+				F4E43E2921C4206500333B92 /* MWColorPickerView.h */,
+				F4E43E2A21C4206500333B92 /* MWColorPickerView.m */,
+				F4E43E2C21C498D700333B92 /* MWAlertView.h */,
+				F4E43E2D21C498D700333B92 /* MWAlertView.m */,
 			);
 			path = CommonViews;
 			sourceTree = "<group>";
@@ -552,10 +619,14 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-MyWardrobe/Pods-MyWardrobe-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/IQKeyboardManager/IQKeyboardManager.framework",
+				"${BUILT_PRODUCTS_DIR}/MJExtension/MJExtension.framework",
 				"${BUILT_PRODUCTS_DIR}/ReactiveCocoa/ReactiveCocoa.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IQKeyboardManager.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MJExtension.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ReactiveCocoa.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -649,23 +720,30 @@
 			buildActionMask = 2147483647;
 			files = (
 				F433EC2921BEA2B800DC057E /* UIView+Yoga.m in Sources */,
+				F4015D9F21C2847A00AC6C58 /* MWSignalClothesModel.m in Sources */,
 				F433EC2B21BEA2B800DC057E /* YGNodeList.c in Sources */,
 				F455445D21BE9DDD000A37E5 /* AppDelegate.m in Sources */,
+				F4015D9421C27E5B00AC6C58 /* MWDataManager.m in Sources */,
+				F4E43E2B21C4206500333B92 /* MWColorPickerView.m in Sources */,
 				F433EC3321BEA34400DC057E /* MWTabBarItem.m in Sources */,
 				F4FCD1A621BFEFA60052BAFF /* UIViewController+NavExtension.m in Sources */,
+				F4015D9821C27E9900AC6C58 /* MWClothesCatogaryModel.m in Sources */,
 				F433EC4521BEAA3B00DC057E /* MWTabBarVC.m in Sources */,
 				F433EC3421BEA34400DC057E /* MWTabBarButton.m in Sources */,
 				F4FCD1AA21BFF0220052BAFF /* MWNavigationView.m in Sources */,
 				F433EC3721BEA3C000DC057E /* UIViewController+MWTabBarItem.m in Sources */,
 				F433EC2A21BEA2B800DC057E /* Yoga.c in Sources */,
 				F4FCD1AD21BFF2AD0052BAFF /* UIColor+MWEX.m in Sources */,
+				F4E43E2E21C498D700333B92 /* MWAlertView.m in Sources */,
 				F433EC3221BEA34400DC057E /* MWTabBar.m in Sources */,
 				F455443421BE9D41000A37E5 /* main.m in Sources */,
+				F4E43E2521C398E700333B92 /* MWScrollTagView.m in Sources */,
 				F4FCD1A321BFEB900052BAFF /* MWNewClothesVC.m in Sources */,
+				F4015D9C21C27FC500AC6C58 /* MWIDGenerator.m in Sources */,
 				F433EC3C21BEA59B00DC057E /* UIView+MWFrame.m in Sources */,
-				F4FCD1B621C0139D0052BAFF /* MWPickPictureCellVM.m in Sources */,
-				F4FCD1B321C0100A0052BAFF /* MWPickPictureCell.m in Sources */,
+				F4FCD1B321C0100A0052BAFF /* MWNewClothesCell.m in Sources */,
 				F4FCD1B021C000780052BAFF /* MWNewClothesVM.m in Sources */,
+				F4E43E2821C41DFB00333B92 /* AppDelegateManager.m in Sources */,
 				F433EC2821BEA2B800DC057E /* YGLayout.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -833,16 +911,18 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = WUYBDW5S2E;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/MyWardrobe/Tools/MWHeader.pch";
 				INFOPLIST_FILE = MyWardrobe/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.simon.MyWardrobe;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -852,16 +932,18 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = WUYBDW5S2E;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/MyWardrobe/Tools/MWHeader.pch";
 				INFOPLIST_FILE = MyWardrobe/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.simon.MyWardrobe;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

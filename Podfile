@@ -8,6 +8,8 @@ target 'MyWardrobe' do
   # Pods for MyWardrobe
 
   pod 'ReactiveCocoa', '~> 2.5.0'
+  pod 'MJExtension'
+  pod 'IQKeyboardManager'
 
   target 'MyWardrobeTests' do
     inherit! :search_paths

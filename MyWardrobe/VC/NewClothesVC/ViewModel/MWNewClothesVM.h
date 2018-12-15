@@ -8,8 +8,28 @@
 
 #import <Foundation/Foundation.h>
 
-@interface MWNewClothesVM : NSObject
+#import "MWSignalClothesModel.h"
+#import "MWClothesCatogaryModel.h"
+#import "MWSignalClothesModel.h"
 
+@interface MWNewClothesVM : NSObject
+/** 单品数据 */
+@property (nonatomic, strong, readonly) MWSignalClothesModel *signalClothesModel;
+/** 数据源 */
 @property (nonatomic, copy, readonly) NSArray *dataSource;
+/** cell高度字典 */
+@property (nonatomic, strong) NSMutableDictionary *cellHeightDic;
+
+- (void)saveCatogaryName:(NSString *)catogaryName;
+
+- (void)saveSeason:(NSString *)season;
+
+- (void)saveColor:(NSString *)colorName;
+
+- (void)saveBrand:(NSString *)brand;
+
+- (void)savePrice:(NSString *)price;
+
+- (void)saveMark:(NSString *)mark;
 
 @end

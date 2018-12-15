@@ -10,6 +10,7 @@
 
 #pragma mark - viewModels
 #import "MWNewClothesVM.h"
+#import "MWNewClothesCell.h"
 
 #pragma mark - utils
 #import "ReactiveCocoa.h"
@@ -29,12 +30,12 @@
     
     self.view.backgroundColor = [UIColor whiteColor];
     
+    self.viewModel = [MWNewClothesVM new];
+    
     // navi
     [self layoutNavi];
     // 主view
     [self layoutTableView];
-    
-    
 }
 
 - (void)layoutNavi {
@@ -47,20 +48,19 @@
 }
 
 - (void)layoutTableView {
-    CGFloat tabbarHeight = isIPhoneXSeries ? 83.f : self.tabBarController.tabBar.mw_height;
+    CGFloat tabbarHeight = isIPhoneXSeries ? HOME_INDICATOR_HEIGHT + 108.f : 108.f;
     
     self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0.f,
                                                                    NAV_BAR_HEIGHT + 20.f,
                                                                    SCREEN_SIZE_WIDTH,
                                                                    SCREEN_SIZE_HEIGHT - NAV_BAR_HEIGHT)
                                                   style:UITableViewStylePlain];
-    self.tableView.estimatedRowHeight = 100;
-    self.tableView.rowHeight = UITableViewAutomaticDimension;
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     self.tableView.tableFooterView = ({
-        UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.tableView.mw_width, 33.f + tabbarHeight)];
+        UIView *view = [UIView new];
+        view.frame = CGRectMake(0, 0, 100, tabbarHeight);
         view;
     });
     [self.view addSubview:self.tableView];
@@ -69,6 +69,41 @@
 #pragma mark - tableView delegate && dataSource
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return self.viewModel.dataSource.count;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    NSString *key = [NSString stringWithFormat:@"%ld-%ld", indexPath.section, indexPath.row];
+    NSNumber *cellHeight = self.viewModel.cellHeightDic[key];
+    
+    return cellHeight.floatValue;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    NSString *key = [NSString stringWithFormat:@"%ld-%ld", indexPath.section, indexPath.row];
+    NSString *identifier = [NSString stringWithFormat:@"MWPickPictureCell-%@", key];
+    
+    MWNewClothesCell *pictureCell = [tableView dequeueReusableCellWithIdentifier:identifier];
+    if (!pictureCell) {
+        pictureCell = [[MWNewClothesCell alloc] initWithStyle:UITableViewCellStyleDefault
+                                              reuseIdentifier:identifier
+                                                         type:self.viewModel.dataSource[indexPath.row]];
+    }
+    
+    [pictureCell configCellWithData:nil];
+    
+    [self.viewModel.cellHeightDic setObject:@([pictureCell getCellSize].height)
+                                     forKey:[NSString stringWithFormat:@"%ld-%ld", indexPath.section, indexPath.row]];
+    
+    @weakify(self, indexPath);
+    pictureCell.heightChangeBlock = ^(CGSize cellSize) {
+        @strongify(self, indexPath);
+        [self.viewModel.cellHeightDic setObject:@(cellSize.height)
+                                         forKey:[NSString stringWithFormat:@"%ld-%ld", indexPath.section, indexPath.row]];
+        [self.tableView beginUpdates];
+        [self.tableView endUpdates];
+    };
+    
+    return pictureCell;
 }
 
 @end
