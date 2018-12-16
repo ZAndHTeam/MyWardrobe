@@ -255,6 +255,9 @@ static NSString * const kBrandKey = @"brand";
         signalClothesModel.catogaryName = @"未分类";
     }
     
+    // 先从数据库中移除旧数据
+    [self removeSignalClothesId:signalClothesModel.signalClothesId];
+    
     // 查询分类数据
     MWClothesCatogaryModel *catoryModel = [self.userData objectForKey:signalClothesModel.catogaryName];
     
@@ -286,7 +289,7 @@ static NSString * const kBrandKey = @"brand";
         [self.userData setObject:catoryModel forKey:signalClothesModel.catogaryName];
     }
     
-    // 更新品牌数据l
+    // 更新品牌数据
     if (signalClothesModel.brand
         && ![self.brandArr containsObject:signalClothesModel.brand]) {
         [self addNewBrand:signalClothesModel.brand];
@@ -423,6 +426,33 @@ static NSString * const kBrandKey = @"brand";
     }];
     
     [self.userData objectForKey:signalClothesModel.catogaryName].clothesArr = tmpArr.copy;
+    
+    [self recordUserData];
+    
+    return MWDataSaveResult_Success;
+}
+
+// 根据id移除单品
+- (MWDataSaveResult)removeSignalClothesId:(NSString *)signalClothesId {
+    if (!signalClothesId
+        || signalClothesId.length == 0) {
+        return MWDataSaveResult_Error;
+    }
+    
+    @weakify(signalClothesId);
+    
+    [self.catogaryNameArr enumerateObjectsUsingBlock:^(NSString * _Nonnull catogaryName, NSUInteger idx, BOOL * _Nonnull stop) {
+        // 删除分类目录下的该单品
+        NSMutableArray *tmpArr = [[self.userData objectForKey:catogaryName].clothesArr mutableCopy];
+        [tmpArr enumerateObjectsUsingBlock:^(MWSignalClothesModel * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+            @strongify(signalClothesId);
+            if ([signalClothesId isEqualToString:obj.signalClothesId]) {
+                [tmpArr removeObject:obj];
+            }
+        }];
+        
+        [self.userData objectForKey:catogaryName].clothesArr = tmpArr.copy;
+    }];
     
     [self recordUserData];
     

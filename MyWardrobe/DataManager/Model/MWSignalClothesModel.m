@@ -14,10 +14,18 @@
 
 @implementation MWSignalClothesModel
 
+- (instancetype)init {
+    self = [super init];
+    if (self) {
+        [self catogaryId];
+    }
+    return self;
+}
+
 /** 生成id */
 - (NSString *)catogaryId {
     if (!_signalClothesId) {
-        return [[MWIDGenerator generateID] copy];
+        _signalClothesId = [[MWIDGenerator generateID] copy];
     }
     
     return _signalClothesId;

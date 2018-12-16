@@ -9,6 +9,8 @@
 #import "MWPhotoVC.h"
 #import "MWClothesPhotoCollectionViewCell.h"
 #import "MWSignalClothesModel.h"
+#import "MWNewClothesVC.h"
+#import "MWNewClothesVM.h"
 @interface MWPhotoVC ()<UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout>
 
 @property (nonatomic, strong) UICollectionView *collectionView;
@@ -86,6 +88,7 @@
     [rightButton1 setImage:[UIImage imageNamed:@"navigation_icon_delect"] forState:UIControlStateHighlighted];
     [[rightButton1 rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
         @strongify(self);
+        [[MWDataManager dataManager]removeSignalClothes:self.dataArray[self.index]];
         [self.navigationController popViewControllerAnimated:YES];
     }];
     
@@ -99,7 +102,9 @@
     [rightButton2 setImage:[UIImage imageNamed:@"navigation_icon_edit"] forState:UIControlStateHighlighted];
     [[rightButton2 rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
         @strongify(self);
-        [self.navigationController popViewControllerAnimated:YES];
+        MWNewClothesVM *vm = [[MWNewClothesVM alloc] initWithData:self.dataArray[self.index]];
+        MWNewClothesVC *vc = [[MWNewClothesVC alloc]initWithVM:vm];
+        [self.navigationController pushViewController:vc animated:YES];
     }];
 
 }
@@ -117,7 +122,9 @@
 
     return cell;
 }
-
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
+    self.index = scrollView.contentOffset.x / scrollView.frame.size.width;
+}
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     
 }

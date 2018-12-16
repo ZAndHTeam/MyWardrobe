@@ -59,8 +59,8 @@
 
 - (void)configWithModel:(MWSignalClothesModel *)model {
     self.imageView.image = [UIImage imageWithData:model.imageDataArr[0]];
-//    self.msgLabel.text = model.mark;
-    self.msgLabel.text = @"切记不可水洗！！！切记不可水洗！！！切记切记不可水洗！！！切记不可水洗！！！切记切记不可水洗！！！切记不可水洗！！！切记切记不可水洗！！！切记不可水洗！！！切记切记不可水洗！！！切记不可水洗！！！切记";
+    self.msgLabel.text = model.mark;
+//    self.msgLabel.text = @"切记不可水洗！！！切记不可水洗！！！切记切记不可水洗！！！切记不可水洗！！！切记切记不可水洗！！！切记不可水洗！！！切记切记不可水洗！！！切记不可水洗！！！切记切记不可水洗！！！切记不可水洗！！！切记";
     [self.msgLabel sizeToFit];
     self.bigScrollV.contentSize = CGSizeMake(SCREEN_SIZE_WIDTH, CGRectGetMaxY(self.msgLabel.frame));
 
