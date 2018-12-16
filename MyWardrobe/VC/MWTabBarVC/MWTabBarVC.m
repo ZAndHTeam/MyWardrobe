@@ -85,7 +85,7 @@ static const CGFloat kTabItemImageOffsetY = 5;
 }
 
 - (void)didSelectPlusItemAtIndex:(NSUInteger)index {
-    UIViewController *newClothesVC = [UIViewController new];
+    MWNewClothesVC *newClothesVC = [MWNewClothesVC new];
     
     UINavigationController *controllerToPresent = [[UINavigationController alloc] initWithRootViewController:newClothesVC];
     [controllerToPresent setNavigationBarHidden:YES];
@@ -94,7 +94,6 @@ static const CGFloat kTabItemImageOffsetY = 5;
     [self presentViewController:controllerToPresent
                        animated:YES
                      completion:NULL];
-    
 }
 
 @end

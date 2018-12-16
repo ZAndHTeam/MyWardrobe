@@ -101,14 +101,21 @@
             layout.width = YGPointValue(itemWidth);
             layout.justifyContent = YGJustifyCenter;
             layout.marginBottom = YGPointValue(HOME_INDICATOR_HEIGHT);
-
+            layout.height = YGPointValue(self.mw_height - HOME_INDICATOR_HEIGHT - 5);
             if (tabBarItem.itemType == MWTabBarItemType_Plus) {
-                layout.height = YGPointValue(tabBarItem.itemSize.height);
-                layout.alignSelf = YGAlignFlexEnd;
-            } else {
-                layout.height = YGPointValue(self.mw_height - HOME_INDICATOR_HEIGHT);
+                layout.alignItems = YGAlignCenter;
+                layout.width = YGPointValue(80.f - 10);
             }
         }];
+        
+        if (tabBarItem.itemType == MWTabBarItemType_Plus) {
+            tabBarItem.backgroundView.layer.backgroundColor = [UIColor colorWithRed:255/255.0 green:65/255.0 blue:65/255.0 alpha:1.0].CGColor;
+            tabBarItem.backgroundView.layer.cornerRadius = 22;
+            tabBarItem.backgroundView.layer.shadowColor = [UIColor colorWithRed:255/255.0 green:65/255.0 blue:65/255.0 alpha:0.33].CGColor;
+            tabBarItem.backgroundView.layer.shadowOffset = CGSizeMake(0,2);
+            tabBarItem.backgroundView.layer.shadowOpacity = 1;
+            tabBarItem.backgroundView.layer.shadowRadius = 8;
+        }
 
         @weakify(tabBarItem);
         [tabBarItem setClickAction:^() {

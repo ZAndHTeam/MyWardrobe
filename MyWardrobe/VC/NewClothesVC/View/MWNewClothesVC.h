@@ -7,11 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
-
+@class MWNewClothesVM;
 NS_ASSUME_NONNULL_BEGIN
 
 @interface MWNewClothesVC : UIViewController
-
+- (instancetype)initWithVM:(MWNewClothesVM *)vm;
 @end
 
 NS_ASSUME_NONNULL_END

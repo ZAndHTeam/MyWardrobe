@@ -29,7 +29,7 @@
 /** 生成id */
 - (NSString *)catogaryId {
     if (!_catogaryId) {
-        return [[MWIDGenerator generateID] copy];
+        _catogaryId = [[MWIDGenerator generateID] copy];
     }
     
     return _catogaryId;

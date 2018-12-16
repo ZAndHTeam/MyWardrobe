@@ -69,7 +69,9 @@
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-    
+    if (self.lookBlock) {
+        self.lookBlock(self.clothesArr, indexPath.row);
+    }
 }
 
 #pragma mark -- 懒加载

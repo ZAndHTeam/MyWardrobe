@@ -30,12 +30,13 @@ static NSInteger const kScrollTagViewBeginNumner = 100;
 
 @implementation MWScrollTagView
 
-- (instancetype)initWithTagArr:(NSArray<NSString *> *)tagArr maxLeftWidth:(CGFloat)leftMaxWidth {
+- (instancetype)initWithTagArr:(NSArray<NSString *> *)tagArr maxLeftWidth:(CGFloat)leftMaxWidth withSelectStr:(NSString *)selectStr {
     self = [super init];
     if (self) {
         self.tagArr = [NSMutableArray arrayWithArray:tagArr];
         self.leftMaxWidth = leftMaxWidth;
         self.frontClickIdx = -1;
+        self.selectStr = [selectStr copy];
         self.recordScrollTagViewNumber = kScrollTagViewBeginNumner;
         [self configTagUI];
     }
@@ -74,6 +75,9 @@ static NSInteger const kScrollTagViewBeginNumner = 100;
     if (self.tagArr.count > 0) {
         [self.tagArr enumerateObjectsUsingBlock:^(NSString * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
             @strongify(self);
+            if ([obj isEqualToString:self.selectStr]) {
+                self.frontClickIdx = idx;
+            }
             [self.scrollContentView addSubview:[self createLabelWithText:obj]];
         }];
         
@@ -159,7 +163,11 @@ static NSInteger const kScrollTagViewBeginNumner = 100;
         UIImageView *imageView = [UIImageView new];
         imageView.tag = self.recordScrollTagViewNumber ++;
         imageView.userInteractionEnabled = YES;
-        imageView.image = [self generateImageWithName:@"tag_normal"];
+        if ([self.selectStr isEqualToString:text]) {
+            imageView.image = [self generateImageWithName:@"tag_highlighted"];
+        } else {
+            imageView.image = [self generateImageWithName:@"tag_normal"];
+        }
         [imageView configureLayoutWithBlock:^(YGLayout * _Nonnull layout) {
             layout.isEnabled = YES;
             layout.flexDirection = YGFlexDirectionRow;
@@ -180,6 +188,9 @@ static NSInteger const kScrollTagViewBeginNumner = 100;
     UILabel *label = [UILabel new];
     label.userInteractionEnabled = YES;
     label.text = text;
+    if ([self.selectStr isEqualToString:text]) {
+        label.textColor = [UIColor whiteColor];
+    }
     label.font = [UIFont fontWithName:REGULAR_FONT size:17.f];
     [label configureLayoutWithBlock:^(YGLayout * _Nonnull layout) {
         layout.isEnabled = YES;

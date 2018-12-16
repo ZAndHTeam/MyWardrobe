@@ -61,7 +61,7 @@
     [self addSubview:self.navBackBtn];
     
     // 标题
-    self.navTitleLabel = [[UILabel alloc] initWithFrame:CGRectMake(self.navBackBtn.mw_right, STATUS_BAR_HEIGHT, SCREEN_SIZE_WIDTH - 60 * 2, 40.f)];
+    self.navTitleLabel = [[UILabel alloc] initWithFrame:CGRectMake(self.navBackBtn.mw_right, STATUS_BAR_HEIGHT, SCREEN_SIZE_WIDTH - 80 * 2, 40.f)];
     self.navTitleLabel.textAlignment   = NSTextAlignmentLeft;
     self.navTitleLabel.font            = [UIFont fontWithName:MEDIUM_FONT size:20.f];
     self.navTitleLabel.textColor       = [UIColor colorWithHexString:@"#333333"];

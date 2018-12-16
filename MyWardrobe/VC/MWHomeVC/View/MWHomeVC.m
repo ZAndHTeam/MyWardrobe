@@ -9,6 +9,8 @@
 #import "MWHomeVC.h"
 #import "MWHomeTableViewCell.h"
 #import "MWHomeVM.h"
+#import "MWPhotoVC.h"
+
 @interface MWHomeVC ()<UITableViewDelegate,UITableViewDataSource>
 
 @property (nonatomic,strong) UITableView *tableView;//本页面的主view
@@ -86,7 +88,12 @@
     }else {
         cell.isZero = NO;
     }
-    
+    @weakify(self);
+    cell.lookBlock = ^(NSArray *photoArr, NSInteger index) {
+        @strongify(self);
+        MWPhotoVC *photoVC = [[MWPhotoVC alloc] initWithPhotos:photoArr withIndex:index];
+        [self.navigationController pushViewController:photoVC animated:YES];
+    };
     NSString *catogaryName = [self.viewModel.titleArr[indexPath.section] copy];
     [cell configData:[self.viewModel returnClothesArrWithCatogaryName:catogaryName]];
     

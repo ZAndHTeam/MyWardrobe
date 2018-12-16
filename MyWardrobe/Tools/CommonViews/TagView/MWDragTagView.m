@@ -38,22 +38,9 @@ static NSString *lastItemidentity = @"lastItem";
         _reloadSubject = [RACSubject subject];
         _bgImageName = imageName.copy;
         _canEdit = canEdit;
-        _tagNameArr = [tagNameArr mutableCopy];
-        [self configUI];
-    }
-    return self;
-}
-
-- (void)configUI {
-    self.layout = [[MWEqualSpaceFlowLayout alloc] init];
-    self.layout.delegate = self;
-    // 设置滚动方向（默认垂直滚动）
-    self.layout.scrollDirection = UICollectionViewScrollDirectionVertical;
-    
-    UICollectionView *collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_SIZE_WIDTH, 200) collectionViewLayout:self.layout];
+        _tagNameArr = [tagNameArr mutableCopy];321`1    
     self.collectionView = collectionView;
     [self addSubview:collectionView];
-    self.collectionView.backgroundColor = [UIColor greenColor];
     collectionView.delegate = self;
     collectionView.dataSource = self;
     [collectionView registerClass:[MWDragTagCell class] forCellWithReuseIdentifier:identity];
