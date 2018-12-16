@@ -17,6 +17,9 @@
 
 #pragma mark - utils
 #import "UIViewController+MWTabBarItem.h"
+#import "UIView+Yoga.h"
+
+#import "MWDragTagView.h"
 
 static const CGFloat kTabItemImageOffsetY = 5;
 
@@ -82,7 +85,7 @@ static const CGFloat kTabItemImageOffsetY = 5;
 }
 
 - (void)didSelectPlusItemAtIndex:(NSUInteger)index {
-    MWNewClothesVC *newClothesVC = [MWNewClothesVC new];
+    UIViewController *newClothesVC = [UIViewController new];
     
     UINavigationController *controllerToPresent = [[UINavigationController alloc] initWithRootViewController:newClothesVC];
     [controllerToPresent setNavigationBarHidden:YES];

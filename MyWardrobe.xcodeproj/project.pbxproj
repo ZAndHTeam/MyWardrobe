@@ -24,6 +24,9 @@
 		F41D156A21C5243F00F62B0F /* UIImage+ScaleSize.m in Sources */ = {isa = PBXBuildFile; fileRef = F41D156321C5181600F62B0F /* UIImage+ScaleSize.m */; };
 		F41D157621C5443600F62B0F /* MWChooseClothesVC.m in Sources */ = {isa = PBXBuildFile; fileRef = F41D157521C5443600F62B0F /* MWChooseClothesVC.m */; };
 		F41D157921C5445200F62B0F /* MWChooseClothesVM.m in Sources */ = {isa = PBXBuildFile; fileRef = F41D157821C5445200F62B0F /* MWChooseClothesVM.m */; };
+		F41D157C21C548C900F62B0F /* MWDragTagView.m in Sources */ = {isa = PBXBuildFile; fileRef = F41D157B21C548C900F62B0F /* MWDragTagView.m */; };
+		F41D157F21C5772F00F62B0F /* MWEqualSpaceFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = F41D157E21C5772F00F62B0F /* MWEqualSpaceFlowLayout.m */; };
+		F41D158221C57A2300F62B0F /* MWDragTagCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F41D158121C57A2300F62B0F /* MWDragTagCell.m */; };
 		F433EC2821BEA2B800DC057E /* YGLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = F433EC2421BEA2B800DC057E /* YGLayout.m */; };
 		F433EC2921BEA2B800DC057E /* UIView+Yoga.m in Sources */ = {isa = PBXBuildFile; fileRef = F433EC2521BEA2B800DC057E /* UIView+Yoga.m */; };
 		F433EC2A21BEA2B800DC057E /* Yoga.c in Sources */ = {isa = PBXBuildFile; fileRef = F433EC2621BEA2B800DC057E /* Yoga.c */; };
@@ -109,6 +112,12 @@
 		F41D157521C5443600F62B0F /* MWChooseClothesVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MWChooseClothesVC.m; sourceTree = "<group>"; };
 		F41D157721C5445200F62B0F /* MWChooseClothesVM.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MWChooseClothesVM.h; sourceTree = "<group>"; };
 		F41D157821C5445200F62B0F /* MWChooseClothesVM.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MWChooseClothesVM.m; sourceTree = "<group>"; };
+		F41D157A21C548C900F62B0F /* MWDragTagView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MWDragTagView.h; sourceTree = "<group>"; };
+		F41D157B21C548C900F62B0F /* MWDragTagView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MWDragTagView.m; sourceTree = "<group>"; };
+		F41D157D21C5772F00F62B0F /* MWEqualSpaceFlowLayout.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MWEqualSpaceFlowLayout.h; sourceTree = "<group>"; };
+		F41D157E21C5772F00F62B0F /* MWEqualSpaceFlowLayout.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MWEqualSpaceFlowLayout.m; sourceTree = "<group>"; };
+		F41D158021C57A2300F62B0F /* MWDragTagCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MWDragTagCell.h; sourceTree = "<group>"; };
+		F41D158121C57A2300F62B0F /* MWDragTagCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MWDragTagCell.m; sourceTree = "<group>"; };
 		F433EC1D21BEA2B800DC057E /* YGLayout+Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "YGLayout+Private.h"; sourceTree = "<group>"; };
 		F433EC1E21BEA2B800DC057E /* YGLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YGLayout.h; sourceTree = "<group>"; };
 		F433EC1F21BEA2B800DC057E /* YGEnums.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YGEnums.h; sourceTree = "<group>"; };
@@ -507,6 +516,12 @@
 			children = (
 				F4E43E2321C398E700333B92 /* MWScrollTagView.h */,
 				F4E43E2421C398E700333B92 /* MWScrollTagView.m */,
+				F41D157A21C548C900F62B0F /* MWDragTagView.h */,
+				F41D157B21C548C900F62B0F /* MWDragTagView.m */,
+				F41D158021C57A2300F62B0F /* MWDragTagCell.h */,
+				F41D158121C57A2300F62B0F /* MWDragTagCell.m */,
+				F41D157D21C5772F00F62B0F /* MWEqualSpaceFlowLayout.h */,
+				F41D157E21C5772F00F62B0F /* MWEqualSpaceFlowLayout.m */,
 			);
 			path = TagView;
 			sourceTree = "<group>";
@@ -854,6 +869,7 @@
 				F433EC2921BEA2B800DC057E /* UIView+Yoga.m in Sources */,
 				F4015D9F21C2847A00AC6C58 /* MWSignalClothesModel.m in Sources */,
 				F433EC2B21BEA2B800DC057E /* YGNodeList.c in Sources */,
+				F41D157C21C548C900F62B0F /* MWDragTagView.m in Sources */,
 				F455445D21BE9DDD000A37E5 /* AppDelegate.m in Sources */,
 				F4015D9421C27E5B00AC6C58 /* MWDataManager.m in Sources */,
 				7B755B6521C519B200975D04 /* UITextView+MWPlaceholder.m in Sources */,
@@ -864,6 +880,7 @@
 				F433EC3321BEA34400DC057E /* MWTabBarItem.m in Sources */,
 				F4FCD1A621BFEFA60052BAFF /* UIViewController+NavExtension.m in Sources */,
 				F41D157921C5445200F62B0F /* MWChooseClothesVM.m in Sources */,
+				F41D158221C57A2300F62B0F /* MWDragTagCell.m in Sources */,
 				F4015D9821C27E9900AC6C58 /* MWClothesCatogaryModel.m in Sources */,
 				F433EC4521BEAA3B00DC057E /* MWTabBarVC.m in Sources */,
 				F433EC3421BEA34400DC057E /* MWTabBarButton.m in Sources */,
@@ -885,6 +902,7 @@
 				7B755B5621C4A79300975D04 /* MWHomeVC.m in Sources */,
 				F4FCD1B321C0100A0052BAFF /* MWNewClothesCell.m in Sources */,
 				F4FCD1B021C000780052BAFF /* MWNewClothesVM.m in Sources */,
+				F41D157F21C5772F00F62B0F /* MWEqualSpaceFlowLayout.m in Sources */,
 				F4E43E2821C41DFB00333B92 /* AppDelegateManager.m in Sources */,
 				F433EC2821BEA2B800DC057E /* YGLayout.m in Sources */,
 			);
