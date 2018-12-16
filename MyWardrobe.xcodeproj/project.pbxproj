@@ -15,6 +15,8 @@
 		7B755B5C21C4ABD500975D04 /* MWHomeCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B755B5B21C4ABD500975D04 /* MWHomeCollectionViewCell.m */; };
 		7B755B6221C5128000975D04 /* MWSettingVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B755B6121C5128000975D04 /* MWSettingVC.m */; };
 		7B755B6521C519B200975D04 /* UITextView+MWPlaceholder.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B755B6421C519B200975D04 /* UITextView+MWPlaceholder.m */; };
+		7B755B6C21C5679500975D04 /* MWPhotoVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B755B6A21C5679500975D04 /* MWPhotoVC.m */; };
+		7B755B6F21C5681900975D04 /* MWClothesPhotoCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B755B6E21C5681900975D04 /* MWClothesPhotoCollectionViewCell.m */; };
 		D5486F164E5FB5F7650916AC /* Pods_MyWardrobeTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C91D797BCF81B5D464C2A51C /* Pods_MyWardrobeTests.framework */; };
 		F4015D9421C27E5B00AC6C58 /* MWDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F4015D9321C27E5B00AC6C58 /* MWDataManager.m */; };
 		F4015D9821C27E9900AC6C58 /* MWClothesCatogaryModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F4015D9721C27E9900AC6C58 /* MWClothesCatogaryModel.m */; };
@@ -87,6 +89,10 @@
 		7B755B6121C5128000975D04 /* MWSettingVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MWSettingVC.m; sourceTree = "<group>"; };
 		7B755B6321C519B200975D04 /* UITextView+MWPlaceholder.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UITextView+MWPlaceholder.h"; sourceTree = "<group>"; };
 		7B755B6421C519B200975D04 /* UITextView+MWPlaceholder.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UITextView+MWPlaceholder.m"; sourceTree = "<group>"; };
+		7B755B6A21C5679500975D04 /* MWPhotoVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MWPhotoVC.m; sourceTree = "<group>"; };
+		7B755B6B21C5679500975D04 /* MWPhotoVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MWPhotoVC.h; sourceTree = "<group>"; };
+		7B755B6D21C5681900975D04 /* MWClothesPhotoCollectionViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MWClothesPhotoCollectionViewCell.h; sourceTree = "<group>"; };
+		7B755B6E21C5681900975D04 /* MWClothesPhotoCollectionViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MWClothesPhotoCollectionViewCell.m; sourceTree = "<group>"; };
 		8C0715FD2EC151B6F206F0F3 /* Pods-MyWardrobeTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyWardrobeTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-MyWardrobeTests/Pods-MyWardrobeTests.release.xcconfig"; sourceTree = "<group>"; };
 		97B6E8C78CA9C45974F61223 /* Pods_MyWardrobe.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MyWardrobe.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C91D797BCF81B5D464C2A51C /* Pods_MyWardrobeTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MyWardrobeTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -242,6 +248,7 @@
 		7B755B5021C4A74000975D04 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				7B755B6921C5679500975D04 /* MWClothesLook */,
 				7B755B5421C4A79300975D04 /* MWHomeVC.h */,
 				7B755B5521C4A79300975D04 /* MWHomeVC.m */,
 				7B755B5721C4AB0900975D04 /* MWHomeTableViewCell.h */,
@@ -275,6 +282,17 @@
 				7B755B6121C5128000975D04 /* MWSettingVC.m */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		7B755B6921C5679500975D04 /* MWClothesLook */ = {
+			isa = PBXGroup;
+			children = (
+				7B755B6B21C5679500975D04 /* MWPhotoVC.h */,
+				7B755B6A21C5679500975D04 /* MWPhotoVC.m */,
+				7B755B6D21C5681900975D04 /* MWClothesPhotoCollectionViewCell.h */,
+				7B755B6E21C5681900975D04 /* MWClothesPhotoCollectionViewCell.m */,
+			);
+			path = MWClothesLook;
 			sourceTree = "<group>";
 		};
 		F4015D9121C27E4900AC6C58 /* DataManager */ = {
@@ -568,7 +586,6 @@
 				F455441E21BE9D3F000A37E5 /* Frameworks */,
 				F455441F21BE9D3F000A37E5 /* Resources */,
 				4D81547AFA22374E6EBF90C0 /* [CP] Embed Pods Frameworks */,
-				073F16D0970B0B15A9BF4643 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -587,8 +604,6 @@
 				F455443521BE9D41000A37E5 /* Sources */,
 				F455443621BE9D41000A37E5 /* Frameworks */,
 				F455443721BE9D41000A37E5 /* Resources */,
-				E90F758F890874A7A03CB4D1 /* [CP] Embed Pods Frameworks */,
-				E213CBABA059E5523E21B751 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -608,8 +623,6 @@
 				F455444021BE9D41000A37E5 /* Sources */,
 				F455444121BE9D41000A37E5 /* Frameworks */,
 				F455444221BE9D41000A37E5 /* Resources */,
-				76B93178FFE96970CF93E80C /* [CP] Embed Pods Frameworks */,
-				D06EE663A7AB788E79913482 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -691,21 +704,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		073F16D0970B0B15A9BF4643 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MyWardrobe/Pods-MyWardrobe-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		0D3E16E7487039656E8D1FA5 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -766,21 +764,6 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MyWardrobe/Pods-MyWardrobe-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		76B93178FFE96970CF93E80C /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MyWardrobeUITests/Pods-MyWardrobeUITests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		78AF670883CDD711284D4E79 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -799,51 +782,6 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		D06EE663A7AB788E79913482 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MyWardrobeUITests/Pods-MyWardrobeUITests-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		E213CBABA059E5523E21B751 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MyWardrobeTests/Pods-MyWardrobeTests-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		E90F758F890874A7A03CB4D1 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MyWardrobeTests/Pods-MyWardrobeTests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -851,6 +789,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7B755B6C21C5679500975D04 /* MWPhotoVC.m in Sources */,
 				F433EC2921BEA2B800DC057E /* UIView+Yoga.m in Sources */,
 				F4015D9F21C2847A00AC6C58 /* MWSignalClothesModel.m in Sources */,
 				F433EC2B21BEA2B800DC057E /* YGNodeList.c in Sources */,
@@ -864,6 +803,7 @@
 				F433EC3321BEA34400DC057E /* MWTabBarItem.m in Sources */,
 				F4FCD1A621BFEFA60052BAFF /* UIViewController+NavExtension.m in Sources */,
 				F41D157921C5445200F62B0F /* MWChooseClothesVM.m in Sources */,
+				7B755B6F21C5681900975D04 /* MWClothesPhotoCollectionViewCell.m in Sources */,
 				F4015D9821C27E9900AC6C58 /* MWClothesCatogaryModel.m in Sources */,
 				F433EC4521BEAA3B00DC057E /* MWTabBarVC.m in Sources */,
 				F433EC3421BEA34400DC057E /* MWTabBarButton.m in Sources */,

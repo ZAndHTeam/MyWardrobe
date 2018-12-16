@@ -8,9 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
+typedef void(^LookClothesPhoto)(NSArray *photoArr,NSInteger index);
 @interface MWHomeTableViewCell : UITableViewCell
 
 @property (nonatomic, assign) BOOL isZero;
+@property (nonatomic,copy) LookClothesPhoto lookBlock;
 
 - (void)configData:(NSArray *)clothesArr;
 

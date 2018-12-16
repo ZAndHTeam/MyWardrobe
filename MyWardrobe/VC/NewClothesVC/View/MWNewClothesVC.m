@@ -111,8 +111,11 @@
         [MBProgressHUD showLoadingWithTitle:@"需要先拍照，才能放入衣橱哦~"];
         return;
     } else {
+        NSString *title = [self.viewModel saveClothes];
+        @weakify(title);
         [self dismissViewControllerAnimated:YES completion:^{
-            [MBProgressHUD showLoadingWithTitle:[self.viewModel saveClothes]];
+            @strongify(title);
+            [MBProgressHUD showLoadingWithTitle:title];
         }];
     }
 }
