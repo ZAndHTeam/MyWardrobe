@@ -11,6 +11,9 @@
 #pragma mark - views
 #import "MWTabBarItem.h"
 #import "MWTabBar.h"
+#import "MWNewClothesVC.h"
+#import "MWHomeVC.h"
+#import "MWSettingVC.h"
 
 #pragma mark - utils
 #import "UIViewController+MWTabBarItem.h"
@@ -36,8 +39,8 @@ static const CGFloat kTabItemImageOffsetY = 5;
 - (void)configTabBar {
     NSMutableArray *childViewControllers = @[].mutableCopy;
     // 衣橱首页
-    UIViewController *allClothes = [UIViewController new];
-    allClothes.view.backgroundColor = [UIColor redColor];
+    MWHomeVC *allClothes = [MWHomeVC new];
+    allClothes.view.backgroundColor = [UIColor whiteColor];
     allClothes.tabBarItem.imageInsets = UIEdgeInsetsMake(kTabItemImageOffsetY, 0, -kTabItemImageOffsetY, 0);
     allClothes.mw_tabBarItem = [[MWTabBarItem alloc] initWithNormalImage:[UIImage imageNamed:@"tabbar_icon_clothes_normal"]
                                                            selectedImage:[UIImage imageNamed:@"tabbar_icon_clothes_highlighted"]
@@ -53,7 +56,7 @@ static const CGFloat kTabItemImageOffsetY = 5;
     [childViewControllers addObject:addNewVC];
     
     // 设置中心
-    UIViewController *settingVC = [[UIViewController alloc] init];
+    MWSettingVC *settingVC = [[MWSettingVC alloc] init];
     settingVC.mw_tabBarItem = [[MWTabBarItem alloc] initWithNormalImage:[UIImage imageNamed:@"tabbar_icon_site_normal"]
                                                           selectedImage:[UIImage imageNamed:@"tabbar_icon_site_highlighted"]
                                                                    type:MWTabBarItemType_Image];
@@ -79,6 +82,15 @@ static const CGFloat kTabItemImageOffsetY = 5;
 }
 
 - (void)didSelectPlusItemAtIndex:(NSUInteger)index {
+    MWNewClothesVC *newClothesVC = [MWNewClothesVC new];
+    
+    UINavigationController *controllerToPresent = [[UINavigationController alloc] initWithRootViewController:newClothesVC];
+    [controllerToPresent setNavigationBarHidden:YES];
+    
+    [controllerToPresent setModalTransitionStyle:UIModalTransitionStyleCoverVertical];
+    [self presentViewController:controllerToPresent
+                       animated:YES
+                     completion:NULL];
     
 }
 

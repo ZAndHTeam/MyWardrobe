@@ -45,4 +45,21 @@
 
 #define YCEnsureValidNumber(x) x ? :@0
 
+// 设备判断
+#define isIPhoneXSeries \
+({ \
+    BOOL iPhoneXSeries = NO;\
+    if (UIDevice.currentDevice.userInterfaceIdiom != UIUserInterfaceIdiomPhone) { \
+        iPhoneXSeries; \
+    } \
+ \
+    if (@available(iOS 11.0, *)) { \
+        UIWindow *mainWindow = [[[UIApplication sharedApplication] delegate] window]; \
+        if (mainWindow.safeAreaInsets.bottom > 0.0) { \
+            iPhoneXSeries = YES; \
+        } \
+    } \
+    iPhoneXSeries; \
+}) \
+
 #endif /* SysMacro_h */

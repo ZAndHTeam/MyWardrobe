@@ -10,7 +10,7 @@
 
 @implementation UIView (MWFrame)
     
-- (void)setmw_size:(CGSize)mw_size {
+- (void)setMw_size:(CGSize)mw_size {
     CGPoint origin = [self frame].origin;
     [self setFrame:CGRectMake(origin.x, origin.y, mw_size.width, mw_size.height)];
 }
@@ -23,7 +23,7 @@
     return CGRectGetMinX([self frame]);
 }
     
-- (void)setmw_left:(CGFloat)x {
+- (void)setMw_left:(CGFloat)x {
     CGRect frame = [self frame];
     frame.origin.x = x;
     [self setFrame:frame];
@@ -33,7 +33,7 @@
     return CGRectGetMinY([self frame]);
 }
     
-- (void)setmw_top:(CGFloat)y {
+- (void)setMw_top:(CGFloat)y {
     CGRect frame = [self frame];
     frame.origin.y = y;
     [self setFrame:frame];
@@ -43,7 +43,7 @@
     return CGRectGetMaxX([self frame]);
 }
     
-- (void)setmw_right:(CGFloat)right {
+- (void)setMw_right:(CGFloat)right {
     
     CGRect frame = [self frame];
     frame.origin.x = right - frame.size.width;
@@ -54,7 +54,7 @@
     return CGRectGetMaxY([self frame]);
 }
     
-- (void)setmw_bottom:(CGFloat)bottom {
+- (void)setMw_bottom:(CGFloat)bottom {
     
     CGRect frame = [self frame];
     frame.origin.y = bottom - frame.size.height;
@@ -65,7 +65,7 @@
     return [self center].x;
 }
     
-- (void)setmw_centerX:(CGFloat)centerX {
+- (void)setMw_centerX:(CGFloat)centerX {
     [self setCenter:CGPointMake(centerX, self.center.y)];
 }
     
@@ -73,7 +73,7 @@
     return [self center].y;
 }
     
-- (void)setmw_centerY:(CGFloat)centerY {
+- (void)setMw_centerY:(CGFloat)centerY {
     [self setCenter:CGPointMake(self.center.x, centerY)];
 }
     
@@ -81,7 +81,7 @@
     return CGRectGetWidth([self frame]);
 }
     
-- (void)setmw_width:(CGFloat)width {
+- (void)setMw_width:(CGFloat)width {
     
     CGRect frame = [self frame];
     frame.size.width = width;
@@ -92,7 +92,7 @@
     return CGRectGetHeight([self frame]);
 }
     
-- (void)setmw_height:(CGFloat)height {
+- (void)setMw_height:(CGFloat)height {
     
     CGRect frame = [self frame];
     frame.size.height = height;

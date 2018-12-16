@@ -9,7 +9,23 @@
 /* Begin PBXBuildFile section */
 		1F30846412DE9E4C087C696B /* Pods_MyWardrobe.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 97B6E8C78CA9C45974F61223 /* Pods_MyWardrobe.framework */; };
 		3BB43088C2191EE857D38844 /* Pods_MyWardrobeUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E8254A3F0C101901BEB85102 /* Pods_MyWardrobeUITests.framework */; };
+		7B755B5321C4A77100975D04 /* MWHomeVM.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B755B5221C4A77100975D04 /* MWHomeVM.m */; };
+		7B755B5621C4A79300975D04 /* MWHomeVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B755B5521C4A79300975D04 /* MWHomeVC.m */; };
+		7B755B5921C4AB0900975D04 /* MWHomeTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B755B5821C4AB0900975D04 /* MWHomeTableViewCell.m */; };
+		7B755B5C21C4ABD500975D04 /* MWHomeCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B755B5B21C4ABD500975D04 /* MWHomeCollectionViewCell.m */; };
+		7B755B6221C5128000975D04 /* MWSettingVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B755B6121C5128000975D04 /* MWSettingVC.m */; };
+		7B755B6521C519B200975D04 /* UITextView+MWPlaceholder.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B755B6421C519B200975D04 /* UITextView+MWPlaceholder.m */; };
+		7B755B6C21C5679500975D04 /* MWPhotoVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B755B6A21C5679500975D04 /* MWPhotoVC.m */; };
+		7B755B6F21C5681900975D04 /* MWClothesPhotoCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B755B6E21C5681900975D04 /* MWClothesPhotoCollectionViewCell.m */; };
 		D5486F164E5FB5F7650916AC /* Pods_MyWardrobeTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C91D797BCF81B5D464C2A51C /* Pods_MyWardrobeTests.framework */; };
+		F4015D9421C27E5B00AC6C58 /* MWDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F4015D9321C27E5B00AC6C58 /* MWDataManager.m */; };
+		F4015D9821C27E9900AC6C58 /* MWClothesCatogaryModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F4015D9721C27E9900AC6C58 /* MWClothesCatogaryModel.m */; };
+		F4015D9C21C27FC500AC6C58 /* MWIDGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = F4015D9B21C27FC500AC6C58 /* MWIDGenerator.m */; };
+		F4015D9F21C2847A00AC6C58 /* MWSignalClothesModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F4015D9E21C2847A00AC6C58 /* MWSignalClothesModel.m */; };
+		F41D156921C523B200F62B0F /* MBProgressHUD+SimpleLoad.m in Sources */ = {isa = PBXBuildFile; fileRef = F41D156821C523B100F62B0F /* MBProgressHUD+SimpleLoad.m */; };
+		F41D156A21C5243F00F62B0F /* UIImage+ScaleSize.m in Sources */ = {isa = PBXBuildFile; fileRef = F41D156321C5181600F62B0F /* UIImage+ScaleSize.m */; };
+		F41D157621C5443600F62B0F /* MWChooseClothesVC.m in Sources */ = {isa = PBXBuildFile; fileRef = F41D157521C5443600F62B0F /* MWChooseClothesVC.m */; };
+		F41D157921C5445200F62B0F /* MWChooseClothesVM.m in Sources */ = {isa = PBXBuildFile; fileRef = F41D157821C5445200F62B0F /* MWChooseClothesVM.m */; };
 		F433EC2821BEA2B800DC057E /* YGLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = F433EC2421BEA2B800DC057E /* YGLayout.m */; };
 		F433EC2921BEA2B800DC057E /* UIView+Yoga.m in Sources */ = {isa = PBXBuildFile; fileRef = F433EC2521BEA2B800DC057E /* UIView+Yoga.m */; };
 		F433EC2A21BEA2B800DC057E /* Yoga.c in Sources */ = {isa = PBXBuildFile; fileRef = F433EC2621BEA2B800DC057E /* Yoga.c */; };
@@ -28,9 +44,16 @@
 		F455445D21BE9DDD000A37E5 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F455445821BE9DDD000A37E5 /* AppDelegate.m */; };
 		F455445E21BE9DDD000A37E5 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F455445821BE9DDD000A37E5 /* AppDelegate.m */; };
 		F455445F21BE9DDD000A37E5 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F455445821BE9DDD000A37E5 /* AppDelegate.m */; };
-		F455446021BE9DDD000A37E5 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F455445B21BE9DDD000A37E5 /* ViewController.m */; };
-		F455446121BE9DDD000A37E5 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F455445B21BE9DDD000A37E5 /* ViewController.m */; };
-		F455446221BE9DDD000A37E5 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F455445B21BE9DDD000A37E5 /* ViewController.m */; };
+		F4E43E2521C398E700333B92 /* MWScrollTagView.m in Sources */ = {isa = PBXBuildFile; fileRef = F4E43E2421C398E700333B92 /* MWScrollTagView.m */; };
+		F4E43E2821C41DFB00333B92 /* AppDelegateManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F4E43E2721C41DFB00333B92 /* AppDelegateManager.m */; };
+		F4E43E2B21C4206500333B92 /* MWColorPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = F4E43E2A21C4206500333B92 /* MWColorPickerView.m */; };
+		F4E43E2E21C498D700333B92 /* MWAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = F4E43E2D21C498D700333B92 /* MWAlertView.m */; };
+		F4FCD1A321BFEB900052BAFF /* MWNewClothesVC.m in Sources */ = {isa = PBXBuildFile; fileRef = F4FCD1A221BFEB900052BAFF /* MWNewClothesVC.m */; };
+		F4FCD1A621BFEFA60052BAFF /* UIViewController+NavExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = F4FCD1A521BFEFA60052BAFF /* UIViewController+NavExtension.m */; };
+		F4FCD1AA21BFF0220052BAFF /* MWNavigationView.m in Sources */ = {isa = PBXBuildFile; fileRef = F4FCD1A921BFF0220052BAFF /* MWNavigationView.m */; };
+		F4FCD1AD21BFF2AD0052BAFF /* UIColor+MWEX.m in Sources */ = {isa = PBXBuildFile; fileRef = F4FCD1AB21BFF2AD0052BAFF /* UIColor+MWEX.m */; };
+		F4FCD1B021C000780052BAFF /* MWNewClothesVM.m in Sources */ = {isa = PBXBuildFile; fileRef = F4FCD1AF21C000780052BAFF /* MWNewClothesVM.m */; };
+		F4FCD1B321C0100A0052BAFF /* MWNewClothesCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F4FCD1B221C0100A0052BAFF /* MWNewClothesCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,12 +77,44 @@
 		2315B4D167802844CE6513C9 /* Pods-MyWardrobeUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyWardrobeUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-MyWardrobeUITests/Pods-MyWardrobeUITests.release.xcconfig"; sourceTree = "<group>"; };
 		47D468C9594707EB37BC059F /* Pods-MyWardrobeUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyWardrobeUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MyWardrobeUITests/Pods-MyWardrobeUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		489D1A61368877E33E72E7C7 /* Pods-MyWardrobeTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyWardrobeTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MyWardrobeTests/Pods-MyWardrobeTests.debug.xcconfig"; sourceTree = "<group>"; };
+		7B755B5121C4A77100975D04 /* MWHomeVM.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MWHomeVM.h; sourceTree = "<group>"; };
+		7B755B5221C4A77100975D04 /* MWHomeVM.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MWHomeVM.m; sourceTree = "<group>"; };
+		7B755B5421C4A79300975D04 /* MWHomeVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MWHomeVC.h; sourceTree = "<group>"; };
+		7B755B5521C4A79300975D04 /* MWHomeVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MWHomeVC.m; sourceTree = "<group>"; };
+		7B755B5721C4AB0900975D04 /* MWHomeTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MWHomeTableViewCell.h; sourceTree = "<group>"; };
+		7B755B5821C4AB0900975D04 /* MWHomeTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MWHomeTableViewCell.m; sourceTree = "<group>"; };
+		7B755B5A21C4ABD500975D04 /* MWHomeCollectionViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MWHomeCollectionViewCell.h; sourceTree = "<group>"; };
+		7B755B5B21C4ABD500975D04 /* MWHomeCollectionViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MWHomeCollectionViewCell.m; sourceTree = "<group>"; };
+		7B755B6021C5128000975D04 /* MWSettingVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MWSettingVC.h; sourceTree = "<group>"; };
+		7B755B6121C5128000975D04 /* MWSettingVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MWSettingVC.m; sourceTree = "<group>"; };
+		7B755B6321C519B200975D04 /* UITextView+MWPlaceholder.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UITextView+MWPlaceholder.h"; sourceTree = "<group>"; };
+		7B755B6421C519B200975D04 /* UITextView+MWPlaceholder.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UITextView+MWPlaceholder.m"; sourceTree = "<group>"; };
+		7B755B6A21C5679500975D04 /* MWPhotoVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MWPhotoVC.m; sourceTree = "<group>"; };
+		7B755B6B21C5679500975D04 /* MWPhotoVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MWPhotoVC.h; sourceTree = "<group>"; };
+		7B755B6D21C5681900975D04 /* MWClothesPhotoCollectionViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MWClothesPhotoCollectionViewCell.h; sourceTree = "<group>"; };
+		7B755B6E21C5681900975D04 /* MWClothesPhotoCollectionViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MWClothesPhotoCollectionViewCell.m; sourceTree = "<group>"; };
 		8C0715FD2EC151B6F206F0F3 /* Pods-MyWardrobeTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyWardrobeTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-MyWardrobeTests/Pods-MyWardrobeTests.release.xcconfig"; sourceTree = "<group>"; };
 		97B6E8C78CA9C45974F61223 /* Pods_MyWardrobe.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MyWardrobe.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C91D797BCF81B5D464C2A51C /* Pods_MyWardrobeTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MyWardrobeTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DACC6C6E28C86B5994E0BAE1 /* Pods-MyWardrobe.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyWardrobe.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MyWardrobe/Pods-MyWardrobe.debug.xcconfig"; sourceTree = "<group>"; };
 		E09A77843896EAC216F8E926 /* Pods-MyWardrobe.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyWardrobe.release.xcconfig"; path = "Pods/Target Support Files/Pods-MyWardrobe/Pods-MyWardrobe.release.xcconfig"; sourceTree = "<group>"; };
 		E8254A3F0C101901BEB85102 /* Pods_MyWardrobeUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MyWardrobeUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F4015D9221C27E5B00AC6C58 /* MWDataManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MWDataManager.h; sourceTree = "<group>"; };
+		F4015D9321C27E5B00AC6C58 /* MWDataManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MWDataManager.m; sourceTree = "<group>"; };
+		F4015D9621C27E9900AC6C58 /* MWClothesCatogaryModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MWClothesCatogaryModel.h; sourceTree = "<group>"; };
+		F4015D9721C27E9900AC6C58 /* MWClothesCatogaryModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MWClothesCatogaryModel.m; sourceTree = "<group>"; };
+		F4015D9A21C27FC500AC6C58 /* MWIDGenerator.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MWIDGenerator.h; sourceTree = "<group>"; };
+		F4015D9B21C27FC500AC6C58 /* MWIDGenerator.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MWIDGenerator.m; sourceTree = "<group>"; };
+		F4015D9D21C2847A00AC6C58 /* MWSignalClothesModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MWSignalClothesModel.h; sourceTree = "<group>"; };
+		F4015D9E21C2847A00AC6C58 /* MWSignalClothesModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MWSignalClothesModel.m; sourceTree = "<group>"; };
+		F41D156221C5181600F62B0F /* UIImage+ScaleSize.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIImage+ScaleSize.h"; sourceTree = "<group>"; };
+		F41D156321C5181600F62B0F /* UIImage+ScaleSize.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIImage+ScaleSize.m"; sourceTree = "<group>"; };
+		F41D156721C523B100F62B0F /* MBProgressHUD+SimpleLoad.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MBProgressHUD+SimpleLoad.h"; sourceTree = "<group>"; };
+		F41D156821C523B100F62B0F /* MBProgressHUD+SimpleLoad.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MBProgressHUD+SimpleLoad.m"; sourceTree = "<group>"; };
+		F41D157421C5443600F62B0F /* MWChooseClothesVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MWChooseClothesVC.h; sourceTree = "<group>"; };
+		F41D157521C5443600F62B0F /* MWChooseClothesVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MWChooseClothesVC.m; sourceTree = "<group>"; };
+		F41D157721C5445200F62B0F /* MWChooseClothesVM.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MWChooseClothesVM.h; sourceTree = "<group>"; };
+		F41D157821C5445200F62B0F /* MWChooseClothesVM.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MWChooseClothesVM.m; sourceTree = "<group>"; };
 		F433EC1D21BEA2B800DC057E /* YGLayout+Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "YGLayout+Private.h"; sourceTree = "<group>"; };
 		F433EC1E21BEA2B800DC057E /* YGLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YGLayout.h; sourceTree = "<group>"; };
 		F433EC1F21BEA2B800DC057E /* YGEnums.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YGEnums.h; sourceTree = "<group>"; };
@@ -98,8 +153,27 @@
 		F455444A21BE9D41000A37E5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F455445721BE9DDD000A37E5 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		F455445821BE9DDD000A37E5 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		F455445B21BE9DDD000A37E5 /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
-		F455445C21BE9DDD000A37E5 /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		F4E43E2321C398E700333B92 /* MWScrollTagView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MWScrollTagView.h; sourceTree = "<group>"; };
+		F4E43E2421C398E700333B92 /* MWScrollTagView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MWScrollTagView.m; sourceTree = "<group>"; };
+		F4E43E2621C41DFB00333B92 /* AppDelegateManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegateManager.h; sourceTree = "<group>"; };
+		F4E43E2721C41DFB00333B92 /* AppDelegateManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegateManager.m; sourceTree = "<group>"; };
+		F4E43E2921C4206500333B92 /* MWColorPickerView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MWColorPickerView.h; sourceTree = "<group>"; };
+		F4E43E2A21C4206500333B92 /* MWColorPickerView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MWColorPickerView.m; sourceTree = "<group>"; };
+		F4E43E2C21C498D700333B92 /* MWAlertView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MWAlertView.h; sourceTree = "<group>"; };
+		F4E43E2D21C498D700333B92 /* MWAlertView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MWAlertView.m; sourceTree = "<group>"; };
+		F4FCD1A121BFEB900052BAFF /* MWNewClothesVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MWNewClothesVC.h; sourceTree = "<group>"; };
+		F4FCD1A221BFEB900052BAFF /* MWNewClothesVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MWNewClothesVC.m; sourceTree = "<group>"; };
+		F4FCD1A421BFEFA60052BAFF /* UIViewController+NavExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+NavExtension.h"; sourceTree = "<group>"; };
+		F4FCD1A521BFEFA60052BAFF /* UIViewController+NavExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+NavExtension.m"; sourceTree = "<group>"; };
+		F4FCD1A821BFF0220052BAFF /* MWNavigationView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MWNavigationView.h; sourceTree = "<group>"; };
+		F4FCD1A921BFF0220052BAFF /* MWNavigationView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MWNavigationView.m; sourceTree = "<group>"; };
+		F4FCD1AB21BFF2AD0052BAFF /* UIColor+MWEX.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+MWEX.m"; sourceTree = "<group>"; };
+		F4FCD1AC21BFF2AD0052BAFF /* UIColor+MWEX.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+MWEX.h"; sourceTree = "<group>"; };
+		F4FCD1AE21C000780052BAFF /* MWNewClothesVM.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MWNewClothesVM.h; sourceTree = "<group>"; };
+		F4FCD1AF21C000780052BAFF /* MWNewClothesVM.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MWNewClothesVM.m; sourceTree = "<group>"; };
+		F4FCD1B121C0100A0052BAFF /* MWNewClothesCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MWNewClothesCell.h; sourceTree = "<group>"; };
+		F4FCD1B221C0100A0052BAFF /* MWNewClothesCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MWNewClothesCell.m; sourceTree = "<group>"; };
+		F4FCD1B721C0176D0052BAFF /* MWHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MWHeader.pch; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -153,9 +227,142 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		7B755B4E21C4A6F200975D04 /* MWHomeVC */ = {
+			isa = PBXGroup;
+			children = (
+				7B755B5021C4A74000975D04 /* View */,
+				7B755B4F21C4A74000975D04 /* ViewModel */,
+			);
+			path = MWHomeVC;
+			sourceTree = "<group>";
+		};
+		7B755B4F21C4A74000975D04 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				7B755B5121C4A77100975D04 /* MWHomeVM.h */,
+				7B755B5221C4A77100975D04 /* MWHomeVM.m */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		7B755B5021C4A74000975D04 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				7B755B6921C5679500975D04 /* MWClothesLook */,
+				7B755B5421C4A79300975D04 /* MWHomeVC.h */,
+				7B755B5521C4A79300975D04 /* MWHomeVC.m */,
+				7B755B5721C4AB0900975D04 /* MWHomeTableViewCell.h */,
+				7B755B5821C4AB0900975D04 /* MWHomeTableViewCell.m */,
+				7B755B5A21C4ABD500975D04 /* MWHomeCollectionViewCell.h */,
+				7B755B5B21C4ABD500975D04 /* MWHomeCollectionViewCell.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		7B755B5D21C5122B00975D04 /* MWSettingVC */ = {
+			isa = PBXGroup;
+			children = (
+				7B755B5F21C5126600975D04 /* View */,
+				7B755B5E21C5126600975D04 /* ViewModel */,
+			);
+			path = MWSettingVC;
+			sourceTree = "<group>";
+		};
+		7B755B5E21C5126600975D04 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		7B755B5F21C5126600975D04 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				7B755B6021C5128000975D04 /* MWSettingVC.h */,
+				7B755B6121C5128000975D04 /* MWSettingVC.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		7B755B6921C5679500975D04 /* MWClothesLook */ = {
+			isa = PBXGroup;
+			children = (
+				7B755B6B21C5679500975D04 /* MWPhotoVC.h */,
+				7B755B6A21C5679500975D04 /* MWPhotoVC.m */,
+				7B755B6D21C5681900975D04 /* MWClothesPhotoCollectionViewCell.h */,
+				7B755B6E21C5681900975D04 /* MWClothesPhotoCollectionViewCell.m */,
+			);
+			path = MWClothesLook;
+			sourceTree = "<group>";
+		};
+		F4015D9121C27E4900AC6C58 /* DataManager */ = {
+			isa = PBXGroup;
+			children = (
+				F4015D9521C27E7300AC6C58 /* Model */,
+				F4015D9221C27E5B00AC6C58 /* MWDataManager.h */,
+				F4015D9321C27E5B00AC6C58 /* MWDataManager.m */,
+			);
+			path = DataManager;
+			sourceTree = "<group>";
+		};
+		F4015D9521C27E7300AC6C58 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				F4015D9621C27E9900AC6C58 /* MWClothesCatogaryModel.h */,
+				F4015D9721C27E9900AC6C58 /* MWClothesCatogaryModel.m */,
+				F4015D9D21C2847A00AC6C58 /* MWSignalClothesModel.h */,
+				F4015D9E21C2847A00AC6C58 /* MWSignalClothesModel.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		F4015D9921C27FB100AC6C58 /* IdGenerator */ = {
+			isa = PBXGroup;
+			children = (
+				F4015D9A21C27FC500AC6C58 /* MWIDGenerator.h */,
+				F4015D9B21C27FC500AC6C58 /* MWIDGenerator.m */,
+			);
+			path = IdGenerator;
+			sourceTree = "<group>";
+		};
+		F41D156621C5235000F62B0F /* Recovered References */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "Recovered References";
+			sourceTree = "<group>";
+		};
+		F41D156E21C5414700F62B0F /* ChooseClothesVC */ = {
+			isa = PBXGroup;
+			children = (
+				F41D157221C5443600F62B0F /* ViewModels */,
+				F41D157321C5443600F62B0F /* Views */,
+			);
+			path = ChooseClothesVC;
+			sourceTree = "<group>";
+		};
+		F41D157221C5443600F62B0F /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				F41D157721C5445200F62B0F /* MWChooseClothesVM.h */,
+				F41D157821C5445200F62B0F /* MWChooseClothesVM.m */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		F41D157321C5443600F62B0F /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				F41D157421C5443600F62B0F /* MWChooseClothesVC.h */,
+				F41D157521C5443600F62B0F /* MWChooseClothesVC.m */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		F433EC0C21BEA19F00DC057E /* Vendors */ = {
 			isa = PBXGroup;
 			children = (
+				F4015D9921C27FB100AC6C58 /* IdGenerator */,
 				F433EC1C21BEA2B800DC057E /* Yoga */,
 			);
 			path = Vendors;
@@ -182,6 +389,8 @@
 		F433EC3821BEA56000DC057E /* Tools */ = {
 			isa = PBXGroup;
 			children = (
+				F4FCD1B721C0176D0052BAFF /* MWHeader.pch */,
+				F4FCD1A721BFEFFF0052BAFF /* CommonViews */,
 				F433EC3E21BEA91800DC057E /* SysToos */,
 				F433EC3921BEA56000DC057E /* UITools */,
 			);
@@ -191,9 +400,17 @@
 		F433EC3921BEA56000DC057E /* UITools */ = {
 			isa = PBXGroup;
 			children = (
+				F4FCD1AC21BFF2AD0052BAFF /* UIColor+MWEX.h */,
+				F4FCD1AB21BFF2AD0052BAFF /* UIColor+MWEX.m */,
+				F4FCD1A421BFEFA60052BAFF /* UIViewController+NavExtension.h */,
+				F4FCD1A521BFEFA60052BAFF /* UIViewController+NavExtension.m */,
 				F433EC3A21BEA59B00DC057E /* UIView+MWFrame.h */,
 				F433EC3B21BEA59B00DC057E /* UIView+MWFrame.m */,
 				F433EC3D21BEA75A00DC057E /* MacroLayout.h */,
+				F41D156221C5181600F62B0F /* UIImage+ScaleSize.h */,
+				F41D156321C5181600F62B0F /* UIImage+ScaleSize.m */,
+				7B755B6321C519B200975D04 /* UITextView+MWPlaceholder.h */,
+				7B755B6421C519B200975D04 /* UITextView+MWPlaceholder.m */,
 			);
 			path = UITools;
 			sourceTree = "<group>";
@@ -215,6 +432,7 @@
 				F455442221BE9D3F000A37E5 /* Products */,
 				5E6039CBB671DB7F858BF9D1 /* Pods */,
 				279C47F6D87710618584A410 /* Frameworks */,
+				F41D156621C5235000F62B0F /* Recovered References */,
 			);
 			sourceTree = "<group>";
 		};
@@ -231,6 +449,7 @@
 		F455442321BE9D3F000A37E5 /* MyWardrobe */ = {
 			isa = PBXGroup;
 			children = (
+				F4015D9121C27E4900AC6C58 /* DataManager */,
 				F433EC3821BEA56000DC057E /* Tools */,
 				F433EC0C21BEA19F00DC057E /* Vendors */,
 				F455445621BE9DDD000A37E5 /* AppDelegate */,
@@ -266,6 +485,8 @@
 			children = (
 				F455445721BE9DDD000A37E5 /* AppDelegate.h */,
 				F455445821BE9DDD000A37E5 /* AppDelegate.m */,
+				F4E43E2621C41DFB00333B92 /* AppDelegateManager.h */,
+				F4E43E2721C41DFB00333B92 /* AppDelegateManager.m */,
 			);
 			path = AppDelegate;
 			sourceTree = "<group>";
@@ -273,9 +494,11 @@
 		F455445921BE9DDD000A37E5 /* VC */ = {
 			isa = PBXGroup;
 			children = (
+				F41D156E21C5414700F62B0F /* ChooseClothesVC */,
+				7B755B5D21C5122B00975D04 /* MWSettingVC */,
+				7B755B4E21C4A6F200975D04 /* MWHomeVC */,
+				F4FCD19E21BFEB740052BAFF /* NewClothesVC */,
 				F455445A21BE9DDD000A37E5 /* MWTabBarVC */,
-				F455445B21BE9DDD000A37E5 /* ViewController.m */,
-				F455445C21BE9DDD000A37E5 /* ViewController.h */,
 			);
 			path = VC;
 			sourceTree = "<group>";
@@ -297,6 +520,60 @@
 			path = MWTabBarVC;
 			sourceTree = "<group>";
 		};
+		F4E43E1F21C3984000333B92 /* TagView */ = {
+			isa = PBXGroup;
+			children = (
+				F4E43E2321C398E700333B92 /* MWScrollTagView.h */,
+				F4E43E2421C398E700333B92 /* MWScrollTagView.m */,
+			);
+			path = TagView;
+			sourceTree = "<group>";
+		};
+		F4FCD19E21BFEB740052BAFF /* NewClothesVC */ = {
+			isa = PBXGroup;
+			children = (
+				F4FCD19F21BFEB740052BAFF /* ViewModel */,
+				F4FCD1A021BFEB740052BAFF /* View */,
+			);
+			path = NewClothesVC;
+			sourceTree = "<group>";
+		};
+		F4FCD19F21BFEB740052BAFF /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				F4FCD1AE21C000780052BAFF /* MWNewClothesVM.h */,
+				F4FCD1AF21C000780052BAFF /* MWNewClothesVM.m */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		F4FCD1A021BFEB740052BAFF /* View */ = {
+			isa = PBXGroup;
+			children = (
+				F4FCD1A121BFEB900052BAFF /* MWNewClothesVC.h */,
+				F4FCD1A221BFEB900052BAFF /* MWNewClothesVC.m */,
+				F4FCD1B121C0100A0052BAFF /* MWNewClothesCell.h */,
+				F4FCD1B221C0100A0052BAFF /* MWNewClothesCell.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		F4FCD1A721BFEFFF0052BAFF /* CommonViews */ = {
+			isa = PBXGroup;
+			children = (
+				F4E43E1F21C3984000333B92 /* TagView */,
+				F41D156721C523B100F62B0F /* MBProgressHUD+SimpleLoad.h */,
+				F41D156821C523B100F62B0F /* MBProgressHUD+SimpleLoad.m */,
+				F4FCD1A821BFF0220052BAFF /* MWNavigationView.h */,
+				F4FCD1A921BFF0220052BAFF /* MWNavigationView.m */,
+				F4E43E2921C4206500333B92 /* MWColorPickerView.h */,
+				F4E43E2A21C4206500333B92 /* MWColorPickerView.m */,
+				F4E43E2C21C498D700333B92 /* MWAlertView.h */,
+				F4E43E2D21C498D700333B92 /* MWAlertView.m */,
+			);
+			path = CommonViews;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -309,7 +586,6 @@
 				F455441E21BE9D3F000A37E5 /* Frameworks */,
 				F455441F21BE9D3F000A37E5 /* Resources */,
 				4D81547AFA22374E6EBF90C0 /* [CP] Embed Pods Frameworks */,
-				81F4DF9F4E0841FC61F6C1A4 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -328,8 +604,6 @@
 				F455443521BE9D41000A37E5 /* Sources */,
 				F455443621BE9D41000A37E5 /* Frameworks */,
 				F455443721BE9D41000A37E5 /* Resources */,
-				D935857EB84E029747F57FB6 /* [CP] Embed Pods Frameworks */,
-				89CD5DB9C86F1A031E8CA006 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -349,8 +623,6 @@
 				F455444021BE9D41000A37E5 /* Sources */,
 				F455444121BE9D41000A37E5 /* Frameworks */,
 				F455444221BE9D41000A37E5 /* Resources */,
-				3D0F662048871D8E8C301E1C /* [CP] Embed Pods Frameworks */,
-				B971A603D681E0D8303AD002 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -468,21 +740,6 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		3D0F662048871D8E8C301E1C /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MyWardrobeUITests/Pods-MyWardrobeUITests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		4D81547AFA22374E6EBF90C0 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -490,10 +747,16 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-MyWardrobe/Pods-MyWardrobe-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/IQKeyboardManager/IQKeyboardManager.framework",
+				"${BUILT_PRODUCTS_DIR}/MBProgressHUD/MBProgressHUD.framework",
+				"${BUILT_PRODUCTS_DIR}/MJExtension/MJExtension.framework",
 				"${BUILT_PRODUCTS_DIR}/ReactiveCocoa/ReactiveCocoa.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IQKeyboardManager.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MBProgressHUD.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MJExtension.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ReactiveCocoa.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -519,66 +782,6 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		81F4DF9F4E0841FC61F6C1A4 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MyWardrobe/Pods-MyWardrobe-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		89CD5DB9C86F1A031E8CA006 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MyWardrobeTests/Pods-MyWardrobeTests-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		B971A603D681E0D8303AD002 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MyWardrobeUITests/Pods-MyWardrobeUITests-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		D935857EB84E029747F57FB6 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MyWardrobeTests/Pods-MyWardrobeTests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -586,18 +789,43 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7B755B6C21C5679500975D04 /* MWPhotoVC.m in Sources */,
 				F433EC2921BEA2B800DC057E /* UIView+Yoga.m in Sources */,
-				F455446021BE9DDD000A37E5 /* ViewController.m in Sources */,
+				F4015D9F21C2847A00AC6C58 /* MWSignalClothesModel.m in Sources */,
 				F433EC2B21BEA2B800DC057E /* YGNodeList.c in Sources */,
 				F455445D21BE9DDD000A37E5 /* AppDelegate.m in Sources */,
+				F4015D9421C27E5B00AC6C58 /* MWDataManager.m in Sources */,
+				7B755B6521C519B200975D04 /* UITextView+MWPlaceholder.m in Sources */,
+				F41D157621C5443600F62B0F /* MWChooseClothesVC.m in Sources */,
+				7B755B5C21C4ABD500975D04 /* MWHomeCollectionViewCell.m in Sources */,
+				7B755B5321C4A77100975D04 /* MWHomeVM.m in Sources */,
+				F4E43E2B21C4206500333B92 /* MWColorPickerView.m in Sources */,
 				F433EC3321BEA34400DC057E /* MWTabBarItem.m in Sources */,
+				F4FCD1A621BFEFA60052BAFF /* UIViewController+NavExtension.m in Sources */,
+				F41D157921C5445200F62B0F /* MWChooseClothesVM.m in Sources */,
+				7B755B6F21C5681900975D04 /* MWClothesPhotoCollectionViewCell.m in Sources */,
+				F4015D9821C27E9900AC6C58 /* MWClothesCatogaryModel.m in Sources */,
 				F433EC4521BEAA3B00DC057E /* MWTabBarVC.m in Sources */,
 				F433EC3421BEA34400DC057E /* MWTabBarButton.m in Sources */,
+				F4FCD1AA21BFF0220052BAFF /* MWNavigationView.m in Sources */,
+				7B755B6221C5128000975D04 /* MWSettingVC.m in Sources */,
+				F41D156921C523B200F62B0F /* MBProgressHUD+SimpleLoad.m in Sources */,
 				F433EC3721BEA3C000DC057E /* UIViewController+MWTabBarItem.m in Sources */,
 				F433EC2A21BEA2B800DC057E /* Yoga.c in Sources */,
+				F4FCD1AD21BFF2AD0052BAFF /* UIColor+MWEX.m in Sources */,
+				F4E43E2E21C498D700333B92 /* MWAlertView.m in Sources */,
+				7B755B5921C4AB0900975D04 /* MWHomeTableViewCell.m in Sources */,
 				F433EC3221BEA34400DC057E /* MWTabBar.m in Sources */,
 				F455443421BE9D41000A37E5 /* main.m in Sources */,
+				F4E43E2521C398E700333B92 /* MWScrollTagView.m in Sources */,
+				F4FCD1A321BFEB900052BAFF /* MWNewClothesVC.m in Sources */,
+				F4015D9C21C27FC500AC6C58 /* MWIDGenerator.m in Sources */,
+				F41D156A21C5243F00F62B0F /* UIImage+ScaleSize.m in Sources */,
 				F433EC3C21BEA59B00DC057E /* UIView+MWFrame.m in Sources */,
+				7B755B5621C4A79300975D04 /* MWHomeVC.m in Sources */,
+				F4FCD1B321C0100A0052BAFF /* MWNewClothesCell.m in Sources */,
+				F4FCD1B021C000780052BAFF /* MWNewClothesVM.m in Sources */,
+				F4E43E2821C41DFB00333B92 /* AppDelegateManager.m in Sources */,
 				F433EC2821BEA2B800DC057E /* YGLayout.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -606,7 +834,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F455446121BE9DDD000A37E5 /* ViewController.m in Sources */,
 				F455445E21BE9DDD000A37E5 /* AppDelegate.m in Sources */,
 				F455443E21BE9D41000A37E5 /* MyWardrobeTests.m in Sources */,
 			);
@@ -616,7 +843,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F455446221BE9DDD000A37E5 /* ViewController.m in Sources */,
 				F455445F21BE9DDD000A37E5 /* AppDelegate.m in Sources */,
 				F455444921BE9D41000A37E5 /* MyWardrobeUITests.m in Sources */,
 			);
@@ -767,14 +993,18 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = WUYBDW5S2E;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SRCROOT)/MyWardrobe/Tools/MWHeader.pch";
 				INFOPLIST_FILE = MyWardrobe/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.simon.MyWardrobe;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -784,14 +1014,18 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = WUYBDW5S2E;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SRCROOT)/MyWardrobe/Tools/MWHeader.pch";
 				INFOPLIST_FILE = MyWardrobe/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.simon.MyWardrobe;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

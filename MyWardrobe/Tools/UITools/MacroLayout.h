@@ -11,6 +11,13 @@
 
 #import "SysMacro.h"
 
+/** 自定义字体 */
+#define REGULAR_FONT @"PingFangSC-Regular"
+/**加粗字体*/
+#define MEDIUM_FONT @"PingFangSC-Medium"
+/**light字体*/
+#define LIGHT_FONT @"PingFangSC-Light"
+
 //设备宽高
 #define SCREEN_SIZE_WIDTH ([UIScreen mainScreen].bounds.size.width)
 #define SCREEN_SIZE_HEIGHT ([UIScreen mainScreen].bounds.size.height)

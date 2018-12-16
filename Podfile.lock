@@ -1,4 +1,7 @@
 PODS:
+  - IQKeyboardManager (6.2.0)
+  - MBProgressHUD (1.1.0)
+  - MJExtension (3.0.15.1)
   - ReactiveCocoa (2.5):
     - ReactiveCocoa/UI (= 2.5)
   - ReactiveCocoa/Core (2.5):
@@ -8,11 +11,24 @@ PODS:
     - ReactiveCocoa/Core
 
 DEPENDENCIES:
+  - IQKeyboardManager
+  - MBProgressHUD (~> 1.1.0)
+  - MJExtension
   - ReactiveCocoa (~> 2.5.0)
 
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - IQKeyboardManager
+    - MBProgressHUD
+    - MJExtension
+    - ReactiveCocoa
+
 SPEC CHECKSUMS:
+  IQKeyboardManager: 6194101620b73af5e67900b8f89707a99de0b804
+  MBProgressHUD: e7baa36a220447d8aeb12769bf0585582f3866d9
+  MJExtension: 19bc33ce2eee2d319760f5622562cf581a6ff756
   ReactiveCocoa: e2db045570aa97c695e7aa97c2bcab222ae51f4a
 
-PODFILE CHECKSUM: 13d6c96f9fbb38a301df53707c82c10df6a41353
+PODFILE CHECKSUM: 306d343ef9006c5f93bcb289f162942441c95713
 
-COCOAPODS: 1.4.0
+COCOAPODS: 1.5.3
