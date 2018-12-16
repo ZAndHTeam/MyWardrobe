@@ -20,7 +20,7 @@
 #import "MWAlertView.h"
 #import "UIImage+ScaleSize.h"
 
-@interface MWNewClothesCell ()
+@interface MWNewClothesCell () <UITextFieldDelegate>
 
 // 背景图
 @property (nonatomic, strong) UIView *bgView;
@@ -192,7 +192,8 @@
     [self addMarginViewWithTitle:@"分类"];
     
     MWScrollTagView *tagScrollView = [[MWScrollTagView alloc] initWithTagArr:[MWDataManager dataManager].catogaryNameArr
-                                                                maxLeftWidth:SCREEN_SIZE_WIDTH - 77.f];
+                                                                maxLeftWidth:SCREEN_SIZE_WIDTH - 77.f
+                                                               withSelectStr:self.viewModel.signalClothesModel.catogaryName];
     
     tagScrollView.alertTitle = @"添加分类";
     tagScrollView.alertConfirmString = @"添加";
@@ -225,8 +226,8 @@
     [self addMarginViewWithTitle:@"季节"];
     
     MWScrollTagView *tagScrollView = [[MWScrollTagView alloc] initWithTagArr:@[@"四季", @"春", @"夏", @"秋", @"冬"]
-                                                                maxLeftWidth:SCREEN_SIZE_WIDTH - 77.f];
-    
+                                                                maxLeftWidth:SCREEN_SIZE_WIDTH - 77.f
+                                                               withSelectStr:self.viewModel.signalClothesModel.season];
     [tagScrollView configureLayoutWithBlock:^(YGLayout * _Nonnull layout) {
         layout.isEnabled = YES;
         layout.height = YGPointValue(26.f);
@@ -270,7 +271,8 @@
     [self addMarginViewWithTitle:@"品牌"];
     
     MWScrollTagView *tagScrollView = [[MWScrollTagView alloc] initWithTagArr:[MWDataManager dataManager].brandArr
-                                                                maxLeftWidth:SCREEN_SIZE_WIDTH - 77.f];
+                                                                maxLeftWidth:SCREEN_SIZE_WIDTH - 77.f
+                                                               withSelectStr:self.viewModel.signalClothesModel.brand];
     tagScrollView.alertTitle = @"添加分类";
     tagScrollView.alertConfirmString = @"添加";
     tagScrollView.alertCancelString = @"放弃";
@@ -300,7 +302,10 @@
 - (void)configPrice {
     [self addMarginViewWithTitle:@"价格"];
     UITextField *textFiled = [UITextField new];
+    textFiled.delegate = self;
+    textFiled.tag = 10;
     textFiled.placeholder = @"添加价格";
+    textFiled.text = self.viewModel.signalClothesModel.price;
     textFiled.font = [UIFont fontWithName:REGULAR_FONT size:17.f];
     [textFiled configureLayoutWithBlock:^(YGLayout * _Nonnull layout) {
         layout.isEnabled = YES;
@@ -317,6 +322,9 @@
     [self addMarginViewWithTitle:@"备注"];
     
     UITextField *textFiled = [UITextField new];
+    textFiled.delegate = self;
+    textFiled.tag = 11;
+    textFiled.text = self.viewModel.signalClothesModel.mark;
     textFiled.placeholder = @"添加备注";
     textFiled.font = [UIFont fontWithName:REGULAR_FONT size:17.f];
     [textFiled configureLayoutWithBlock:^(YGLayout * _Nonnull layout) {
@@ -327,6 +335,17 @@
     }];
     
     [self.bgView addSubview:textFiled];
+}
+
+- (void)textFieldDidEndEditing:(UITextField *)textField {
+    switch (textField.tag) {
+        case 10: {
+            [self.viewModel savePrice:textField.text];
+        } break;
+        case 11: {
+            [self.viewModel saveMark:textField.text];
+        } break;
+    }
 }
 
 #pragma mark - 高度计算

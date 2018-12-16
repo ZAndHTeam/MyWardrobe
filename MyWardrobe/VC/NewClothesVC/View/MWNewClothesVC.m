@@ -28,12 +28,22 @@
 
 @implementation MWNewClothesVC
 
+- (instancetype)initWithVM:(MWNewClothesVM *)vm {
+    self = [super init];
+    if (self) {
+        _viewModel = vm;
+    }
+    return self;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
     self.view.backgroundColor = [UIColor whiteColor];
     
-    self.viewModel = [[MWNewClothesVM alloc] initWithData:nil];
+    if (!self.viewModel) {
+        self.viewModel = [[MWNewClothesVM alloc] initWithData:nil];
+    }
     
     // navi
     [self layoutNavi];
@@ -52,7 +62,7 @@
                                                           if (self.viewModel.viewType == MWNewClothesVMType_New) {
                                                               [self dismissViewControllerAnimated:YES completion:nil];
                                                           } else {
-                                                              [self.navigationController popToRootViewControllerAnimated:YES];
+                                                              [self.navigationController popViewControllerAnimated:YES];
                                                           }
                                                           
                                                       }];
@@ -113,10 +123,15 @@
     } else {
         NSString *title = [self.viewModel saveClothes];
         @weakify(title);
-        [self dismissViewControllerAnimated:YES completion:^{
-            @strongify(title);
+        if (self.viewModel.viewType == MWNewClothesVMType_Edit) {
+            [self.navigationController popToRootViewControllerAnimated:YES];
             [MBProgressHUD showLoadingWithTitle:title];
-        }];
+        } else {
+            [self dismissViewControllerAnimated:YES completion:^{
+                @strongify(title);
+                [MBProgressHUD showLoadingWithTitle:title];
+            }];
+        }
     }
 }
 

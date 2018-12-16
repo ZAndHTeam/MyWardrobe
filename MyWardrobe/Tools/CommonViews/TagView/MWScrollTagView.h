@@ -25,9 +25,11 @@ typedef void(^TagChooseBlock)(NSString *tagName);
 @property (nonatomic, copy) NSString *alertConfirmString;
 @property (nonatomic, copy) NSString *alertCancelString;
 
+@property (nonatomic, copy) NSString *selectStr;
+
 @property (nonatomic, assign) BOOL haveAddButton;
 
-- (instancetype)initWithTagArr:(NSArray<NSString *> *)tagArr maxLeftWidth:(CGFloat)leftMaxWidth;
+- (instancetype)initWithTagArr:(NSArray<NSString *> *)tagArr maxLeftWidth:(CGFloat)leftMaxWidth withSelectStr:(NSString *)selectStr;
 
 - (instancetype)init NS_UNAVAILABLE;
 

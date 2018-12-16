@@ -91,7 +91,7 @@
     @weakify(self);
     cell.lookBlock = ^(NSArray *photoArr, NSInteger index) {
         @strongify(self);
-        MWPhotoVC *photoVC = [[MWPhotoVC alloc]initWithPhotos:photoArr withIndex:index];
+        MWPhotoVC *photoVC = [[MWPhotoVC alloc] initWithPhotos:photoArr withIndex:index];
         [self.navigationController pushViewController:photoVC animated:YES];
     };
     NSString *catogaryName = [self.viewModel.titleArr[indexPath.section] copy];
