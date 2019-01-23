@@ -227,7 +227,7 @@
     
     MWScrollTagView *tagScrollView = [[MWScrollTagView alloc] initWithTagArr:@[@"四季", @"春", @"夏", @"秋", @"冬"]
                                                                 maxLeftWidth:SCREEN_SIZE_WIDTH - 77.f
-                                                               withSelectStr:self.viewModel.signalClothesModel.season];
+                                                            withSelectStrArr:self.viewModel.signalClothesModel.seasonArr.copy];
     [tagScrollView configureLayoutWithBlock:^(YGLayout * _Nonnull layout) {
         layout.isEnabled = YES;
         layout.height = YGPointValue(26.f);
@@ -239,6 +239,11 @@
     tagScrollView.tagChooseBlock = ^(NSString *tagName) {
         @strongify(self);
         [self.viewModel saveSeason:tagName];
+    };
+    
+    tagScrollView.tagCancelChooseBlock = ^(NSString *tagName) {
+        @strongify(self);
+        [self.viewModel deleteSeason:tagName];
     };
     
     [tagScrollView setHaveAddButton:NO];

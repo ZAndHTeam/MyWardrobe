@@ -25,6 +25,8 @@ static NSString *lastItemidentity = @"lastItem";
 @property (nonatomic, strong) MWEqualSpaceFlowLayout *layout;
 @property (nonatomic, strong) UIButton *addButton;
 @property (nonatomic, assign) BOOL canEdit;
+/** 外部传来的size */
+@property (nonatomic, assign) CGSize outSize;
 
 @property (nonatomic, copy) NSString *bgImageName;
 
@@ -32,15 +34,34 @@ static NSString *lastItemidentity = @"lastItem";
 
 @implementation MWDragTagView
 
+- (void)reloadDataWithTagNameArr:(NSArray *)tagNameArr {
+    self.tagNameArr = [tagNameArr mutableCopy];
+    [self reloadCollectionView];
+}
+
 - (instancetype)initWithFrame:(CGRect)frame imageName:(NSString *)imageName edit:(BOOL)canEdit tagNameArr:(NSArray *)tagNameArr {
     self = [super initWithFrame:frame];
     if (self) {
         _reloadSubject = [RACSubject subject];
         _bgImageName = imageName.copy;
         _canEdit = canEdit;
-        _tagNameArr = [tagNameArr mutableCopy];321`1    
+        _tagNameArr = [tagNameArr mutableCopy];
+        _outSize = frame.size;
+        [self configUI];
+    }
+    return self;
+}
+
+- (void)configUI {
+    self.layout = [[MWEqualSpaceFlowLayout alloc] init];
+    self.layout.delegate = self;
+    // 设置滚动方向（默认垂直滚动）
+    self.layout.scrollDirection = UICollectionViewScrollDirectionVertical;
+    
+    UICollectionView *collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, 0, self.outSize.width, 20) collectionViewLayout:self.layout];
     self.collectionView = collectionView;
     [self addSubview:collectionView];
+    collectionView.backgroundColor = [UIColor whiteColor];
     collectionView.delegate = self;
     collectionView.dataSource = self;
     [collectionView registerClass:[MWDragTagCell class] forCellWithReuseIdentifier:identity];
@@ -150,12 +171,22 @@ static NSString *lastItemidentity = @"lastItem";
     } else {
         MWDragTagCell *cell = (MWDragTagCell *)[collectionView dequeueReusableCellWithReuseIdentifier:identity
                                                                                          forIndexPath:indexPath];
-        
+        cell.tagTextColor = self.tagTextColor;
         cell.imageName = self.bgImageName;
         cell.tagName = self.tagNameArr[indexPath.row];
         
         return cell;
     }
+}
+
+- (void)collectionView:(UICollectionView *)collectionView willDisplayCell:(UICollectionViewCell *)cell forItemAtIndexPath:(NSIndexPath *)indexPath {
+    @weakify(self);
+    dispatch_async(dispatch_get_main_queue(), ^{
+        @strongify(self);
+        self.mw_height = self.layout.collectionViewContentSize.height;
+        self.collectionView.mw_height = self.mw_height;
+        [self.reloadSubject sendNext:@(self.layout.collectionViewContentSize.height)];
+    });
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
@@ -208,16 +239,6 @@ static NSString *lastItemidentity = @"lastItem";
 
 - (void)stopShake:(UICollectionViewCell *)cell{
     [cell.layer removeAnimationForKey:@"cellShake"];
-}
-
-#pragma mark - add
-- (void)addTagWithName:(NSString *)name {
-    if (!name) {
-        return;
-    }
-    [self.tagNameArr addObject:name];
-    
-    [self.collectionView reloadData];
 }
 
 //根据高度度求宽度  text 计算的内容  Height 计算的高度 font字体大小

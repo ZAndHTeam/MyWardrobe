@@ -15,7 +15,7 @@
 /** 分类名称（未分类，上衣等 */
 @property (nonatomic, copy) NSString *catogaryName;
 /** 季节 */
-@property (nonatomic, copy) NSString *season;
+@property (nonatomic, strong) NSMutableArray<NSString *> *seasonArr;
 /** 图片 */
 @property (nonatomic, copy) NSArray <NSData *>*imageDataArr;
 /** 颜色（十六进制字符） */

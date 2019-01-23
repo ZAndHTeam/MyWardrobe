@@ -56,5 +56,8 @@
     self.titleLabel.text = tagName;
 }
 
+- (void)setTagTextColor:(UIColor *)tagTextColor {
+    self.titleLabel.textColor = tagTextColor;
+}
 
 @end

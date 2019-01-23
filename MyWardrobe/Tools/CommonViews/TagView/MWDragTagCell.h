@@ -14,4 +14,6 @@
 
 @property (nonatomic, copy) NSString *tagName;
 
+@property (nonatomic, strong) UIColor *tagTextColor;
+
 @end

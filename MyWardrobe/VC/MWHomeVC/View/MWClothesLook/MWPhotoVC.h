@@ -13,6 +13,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface MWPhotoVC : UIViewController
 
 - (instancetype)initWithPhotos:(NSArray *)photos withIndex:(NSInteger)index;
+
 @end
 
 NS_ASSUME_NONNULL_END

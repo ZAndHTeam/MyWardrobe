@@ -32,6 +32,7 @@
         } else if (!data) {
             self.viewType = MWNewClothesVMType_New;
             _signalClothesModel = [MWSignalClothesModel new];
+            _signalClothesModel.seasonArr = [NSMutableArray array];
         } else {
             NSAssert([data isKindOfClass:[MWSignalClothesModel class]], @"data需为单品模型");
         }
@@ -68,7 +69,17 @@
 }
 
 - (void)saveSeason:(NSString *)season {
-    self.signalClothesModel.season = season.copy;
+    if (season.length == 0) {
+        return;
+    }
+    [self.signalClothesModel.seasonArr addObject:season];
+}
+
+- (void)deleteSeason:(NSString *)season {
+    if (season.length == 0) {
+        return;
+    }
+    [self.signalClothesModel.seasonArr removeObject:season];
 }
 
 - (void)saveColor:(NSString *)colorName {

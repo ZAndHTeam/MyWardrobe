@@ -12,7 +12,7 @@
 #import "UIView+Yoga.h"
 #import "MWAlertView.h"
 
-static NSInteger const kScrollTagViewBeginNumner = 100;
+static NSInteger const kScrollTagViewBeginNumner = 1000;
 
 @interface MWScrollTagView ()
 
@@ -26,11 +26,17 @@ static NSInteger const kScrollTagViewBeginNumner = 100;
 @property (nonatomic, assign) NSInteger recordScrollTagViewNumber;
 @property (nonatomic, assign) NSInteger frontClickIdx;
 
+// 多选
+@property (nonatomic, assign) BOOL canChooseMore;
+
 @end
 
 @implementation MWScrollTagView
 
-- (instancetype)initWithTagArr:(NSArray<NSString *> *)tagArr maxLeftWidth:(CGFloat)leftMaxWidth withSelectStr:(NSString *)selectStr {
+// 单选
+- (instancetype)initWithTagArr:(NSArray<NSString *> *)tagArr
+                  maxLeftWidth:(CGFloat)leftMaxWidth
+                 withSelectStr:(NSString *)selectStr {
     self = [super init];
     if (self) {
         self.tagArr = [NSMutableArray arrayWithArray:tagArr];
@@ -38,6 +44,22 @@ static NSInteger const kScrollTagViewBeginNumner = 100;
         self.frontClickIdx = -1;
         self.selectStr = [selectStr copy];
         self.recordScrollTagViewNumber = kScrollTagViewBeginNumner;
+        [self configTagUI];
+    }
+    return self;
+}
+
+// 多选
+- (instancetype)initWithTagArr:(NSArray<NSString *> *)tagArr
+                  maxLeftWidth:(CGFloat)leftMaxWidth
+              withSelectStrArr:(NSArray *)selectStrArr {
+    self = [super init];
+    if (self) {
+        self.tagArr = [NSMutableArray arrayWithArray:tagArr];
+        self.leftMaxWidth = leftMaxWidth;
+        self.recordScrollTagViewNumber = kScrollTagViewBeginNumner;
+        self.selectedStrArr = [selectStrArr mutableCopy];
+        self.canChooseMore = YES;
         [self configTagUI];
     }
     return self;
@@ -75,8 +97,9 @@ static NSInteger const kScrollTagViewBeginNumner = 100;
     if (self.tagArr.count > 0) {
         [self.tagArr enumerateObjectsUsingBlock:^(NSString * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
             @strongify(self);
-            if ([obj isEqualToString:self.selectStr]) {
-                self.frontClickIdx = idx;
+            if (!self.canChooseMore
+                && [obj isEqualToString:self.selectStr]) {
+                self.frontClickIdx = idx + 1000;
             }
             [self.scrollContentView addSubview:[self createLabelWithText:obj]];
         }];
@@ -163,11 +186,20 @@ static NSInteger const kScrollTagViewBeginNumner = 100;
         UIImageView *imageView = [UIImageView new];
         imageView.tag = self.recordScrollTagViewNumber ++;
         imageView.userInteractionEnabled = YES;
-        if ([self.selectStr isEqualToString:text]) {
-            imageView.image = [self generateImageWithName:@"tag_highlighted"];
+        if (self.canChooseMore) {
+            if ([self.selectedStrArr containsObject:text]) {
+                imageView.image = [self generateImageWithName:@"tag_highlighted"];
+            } else {
+                imageView.image = [self generateImageWithName:@"tag_normal"];
+            }
         } else {
-            imageView.image = [self generateImageWithName:@"tag_normal"];
+            if ([self.selectStr isEqualToString:text]) {
+                imageView.image = [self generateImageWithName:@"tag_highlighted"];
+            } else {
+                imageView.image = [self generateImageWithName:@"tag_normal"];
+            }
         }
+        
         [imageView configureLayoutWithBlock:^(YGLayout * _Nonnull layout) {
             layout.isEnabled = YES;
             layout.flexDirection = YGFlexDirectionRow;
@@ -188,8 +220,14 @@ static NSInteger const kScrollTagViewBeginNumner = 100;
     UILabel *label = [UILabel new];
     label.userInteractionEnabled = YES;
     label.text = text;
-    if ([self.selectStr isEqualToString:text]) {
-        label.textColor = [UIColor whiteColor];
+    if (self.canChooseMore) {
+        if ([self.selectedStrArr containsObject:text]) {
+            label.textColor = [UIColor whiteColor];
+        }
+    } else {
+        if ([self.selectStr isEqualToString:text]) {
+            label.textColor = [UIColor whiteColor];
+        }
     }
     label.font = [UIFont fontWithName:REGULAR_FONT size:17.f];
     [label configureLayoutWithBlock:^(YGLayout * _Nonnull layout) {
@@ -244,32 +282,68 @@ static NSInteger const kScrollTagViewBeginNumner = 100;
     UIImageView *targetView = (UIImageView *)tap.view;
     NSString *catogaryName = self.tagArr[targetView.tag - kScrollTagViewBeginNumner];
     
-    UIImageView *frontView = (UIImageView *)[self viewWithTag:self.frontClickIdx];
-    frontView.image = [self generateImageWithName:@"tag_normal"];
-    [frontView.subviews enumerateObjectsUsingBlock:^(__kindof UIView * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-        if ([obj isKindOfClass:[UILabel class]]) {
-            UILabel *label = (UILabel *)obj;
-            label.textColor = [UIColor blackColor];
+    if (self.canChooseMore) {
+        if (![self.selectedStrArr containsObject:@(targetView.tag)]) {
+            // 选择标签
+            targetView.image = [self generateImageWithName:@"tag_highlighted"];
+            [targetView.subviews enumerateObjectsUsingBlock:^(__kindof UIView * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+                if ([obj isKindOfClass:[UILabel class]]) {
+                    UILabel *label = (UILabel *)obj;
+                    label.textColor = [UIColor whiteColor];
+                }
+            }];
+            
+            [self.selectedStrArr addObject:@(targetView.tag)];
+            
+            if (self.tagChooseBlock) {
+                self.tagChooseBlock(catogaryName);
+            }
+        } else {
+            // 取消标签选择
+            targetView.image = [self generateImageWithName:@"tag_normal"];
+            [targetView.subviews enumerateObjectsUsingBlock:^(__kindof UIView * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+                if ([obj isKindOfClass:[UILabel class]]) {
+                    UILabel *label = (UILabel *)obj;
+                    label.textColor = [UIColor blackColor];
+                }
+            }];
+            
+            [self.selectedStrArr removeObject:@(targetView.tag)];
+            
+            if (self.tagCancelChooseBlock) {
+                self.tagCancelChooseBlock(catogaryName);
+            }
         }
-    }];
-    
-    if (self.frontClickIdx == targetView.tag) {
-        self.frontClickIdx = -1;
-        catogaryName = nil;
+        
     } else {
-        targetView.image = [self generateImageWithName:@"tag_highlighted"];
-        [targetView.subviews enumerateObjectsUsingBlock:^(__kindof UIView * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        UIImageView *frontView = (UIImageView *)[self viewWithTag:self.frontClickIdx];
+        frontView.image = [self generateImageWithName:@"tag_normal"];
+        [frontView.subviews enumerateObjectsUsingBlock:^(__kindof UIView * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
             if ([obj isKindOfClass:[UILabel class]]) {
                 UILabel *label = (UILabel *)obj;
-                label.textColor = [UIColor whiteColor];
+                label.textColor = [UIColor blackColor];
             }
         }];
-        self.frontClickIdx = targetView.tag;
+        
+        if (self.frontClickIdx == targetView.tag) {
+            self.frontClickIdx = -1;
+            catogaryName = nil;
+        } else {
+            targetView.image = [self generateImageWithName:@"tag_highlighted"];
+            [targetView.subviews enumerateObjectsUsingBlock:^(__kindof UIView * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+                if ([obj isKindOfClass:[UILabel class]]) {
+                    UILabel *label = (UILabel *)obj;
+                    label.textColor = [UIColor whiteColor];
+                }
+            }];
+            self.frontClickIdx = targetView.tag;
+        }
+        
+        if (self.tagChooseBlock) {
+            self.tagChooseBlock(catogaryName);
+        }
     }
     
-    if (self.tagChooseBlock) {
-        self.tagChooseBlock(catogaryName);
-    }
 }
 
 @end

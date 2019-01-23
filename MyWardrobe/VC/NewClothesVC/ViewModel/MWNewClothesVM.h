@@ -34,6 +34,7 @@ typedef NS_ENUM(NSUInteger, MWNewClothesVMType) {
 - (void)saveCatogaryName:(NSString *)catogaryName;
 
 - (void)saveSeason:(NSString *)season;
+- (void)deleteSeason:(NSString *)season;
 
 - (void)saveColor:(NSString *)colorName;
 
