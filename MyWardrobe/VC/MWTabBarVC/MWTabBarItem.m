@@ -9,6 +9,7 @@
 #import "UIView+Yoga.h"
 #import "MWTabBarButton.h"
 #import "ReactiveCocoa.h"
+#import "UIButton+ExpandHitTest.h"
 
 @interface MWTabBarItem ()
 
@@ -71,6 +72,7 @@
 - (void)setImageTypeWithImage:(UIImage *)image
                 selectedImage:(UIImage *)selectedImage {
     self.barButton = [MWTabBarButton buttonWithType:UIButtonTypeCustom];
+    self.barButton.hitEdgeInsets = UIEdgeInsetsMake(0, -20.f, 0, -20.f);
     [self.barButton setImage:image forState:UIControlStateNormal];
     [self.barButton setImage:selectedImage forState:UIControlStateSelected];
     self.barButton.frame = (CGRect){CGPointZero, self.barButton.currentImage.size};

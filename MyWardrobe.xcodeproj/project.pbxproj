@@ -17,6 +17,7 @@
 		7B755B6521C519B200975D04 /* UITextView+MWPlaceholder.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B755B6421C519B200975D04 /* UITextView+MWPlaceholder.m */; };
 		7B755B6C21C5679500975D04 /* MWPhotoVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B755B6A21C5679500975D04 /* MWPhotoVC.m */; };
 		7B755B6F21C5681900975D04 /* MWClothesPhotoCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B755B6E21C5681900975D04 /* MWClothesPhotoCollectionViewCell.m */; };
+		7BC078E321F974A900A4E516 /* UIButton+ExpandHitTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BC078E221F974A900A4E516 /* UIButton+ExpandHitTest.m */; };
 		D5486F164E5FB5F7650916AC /* Pods_MyWardrobeTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C91D797BCF81B5D464C2A51C /* Pods_MyWardrobeTests.framework */; };
 		F4015D9421C27E5B00AC6C58 /* MWDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F4015D9321C27E5B00AC6C58 /* MWDataManager.m */; };
 		F4015D9821C27E9900AC6C58 /* MWClothesCatogaryModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F4015D9721C27E9900AC6C58 /* MWClothesCatogaryModel.m */; };
@@ -96,6 +97,8 @@
 		7B755B6B21C5679500975D04 /* MWPhotoVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MWPhotoVC.h; sourceTree = "<group>"; };
 		7B755B6D21C5681900975D04 /* MWClothesPhotoCollectionViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MWClothesPhotoCollectionViewCell.h; sourceTree = "<group>"; };
 		7B755B6E21C5681900975D04 /* MWClothesPhotoCollectionViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MWClothesPhotoCollectionViewCell.m; sourceTree = "<group>"; };
+		7BC078E121F974A900A4E516 /* UIButton+ExpandHitTest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIButton+ExpandHitTest.h"; sourceTree = "<group>"; };
+		7BC078E221F974A900A4E516 /* UIButton+ExpandHitTest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIButton+ExpandHitTest.m"; sourceTree = "<group>"; };
 		8C0715FD2EC151B6F206F0F3 /* Pods-MyWardrobeTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyWardrobeTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-MyWardrobeTests/Pods-MyWardrobeTests.release.xcconfig"; sourceTree = "<group>"; };
 		97B6E8C78CA9C45974F61223 /* Pods_MyWardrobe.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MyWardrobe.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C91D797BCF81B5D464C2A51C /* Pods_MyWardrobeTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MyWardrobeTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -420,6 +423,8 @@
 				F41D156321C5181600F62B0F /* UIImage+ScaleSize.m */,
 				7B755B6321C519B200975D04 /* UITextView+MWPlaceholder.h */,
 				7B755B6421C519B200975D04 /* UITextView+MWPlaceholder.m */,
+				7BC078E121F974A900A4E516 /* UIButton+ExpandHitTest.h */,
+				7BC078E221F974A900A4E516 /* UIButton+ExpandHitTest.m */,
 			);
 			path = UITools;
 			sourceTree = "<group>";
@@ -891,6 +896,7 @@
 				F41D157C21C548C900F62B0F /* MWDragTagView.m in Sources */,
 				F455445D21BE9DDD000A37E5 /* AppDelegate.m in Sources */,
 				F4015D9421C27E5B00AC6C58 /* MWDataManager.m in Sources */,
+				7BC078E321F974A900A4E516 /* UIButton+ExpandHitTest.m in Sources */,
 				7B755B6521C519B200975D04 /* UITextView+MWPlaceholder.m in Sources */,
 				F41D157621C5443600F62B0F /* MWChooseClothesVC.m in Sources */,
 				7B755B5C21C4ABD500975D04 /* MWHomeCollectionViewCell.m in Sources */,
@@ -1096,7 +1102,10 @@
 				GCC_PREFIX_HEADER = "$(SRCROOT)/MyWardrobe/Tools/MWHeader.pch";
 				INFOPLIST_FILE = MyWardrobe/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.simon.MyWardrobe;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = 1;
@@ -1114,7 +1123,10 @@
 				GCC_PREFIX_HEADER = "$(SRCROOT)/MyWardrobe/Tools/MWHeader.pch";
 				INFOPLIST_FILE = MyWardrobe/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.simon.MyWardrobe;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = 1;
@@ -1128,7 +1140,11 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = MyWardrobeTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.simon.MyWardrobeTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1143,7 +1159,11 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = MyWardrobeTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.simon.MyWardrobeTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1157,7 +1177,11 @@
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = MyWardrobeUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.simon.MyWardrobeUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1171,7 +1195,11 @@
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = MyWardrobeUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.simon.MyWardrobeUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
