@@ -8,17 +8,31 @@
 
 #import "MWSettingVC.h"
 
+#pragma mark - views
+#import "MWDragTagView.h"
+
 #pragma mark - utils
 #import "UITextView+MWPlaceholder.h"
 #import "MBProgressHUD+SimpleLoad.h"
 #import "MWDataManager.h"
 
+static NSString * const kSettingCatogary = @"setting_catogary";
+static NSString * const kSettingBrand = @"setting_brand";
+
 @interface MWSettingVC ()<UITableViewDelegate,UITableViewDataSource,UITextViewDelegate>
 
-@property (nonatomic,strong) UILabel *headerLabel; //设置二字
-@property (nonatomic,strong) UITableView *tableView; //主view
-@property (nonatomic,strong) NSArray *dataArray;//数据源
-@property (nonatomic,strong) UIButton *postBtn;//发送button
+// 设置二字
+@property (nonatomic,strong) UILabel *headerLabel;
+// 主view
+@property (nonatomic,strong) UITableView *tableView;
+// 数据源
+@property (nonatomic,strong) NSMutableArray *dataArray;
+// 发送button
+@property (nonatomic,strong) UIButton *postBtn;
+// 分类展开高度
+@property (nonatomic, assign) CGFloat catogaryHeight;
+// 品牌展开高度
+@property (nonatomic, assign) CGFloat brandHeight;
 
 @end
 
@@ -27,7 +41,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor whiteColor];
-    self.dataArray = @[@[@"分类",@"品牌"],@[@"数量",@"价格"]];
+    self.dataArray = [NSMutableArray arrayWithObjects:[NSMutableArray arrayWithObjects:@"分类", @"品牌", nil],
+                      [NSMutableArray arrayWithObjects:@"分类", @"品牌", nil],
+                      nil];
     [self crateHeaderView];//设置
     //创建tableView
     [self createTableView];
@@ -37,15 +53,17 @@
 #pragma mark -- 创建UI
 - (void)createTableView {
     [self.view addSubview:self.tableView];
-    UIView *footView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_SIZE_WIDTH, 194)];
+    UIView *footView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_SIZE_WIDTH, 194)];
+    
     //反馈label
-    UILabel *feedBackLabel = [[UILabel alloc]initWithFrame:CGRectMake(15, 0, SCREEN_SIZE_WIDTH, 20)];
+    UILabel *feedBackLabel = [[UILabel alloc] initWithFrame:CGRectMake(15, 0, SCREEN_SIZE_WIDTH, 20)];
     feedBackLabel.text = @"反馈";
     feedBackLabel.textColor = [[UIColor colorWithHexString:@"#333333"] colorWithAlphaComponent:0.4];
     feedBackLabel.font = [UIFont fontWithName:LIGHT_FONT size:14];
     [footView addSubview:feedBackLabel];
+    
     //textView
-    UITextView *feedBackView = [[UITextView alloc]initWithFrame:CGRectMake(15, CGRectGetMaxY(feedBackLabel.frame) + 20, SCREEN_SIZE_WIDTH - 30, 100)];
+    UITextView *feedBackView = [[UITextView alloc] initWithFrame:CGRectMake(15, CGRectGetMaxY(feedBackLabel.frame) + 20, SCREEN_SIZE_WIDTH - 30, 100)];
     feedBackView.font = [UIFont systemFontOfSize:17];
     feedBackView.delegate = self;
     [feedBackView setPlaceholder:@"想要私人定制APP？快来点击输入意见建议" placeholdColor:[[UIColor colorWithHexString:@"#333333"] colorWithAlphaComponent:0.4]];
@@ -89,7 +107,7 @@
 }
 
 - (void)crateHeaderView {
-    self.headerLabel = [[UILabel alloc]initWithFrame:CGRectMake(15, NAV_BAR_HEIGHT - 24.f, 82, 28)];
+    self.headerLabel = [[UILabel alloc] initWithFrame:CGRectMake(15, NAV_BAR_HEIGHT - 24.f, 82, 28)];
     [self.view addSubview:self.headerLabel];
     self.headerLabel.textColor = [UIColor colorWithHexString:@"#333333"];
     self.headerLabel.font = [UIFont fontWithName:MEDIUM_FONT size:20];
@@ -109,33 +127,84 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"UITableViewCell"];
     if (!cell) {
-        cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"UITableViewCell"];
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1
+                                      reuseIdentifier:@"UITableViewCell"];
+    } else {
+        [cell.subviews enumerateObjectsUsingBlock:^(__kindof UIView * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+            if ([obj isKindOfClass:[MWDragTagView class]]) [obj removeFromSuperview];
+        }];
     }
+    
     NSArray *array = self.dataArray[indexPath.section];
+    
+    if ([array[indexPath.row] isEqualToString:kSettingCatogary]) {
+        MWDragTagView *tagView = [[MWDragTagView alloc] initWithFrame:CGRectMake(15.f, 5.f, SCREEN_SIZE_WIDTH - 30.f, 24.f)
+                                                            imageName:@"tag_highlighted"
+                                                                 edit:YES
+                                                           tagNameArr:[MWDataManager dataManager].catogaryNameArr];
+        tagView.tagTextColor = [UIColor whiteColor];
+        @weakify(self, tagView);
+        [tagView.reloadSubject
+         subscribeNext:^(NSNumber *height) {
+             @strongify(self, tagView);
+             tagView.mw_height = [height integerValue];
+             self.catogaryHeight = tagView.mw_height + 5;
+             
+             [self.tableView beginUpdates];
+             [self.tableView endUpdates];
+         }];
+        
+        [cell addSubview:tagView];
+        
+        return cell;
+    } else if ([array[indexPath.row] isEqualToString:kSettingBrand]) {
+        MWDragTagView *tagView = [[MWDragTagView alloc] initWithFrame:CGRectMake(15.f, 5.f, SCREEN_SIZE_WIDTH - 30.f, 24.f)
+                                                            imageName:@"tag_highlighted"
+                                                                 edit:YES
+                                                           tagNameArr:[MWDataManager dataManager].brandArr];
+        tagView.tagTextColor = [UIColor whiteColor];
+        @weakify(self, tagView);
+        [tagView.reloadSubject
+         subscribeNext:^(NSNumber *height) {
+             @strongify(self, tagView);
+             tagView.mw_height = [height integerValue];
+             self.brandHeight = tagView.mw_height + 5;
+             
+             [self.tableView beginUpdates];
+             [self.tableView endUpdates];
+         }];
+        
+        [cell addSubview:tagView];
+        
+        return cell;
+    }
+    
     cell.textLabel.text = [NSString stringWithFormat:@"%@",array[indexPath.row]];
     cell.textLabel.font = [UIFont fontWithName:MEDIUM_FONT size:17];
     cell.detailTextLabel.font = [UIFont fontWithName:LIGHT_FONT size:14];
     cell.detailTextLabel.textColor = [[UIColor colorWithHexString:@"#333333"] colorWithAlphaComponent:0.4];
+    
     if (indexPath.section == 0) {
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
         cell.detailTextLabel.text = @"";
-    }else {
+    } else {
         cell.accessoryType = UITableViewCellAccessoryNone;
         if (indexPath.row == 0) {
             // 数量
-            cell.detailTextLabel.text = [NSString stringWithFormat:@"共计 %ld 件", [MWDataManager dataManager].returnAllClothesNumber];
+            cell.detailTextLabel.text = [NSString stringWithFormat:@"共计 %ld 件", (long)[MWDataManager dataManager].returnAllClothesNumber];
         }else {
             // 价钱
             cell.detailTextLabel.text = [NSString stringWithFormat:@"共计 %@ 元", [MWDataManager dataManager].returnTotalPrice];
         }
     }
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    
     return cell;
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
     UIView *view = [UIView new];
-    UILabel *headerLabel = [[UILabel alloc]initWithFrame:CGRectMake(15, 18, SCREEN_SIZE_WIDTH - 30, 24)];
+    UILabel *headerLabel = [[UILabel alloc] initWithFrame:CGRectMake(15, 18, SCREEN_SIZE_WIDTH - 30, 24)];
     headerLabel.backgroundColor = [UIColor whiteColor];
     if (section == 0) {
         headerLabel.text = @"管理标签";
@@ -157,13 +226,68 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    NSMutableArray *array = self.dataArray[indexPath.section];
+    
+    if ([array[indexPath.row] isEqualToString:kSettingCatogary]) {
+        return self.catogaryHeight;
+    } else if ([array[indexPath.row] isEqualToString:kSettingBrand]) {
+        return self.brandHeight;
+    }
+    
     return 44;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    NSMutableArray *array = self.dataArray[indexPath.section];
+    
+    if (indexPath.section == 0) {
+        if (indexPath.row == 0) {
+            // catory
+            [array containsObject:kSettingCatogary] ? [array removeObject:kSettingCatogary] : [array insertObject:kSettingCatogary atIndex:1];
+            
+            [self.dataArray replaceObjectAtIndex:0 withObject:array];
+            
+            if ([array containsObject:kSettingCatogary]) {
+                [self.tableView insertRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:1 inSection:0]] withRowAnimation:NO];
+            } else {
+                [self.tableView deleteRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:1 inSection:0]] withRowAnimation:NO];
+            }
+        } else {
+            // brand
+            if ([array containsObject:kSettingCatogary]) {
+                if (indexPath.row == 2) {
+                    [array containsObject:kSettingBrand] ? [array removeObject:kSettingBrand] : [array insertObject:kSettingBrand atIndex:3];
+                    [self.dataArray replaceObjectAtIndex:0 withObject:array];
+                    
+                    if ([array containsObject:kSettingBrand]) {
+                        [self.tableView insertRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:3 inSection:0]] withRowAnimation:NO];
+                    } else {
+                        [self.tableView deleteRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:3 inSection:0]] withRowAnimation:NO];
+                    }
+                }
+            } else {
+                if (indexPath.row == 1) {
+                    [array containsObject:kSettingBrand] ? [array removeObject:kSettingBrand] : [array insertObject:kSettingBrand atIndex:2];
+                    [self.dataArray replaceObjectAtIndex:0 withObject:array];
+                    
+                    if ([array containsObject:kSettingBrand]) {
+                        [self.tableView insertRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:2 inSection:0]] withRowAnimation:YES];
+                    } else {
+                        [self.tableView deleteRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:2 inSection:0]] withRowAnimation:YES];
+                    }
+                }
+            }
+        }
+        
+        [self.tableView beginUpdates];
+        [self.tableView endUpdates];
+    }
 }
 
 #pragma mark -- 懒加载
 - (UITableView *)tableView {
     if (!_tableView) {
-        _tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, CGRectGetMaxY(self.headerLabel.frame), SCREEN_SIZE_WIDTH, SCREEN_SIZE_HEIGHT) style:UITableViewStyleGrouped];
+        _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(self.headerLabel.frame), SCREEN_SIZE_WIDTH, SCREEN_SIZE_HEIGHT) style:UITableViewStyleGrouped];
         _tableView.delegate = self;
         _tableView.dataSource = self;
         _tableView.sectionFooterHeight = 2;

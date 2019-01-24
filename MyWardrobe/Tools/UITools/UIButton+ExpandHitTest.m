@@ -28,7 +28,7 @@ static const char * kHitEdgeInsets = "hitEdgeInsets";
 }
 
 -(BOOL)pointInside:(CGPoint)point withEvent:(UIEvent *)event{
-    //如果 button 边界值无变化  失效 隐藏 或者透明 直接返回
+    //如果失效 隐藏 或者透明 直接返回
     if(!self.enabled || self.hidden || self.alpha == 0 ) {
         return [super pointInside:point withEvent:event];
     }else{
