@@ -127,6 +127,7 @@ static NSString * const kSettingBrand = @"setting_brand";
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     MWExpandCell *cell = [tableView dequeueReusableCellWithIdentifier:@"UITableViewCell"];
+    
     if (!cell) {
         cell = [[MWExpandCell alloc] initWithStyle:UITableViewCellStyleValue1
                                    reuseIdentifier:@"UITableViewCell"];
@@ -155,7 +156,19 @@ static NSString * const kSettingBrand = @"setting_brand";
              [self.tableView endUpdates];
          }];
         
+        tagView.addBlock = ^(NSString *tagName) {
+            [[MWDataManager dataManager] addNewCatory:tagName];
+        };
+        tagView.updateBlock = ^(NSString *oldTagName, NSString *newTagName) {
+            [[MWDataManager dataManager] updateOldCatory:oldTagName toNewCatory:newTagName];
+        };
+        tagView.deleteBlock = ^(NSString *tagName) {
+            [[MWDataManager dataManager] removeCatogary:tagName];
+        };
+        
         [cell addSubview:tagView];
+        
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
         
         return cell;
     } else if ([array[indexPath.row] isEqualToString:kSettingBrand]) {
@@ -175,7 +188,19 @@ static NSString * const kSettingBrand = @"setting_brand";
              [self.tableView endUpdates];
          }];
         
+        tagView.addBlock = ^(NSString *tagName) {
+            [[MWDataManager dataManager] addNewBrand:tagName];
+        };
+        tagView.updateBlock = ^(NSString *oldTagName, NSString *newTagName) {
+            [[MWDataManager dataManager] updateOldBrand:oldTagName toNewBrand:newTagName];
+        };
+        tagView.deleteBlock = ^(NSString *tagName) {
+            [[MWDataManager dataManager] removeBrand:tagName];
+        };
+        
         [cell addSubview:tagView];
+        
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
         
         return cell;
     }
@@ -198,6 +223,7 @@ static NSString * const kSettingBrand = @"setting_brand";
             cell.detailTextLabel.text = [NSString stringWithFormat:@"共计 %@ 元", [MWDataManager dataManager].returnTotalPrice];
         }
     }
+    
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     
     return cell;

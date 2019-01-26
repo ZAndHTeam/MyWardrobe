@@ -14,6 +14,7 @@
 #pragma mark - views
 #import "MWDragTagCell.h"
 #import "MWAlertView.h"
+#import "MBProgressHUD+SimpleLoad.h"
 
 static NSString *identity = @"identity";
 static NSString *lastItemidentity = @"lastItem";
@@ -143,6 +144,12 @@ static NSString *lastItemidentity = @"lastItem";
         UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:lastItemidentity
                                                                                forIndexPath:indexPath];
         
+        [cell.subviews enumerateObjectsUsingBlock:^(__kindof UIView * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+            if ([obj isKindOfClass:[UIButton class]]) {
+                [obj removeFromSuperview];
+            }
+        }];
+        
         self.addButton = [UIButton buttonWithType:UIButtonTypeCustom];
         self.addButton.frame = CGRectMake(0, 0, 40, 26.f);
         self.addButton.layer.borderWidth = 0.5;
@@ -161,8 +168,17 @@ static NSString *lastItemidentity = @"lastItem";
                                      confirBlock:^(NSString *inputString) {
                                          @strongify(self);
                                          if (inputString.length > 0) {
+                                             if ([self.tagNameArr containsObject:inputString]) {
+                                                 [MBProgressHUD showLoadingWithTitle:@"标签已存在"];
+                                                 return;
+                                             }
+                                             
                                              [self.tagNameArr addObject:inputString];
                                              [self reloadCollectionView];
+                                             
+                                             if (self.addBlock) {
+                                                 self.addBlock(inputString);
+                                             }
                                          }
                                      } cancelBlock:^{}] showAlert];
          }];
@@ -172,21 +188,22 @@ static NSString *lastItemidentity = @"lastItem";
         MWDragTagCell *cell = (MWDragTagCell *)[collectionView dequeueReusableCellWithReuseIdentifier:identity
                                                                                          forIndexPath:indexPath];
         cell.tagTextColor = self.tagTextColor;
-        cell.imageName = self.bgImageName;
-        cell.tagName = self.tagNameArr[indexPath.row];
+        
+        CGFloat cellWidth = [self getWidthWithText:self.tagNameArr[indexPath.row]
+                                           height:24.f
+                                             font:[UIFont fontWithName:REGULAR_FONT size:17.f]] + 25;
+        
+        [cell setTagName:self.tagNameArr[indexPath.row] cellWidth:cellWidth];
+        [cell setImageName:self.bgImageName cellWidth:cellWidth];
         
         return cell;
     }
 }
 
 - (void)collectionView:(UICollectionView *)collectionView willDisplayCell:(UICollectionViewCell *)cell forItemAtIndexPath:(NSIndexPath *)indexPath {
-    @weakify(self);
-    dispatch_async(dispatch_get_main_queue(), ^{
-        @strongify(self);
-        self.mw_height = self.layout.collectionViewContentSize.height;
-        self.collectionView.mw_height = self.mw_height;
-        [self.reloadSubject sendNext:@(self.layout.collectionViewContentSize.height)];
-    });
+    self.mw_height = self.layout.collectionViewContentSize.height;
+    self.collectionView.mw_height = self.mw_height;
+    [self.reloadSubject sendNext:@(self.layout.collectionViewContentSize.height)];
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
@@ -200,15 +217,38 @@ static NSString *lastItemidentity = @"lastItem";
                           confirmString:@"更新"
                            cancelString:@"删除"
                             confirBlock:^(NSString *inputString) {
-                                @strongify(self);
+                                @strongify(self, tagName);
                                 if (inputString.length > 0) {
+                                    if ([tagName isEqualToString:@"未分类"]) {
+                                        [MBProgressHUD showLoadingWithTitle:@"该标签不能更改哦~"];
+                                        return;
+                                    }
+                                    
+                                    if ([self.tagNameArr containsObject:inputString]) {
+                                        [MBProgressHUD showLoadingWithTitle:@"标签已存在"];
+                                        return;
+                                    }
+                                    
                                     [self.tagNameArr replaceObjectAtIndex:indexPath.row withObject:inputString];
                                     [self reloadCollectionView];
+                                    
+                                    if (self.updateBlock) {
+                                        self.updateBlock(tagName, inputString);
+                                    }
                                 }
                             } cancelBlock:^{
                                 @strongify(self, tagName);
+                                if ([tagName isEqualToString:@"未分类"]) {
+                                    [MBProgressHUD showLoadingWithTitle:@"该标签不能删除哦~"];
+                                    return;
+                                }
+                                
                                 [self.tagNameArr removeObject:tagName];
                                 [self reloadCollectionView];
+                                
+                                if (self.deleteBlock) {
+                                    self.deleteBlock(tagName);
+                                }
                             }] showAlert];
 }
 

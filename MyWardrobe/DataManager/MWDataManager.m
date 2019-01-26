@@ -47,7 +47,7 @@ static NSString * const kBrandKey = @"brand";
     [self initUserData];
 }
 
-#pragma mark - 懒加载
+#pragma mark - 取数据
 - (void)initUserData {
     @synchronized (self) {
         if (!_userData) {
@@ -265,7 +265,9 @@ static NSString * const kBrandKey = @"brand";
         // 增加新类别
         catoryModel = [MWClothesCatogaryModel new];
         catoryModel.catogaryName = signalClothesModel.catogaryName;
-        catoryModel.catogaryName = signalClothesModel.catogaryName;
+        NSMutableArray *tmpClothesArrArr = [NSMutableArray array];
+        [tmpClothesArrArr addObject:signalClothesModel];
+        catoryModel.clothesArr = tmpClothesArrArr.copy;
         
         [self.userData setObject:catoryModel forKey:signalClothesModel.catogaryName];
         
@@ -470,11 +472,14 @@ static NSString * const kBrandKey = @"brand";
     
     // 如果该分类有单品则移入"未分类"
     if ([self.userData objectForKey:catogaryName].clothesArr.count > 0) {
-        NSArray *tmpArr = [self.userData objectForKey:catogaryName].clothesArr.copy;
+        MWClothesCatogaryModel *catogaryModel = [self.userData objectForKey:catogaryName];
+        NSArray *tmpArr = catogaryModel.clothesArr.copy;
+        
         NSMutableArray *uncategorizedArr = [self.userData objectForKey:@"未分类"].clothesArr.mutableCopy;
         [uncategorizedArr addObjectsFromArray:tmpArr];
+        catogaryModel.clothesArr = uncategorizedArr.copy;
         
-        [self.userData setObject:uncategorizedArr.copy forKey:@"未分类"];
+        [self.userData setObject:catogaryModel forKey:@"未分类"];
     }
     
     [self.userData removeObjectForKey:catogaryName];

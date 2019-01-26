@@ -97,9 +97,20 @@
     [rightButton1 setImage:[UIImage imageNamed:@"navigation_icon_delect"] forState:UIControlStateHighlighted];
     [[rightButton1 rac_signalForControlEvents:UIControlEventTouchUpInside]
      subscribeNext:^(id x) {
-        @strongify(self);
-        [[MWDataManager dataManager] removeSignalClothes:self.dataArray[self.index]];
-        [self.navigationController popViewControllerAnimated:YES];
+         @strongify(self);
+         [[MWDataManager dataManager] removeSignalClothes:self.dataArray[self.index]];
+         
+         [self.dataArray removeObjectAtIndex:self.index];
+         self.index -= 1;
+         
+         if (self.dataArray.count > 0) {
+             NSIndexPath *indexPath = [NSIndexPath indexPathForItem:self.index inSection:0];
+             if (indexPath) {
+                 [self.collectionView deleteItemsAtIndexPaths:@[indexPath]];
+             }
+         } else {
+             [self.navigationController popViewControllerAnimated:YES];
+         }
     }];
     
     // 编辑按钮

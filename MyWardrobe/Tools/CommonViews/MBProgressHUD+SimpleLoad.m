@@ -26,7 +26,7 @@
     hub.bezelView.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:0.8];
     
     @weakify(hub);
-    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, 2 * NSEC_PER_SEC);
+    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, 1.5f * NSEC_PER_SEC);
     dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
         @strongify(hub);
         [hub removeFromSuperview];

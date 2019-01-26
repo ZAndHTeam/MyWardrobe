@@ -8,12 +8,21 @@
 
 #import <UIKit/UIKit.h>
 
+typedef void(^TagClickBlock)(NSString *tagName);
+typedef void(^TagUpdateBlock)(NSString *oldTagName, NSString *newTagName);
+
 @interface MWDragTagView : UIView
 
 /** 刷新订阅 */
 @property (nonatomic, strong) RACSubject *reloadSubject;
 /** tag颜色 */
 @property (nonatomic, strong) UIColor *tagTextColor;
+/** tag更新事件 */
+@property (nonatomic, copy) TagUpdateBlock updateBlock;
+/** tag删除事件 */
+@property (nonatomic, copy) TagClickBlock deleteBlock;
+/** tag增加事件 */
+@property (nonatomic, copy) TagClickBlock addBlock;
 
 - (instancetype)initWithFrame:(CGRect)frame imageName:(NSString *)imageName edit:(BOOL)canEdit tagNameArr:(NSArray *)tagNameArr;
 

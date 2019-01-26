@@ -207,6 +207,10 @@
     // 添加
     self.center = self.becloudView.center;
     [self.becloudView addSubview:self];
+    
+    if (self.inputText) {
+        [self.inputTextField becomeFirstResponder];
+    }
 }
 
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {

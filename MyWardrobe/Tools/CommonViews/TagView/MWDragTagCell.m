@@ -48,12 +48,14 @@
     return image;
 }
 
-- (void)setImageName:(NSString *)imageName {
+- (void)setImageName:(NSString *)imageName cellWidth:(CGFloat)width {
     self.bgView.image = [self generateImageWithName:imageName];
+    self.bgView.mw_width = width;
 }
 
-- (void)setTagName:(NSString *)tagName {
+- (void)setTagName:(NSString *)tagName cellWidth:(CGFloat)width {
     self.titleLabel.text = tagName;
+    self.titleLabel.mw_width = width;
 }
 
 - (void)setTagTextColor:(UIColor *)tagTextColor {

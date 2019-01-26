@@ -55,7 +55,7 @@
     self.tagView = [[MWDragTagView alloc] initWithFrame:CGRectMake(15, self.imageView.mw_bottom + 20, SCREEN_SIZE_WIDTH - 30, 26)
                                               imageName:@"tag_highlighted"
                                                    edit:NO
-                                             tagNameArr:@[]];
+                                             tagNameArr:@[@"adad", @"adad", @"adad", @"adad", @"adad", @"adad"]];
     self.tagView.tagTextColor = [UIColor whiteColor];
     
     @weakify(self);
@@ -97,16 +97,22 @@
 #pragma mark - 图片处理
 // 无滤镜
 - (void)setImageWithData:(NSData *)data {
-    //导入CIImage
-    CIImage *ciImage = [[CIImage alloc] initWithData:data];
     
-    //用CIContext将滤镜中的图片渲染出来
+    UIImage *orImage = [UIImage imageWithData:data];
+
+    // 导入CIImage
+    CIImage *ciImage = [[CIImage alloc] initWithImage:orImage];
     CIContext *context = [CIContext contextWithOptions:nil];
+
+    // 用CIContext将图片渲染出来
     CGImageRef cgImage = [context createCGImage:ciImage fromRect:[ciImage extent]];
+
+    // 记录原始图片数据
+    UIImageOrientation originalOrientation = orImage.imageOrientation;
+    CGFloat originalScale = orImage.scale;
+
+    self.imageView.image = [UIImage imageWithCGImage:cgImage scale:originalScale orientation:originalOrientation];
     
-    //导出图片
-    UIImage *showImage = [UIImage imageWithCGImage:cgImage];
-    self.imageView.image = showImage;
     CGImageRelease(cgImage);
 }
 

@@ -16,4 +16,7 @@
 
 @property (nonatomic, strong) UIColor *tagTextColor;
 
+- (void)setTagName:(NSString *)tagName cellWidth:(CGFloat)width;
+- (void)setImageName:(NSString *)imageName cellWidth:(CGFloat)width;
+
 @end
