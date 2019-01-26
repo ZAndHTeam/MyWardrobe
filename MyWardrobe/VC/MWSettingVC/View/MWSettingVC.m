@@ -10,6 +10,7 @@
 
 #pragma mark - views
 #import "MWDragTagView.h"
+#import "MWExpandCell.h"
 
 #pragma mark - utils
 #import "UITextView+MWPlaceholder.h"
@@ -125,10 +126,10 @@ static NSString * const kSettingBrand = @"setting_brand";
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"UITableViewCell"];
+    MWExpandCell *cell = [tableView dequeueReusableCellWithIdentifier:@"UITableViewCell"];
     if (!cell) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1
-                                      reuseIdentifier:@"UITableViewCell"];
+        cell = [[MWExpandCell alloc] initWithStyle:UITableViewCellStyleValue1
+                                   reuseIdentifier:@"UITableViewCell"];
     } else {
         [cell.subviews enumerateObjectsUsingBlock:^(__kindof UIView * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
             if ([obj isKindOfClass:[MWDragTagView class]]) [obj removeFromSuperview];
@@ -185,10 +186,10 @@ static NSString * const kSettingBrand = @"setting_brand";
     cell.detailTextLabel.textColor = [[UIColor colorWithHexString:@"#333333"] colorWithAlphaComponent:0.4];
     
     if (indexPath.section == 0) {
-        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+        [cell setCustomAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
         cell.detailTextLabel.text = @"";
     } else {
-        cell.accessoryType = UITableViewCellAccessoryNone;
+        [cell setCustomAccessoryType:UITableViewCellAccessoryNone];
         if (indexPath.row == 0) {
             // 数量
             cell.detailTextLabel.text = [NSString stringWithFormat:@"共计 %ld 件", (long)[MWDataManager dataManager].returnAllClothesNumber];
@@ -239,6 +240,9 @@ static NSString * const kSettingBrand = @"setting_brand";
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     NSMutableArray *array = self.dataArray[indexPath.section];
+    
+    MWExpandCell *cell = (MWExpandCell *)[tableView cellForRowAtIndexPath:indexPath];
+    cell.isExpand = !cell.isExpand;
     
     if (indexPath.section == 0) {
         if (indexPath.row == 0) {

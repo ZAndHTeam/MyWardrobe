@@ -248,7 +248,6 @@
     //获得键盘的大小
     NSDictionary* info = [aNotification userInfo];
     CGSize kbSize = [[info objectForKey:UIKeyboardFrameEndUserInfoKey] CGRectValue].size;
-    NSLog(@"%f ---- %f ---- %f ---- %f", SCREEN_SIZE_HEIGHT, kbSize.height, SCREEN_SIZE_HEIGHT - kbSize.height, self.mw_bottom);
     if (self.mw_bottom > SCREEN_SIZE_HEIGHT - kbSize.height) {
         [UIView beginAnimations:nil context:nil];
         [UIView setAnimationDuration:0.25];

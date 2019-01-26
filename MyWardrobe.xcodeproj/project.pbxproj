@@ -18,6 +18,7 @@
 		7B755B6C21C5679500975D04 /* MWPhotoVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B755B6A21C5679500975D04 /* MWPhotoVC.m */; };
 		7B755B6F21C5681900975D04 /* MWClothesPhotoCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B755B6E21C5681900975D04 /* MWClothesPhotoCollectionViewCell.m */; };
 		7BC078E321F974A900A4E516 /* UIButton+ExpandHitTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BC078E221F974A900A4E516 /* UIButton+ExpandHitTest.m */; };
+		7BC078EC21FC85BF00A4E516 /* MWExpandCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BC078EB21FC85BF00A4E516 /* MWExpandCell.m */; };
 		D5486F164E5FB5F7650916AC /* Pods_MyWardrobeTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C91D797BCF81B5D464C2A51C /* Pods_MyWardrobeTests.framework */; };
 		F4015D9421C27E5B00AC6C58 /* MWDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F4015D9321C27E5B00AC6C58 /* MWDataManager.m */; };
 		F4015D9821C27E9900AC6C58 /* MWClothesCatogaryModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F4015D9721C27E9900AC6C58 /* MWClothesCatogaryModel.m */; };
@@ -99,6 +100,8 @@
 		7B755B6E21C5681900975D04 /* MWClothesPhotoCollectionViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MWClothesPhotoCollectionViewCell.m; sourceTree = "<group>"; };
 		7BC078E121F974A900A4E516 /* UIButton+ExpandHitTest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIButton+ExpandHitTest.h"; sourceTree = "<group>"; };
 		7BC078E221F974A900A4E516 /* UIButton+ExpandHitTest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIButton+ExpandHitTest.m"; sourceTree = "<group>"; };
+		7BC078EA21FC85BF00A4E516 /* MWExpandCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MWExpandCell.h; sourceTree = "<group>"; };
+		7BC078EB21FC85BF00A4E516 /* MWExpandCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MWExpandCell.m; sourceTree = "<group>"; };
 		8C0715FD2EC151B6F206F0F3 /* Pods-MyWardrobeTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyWardrobeTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-MyWardrobeTests/Pods-MyWardrobeTests.release.xcconfig"; sourceTree = "<group>"; };
 		97B6E8C78CA9C45974F61223 /* Pods_MyWardrobe.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MyWardrobe.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C91D797BCF81B5D464C2A51C /* Pods_MyWardrobeTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MyWardrobeTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -292,6 +295,8 @@
 			children = (
 				7B755B6021C5128000975D04 /* MWSettingVC.h */,
 				7B755B6121C5128000975D04 /* MWSettingVC.m */,
+				7BC078EA21FC85BF00A4E516 /* MWExpandCell.h */,
+				7BC078EB21FC85BF00A4E516 /* MWExpandCell.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -920,6 +925,7 @@
 				7B755B5921C4AB0900975D04 /* MWHomeTableViewCell.m in Sources */,
 				F433EC3221BEA34400DC057E /* MWTabBar.m in Sources */,
 				F455443421BE9D41000A37E5 /* main.m in Sources */,
+				7BC078EC21FC85BF00A4E516 /* MWExpandCell.m in Sources */,
 				F4E43E2521C398E700333B92 /* MWScrollTagView.m in Sources */,
 				F4FCD1A321BFEB900052BAFF /* MWNewClothesVC.m in Sources */,
 				F4015D9C21C27FC500AC6C58 /* MWIDGenerator.m in Sources */,
