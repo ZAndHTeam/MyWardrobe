@@ -11,13 +11,15 @@
 #pragma mark - utils
 #import "UIView+Yoga.h"
 
-static NSInteger const kColorViewTagBeginNumner = 1000;
+static NSInteger const kColorViewTagBeginNumner = 10000;
 
 @interface MWColorPickerView ()
 
 @property (nonatomic, strong) UIScrollView *scrollView;
 @property (nonatomic, strong) UIView *scrollContentView;
 @property (nonatomic, copy) NSArray *colorArr;
+@property (nonatomic, copy) NSArray *colorNameArr;
+@property (nonatomic, copy) NSArray *selectedColorArr;
 @property (nonatomic, assign) NSInteger frontClickIdx;
 @property (nonatomic, assign) CGFloat viewWidth;
 
@@ -25,11 +27,12 @@ static NSInteger const kColorViewTagBeginNumner = 1000;
 
 @implementation MWColorPickerView
 
-- (instancetype)initWithWidth:(CGFloat)viewWidth {
+- (instancetype)initWithWidth:(CGFloat)viewWidth selectedColorArr:(NSArray *)selectedColorArr {
     self = [super init];
     if (self) {
         self.frontClickIdx = -1;
         self.viewWidth = viewWidth;
+        _selectedColorArr = [selectedColorArr copy];
         [self configTagUI];
     }
     return self;
@@ -66,6 +69,8 @@ static NSInteger const kColorViewTagBeginNumner = 1000;
     @weakify(self);
     self.colorArr = @[@"#000000", @"#FFFFFF", @"#CDCDCD", @"#FFCC00", @"#FFA000",
                       @"#FF4141", @"#57D96C", @"#3091F2", @"#7A45E6"];
+    self.colorNameArr = @[@"黑色系", @"白色系", @"灰色系", @"黄色系", @"橘色系",
+                          @"红色系", @"绿色系", @"蓝色系", @"紫色系"];
     [self.colorArr enumerateObjectsUsingBlock:^(NSString * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
         @strongify(self);
         [self.scrollContentView addSubview:[self createColorImage:obj idx:idx]];
@@ -112,12 +117,26 @@ static NSInteger const kColorViewTagBeginNumner = 1000;
     [tap setNumberOfTapsRequired:1];
     [colorView addGestureRecognizer:tap];
     
+    if ([self.selectedColorArr containsObject:self.colorNameArr[idx]]) {
+        self.frontClickIdx = idx + kColorViewTagBeginNumner;
+        [colorView addSubview:({
+            UIImageView *imageView = [UIImageView new];
+            imageView.userInteractionEnabled = YES;
+            imageView.image = [UIImage imageNamed:@"check"];
+            [imageView configureLayoutWithBlock:^(YGLayout * _Nonnull layout) {
+                layout.isEnabled = YES;
+                layout.width = layout.height = YGPointValue(24.f);
+            }];
+            imageView;
+        })];
+    }
+    
     return colorView;
 }
 
 - (void)clickOneColor:(UITapGestureRecognizer *)tap {
     UIView *targetView = tap.view;
-    NSString *colorName = self.colorArr[targetView.tag - kColorViewTagBeginNumner];
+    NSString *colorName = self.colorNameArr[targetView.tag - kColorViewTagBeginNumner];
     
     UIView *frontView = (UIView *)[self viewWithTag:self.frontClickIdx];
     

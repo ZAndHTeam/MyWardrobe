@@ -31,4 +31,19 @@
     return _signalClothesId;
 }
 
+#pragma mark - 深拷贝
+- (id)mutableCopyWithZone:(NSZone *)zone {
+    MWSignalClothesModel *clothesModel = [[MWSignalClothesModel allocWithZone:zone] init];
+    clothesModel.signalClothesId = self.signalClothesId.copy;
+    clothesModel.catogaryName = self.catogaryName.copy;
+    clothesModel.seasonArr = self.seasonArr.copy;
+    clothesModel.imageDataArr = self.imageDataArr.copy;
+    clothesModel.color = self.color.copy;
+    clothesModel.price = self.price.copy;
+    clothesModel.brand = self.brand.copy;
+    clothesModel.mark = self.mark.copy;
+    
+    return clothesModel;
+}
+
 @end

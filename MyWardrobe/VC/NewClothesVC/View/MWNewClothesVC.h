@@ -10,6 +10,9 @@
 
 @class MWNewClothesVM;
 
+/**
+ 单品编辑页面
+ */
 @interface MWNewClothesVC : UIViewController
 
 - (instancetype)initWithVM:(MWNewClothesVM *)vm;

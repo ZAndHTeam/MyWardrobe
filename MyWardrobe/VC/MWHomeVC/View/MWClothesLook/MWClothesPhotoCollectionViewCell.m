@@ -90,6 +90,7 @@
     if (self.cellModel.catogaryName.length > 0) [tagArr addObject:self.cellModel.catogaryName];
     if (self.cellModel.brand.length > 0) [tagArr addObject:self.cellModel.brand];
     if (self.cellModel.seasonArr.count > 0) [tagArr addObjectsFromArray:self.cellModel.seasonArr];
+    if (self.cellModel.color.length > 0) [tagArr addObject:self.cellModel.color];
     [self.tagView reloadDataWithTagNameArr:tagArr.copy];
 }
 

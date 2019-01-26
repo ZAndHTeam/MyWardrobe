@@ -8,7 +8,7 @@
 
 #import "MWAlertView.h"
 
-@interface MWAlertView ()
+@interface MWAlertView () <UITextFieldDelegate>
 
 /** 确认按钮 */
 @property (nonatomic, strong) UIButton *confirmBtn;
@@ -72,14 +72,9 @@
 }
 
 - (void)configUI {
-    CGSize labelSize;
-    if (self.title.length > 0) {
-        labelSize = [self getLabelHeightWithText:self.title width:270.f];
-    }
-    
     self.backgroundColor = [UIColor whiteColor];
     self.layer.cornerRadius = 12.f;
-    self.frame = CGRectMake(0, 0, 270.f + labelSize.height - 24.f, 145.f);
+    self.frame = CGRectMake(0, 0, 270.f + 38.f - 24.f, 160.f);
     
     // title
     UILabel *titleLabel = ({
@@ -88,7 +83,7 @@
         label.numberOfLines = 0;
         label.textAlignment = NSTextAlignmentCenter;
         label.font = [UIFont fontWithName:MEDIUM_FONT size:17.f];
-        label.frame = CGRectMake(0, 20.f, self.mw_width - 20.f, 24.f);
+        label.frame = CGRectMake(5.f, 20.f, self.mw_width - 10.f, 24.f);
         label;
     });
     [self addSubview:titleLabel];
@@ -97,10 +92,11 @@
         // 输入框
         [self addSubview:({
             self.inputTextField = [UITextField new];
-            self.inputTextField.mw_width = 238.f;
+            self.inputTextField.delegate = self;
+            self.inputTextField.mw_width = self.mw_width - 32.f;
             self.inputTextField.mw_left = 16.f;
             self.inputTextField.mw_top = titleLabel.mw_bottom + 21.f;
-            self.inputTextField.mw_height = labelSize.height;
+            self.inputTextField.mw_height = 38.f;
             
             UIView *paddingView = [[UIView alloc] initWithFrame:CGRectMake(0.f, 0.f, 4.f, 24.f)];
             self.inputTextField.leftView = paddingView;
@@ -109,7 +105,7 @@
             self.inputTextField.backgroundColor = [[UIColor colorWithHexString:@"#333333"] colorWithAlphaComponent:0.06];
             self.inputTextField.text = self.inputText;
             
-            self.inputTextField.font = [UIFont fontWithName:REGULAR_FONT size:14.f];
+            self.inputTextField.font = [UIFont fontWithName:REGULAR_FONT size:15.f];
             
             self.inputTextField;
         })];
@@ -187,6 +183,15 @@
         self.cancelBtn.mw_centerX = self.mw_centerX / 2;
         self.cancelBtn;
     })];
+    
+    // 键盘的弹出
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(keyboardWasShown:)
+                                                 name:UIKeyboardWillShowNotification object:nil];
+    // 键盘的消失
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(keyboardWillBeHidden:)
+                                                 name:UIKeyboardWillHideNotification object:nil];
 }
 
 - (void)showAlert {
@@ -204,6 +209,23 @@
     [self.becloudView addSubview:self];
 }
 
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
+    if (![string isEqualToString:[[string componentsSeparatedByCharactersInSet:[NSCharacterSet whitespaceCharacterSet]] componentsJoinedByString:@""]]) {
+        return NO;
+    }
+    
+    NSString * inputString = [textField.text stringByReplacingCharactersInRange:range withString:string];
+    
+    if ([textField isEqual:self.inputTextField]) {
+        if (inputString.length > 20) {
+            textField.text = [textField.text substringToIndex:20];
+            return NO;
+        }
+    }
+    
+    return YES;
+}
+
 #pragma mark - 消失
 - (void)closeAlertView:(UITapGestureRecognizer *)sender {
     [self dismissAlert];
@@ -219,6 +241,35 @@
     CGRect rect = [text boundingRectWithSize:CGSizeMake(width, MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:[UIFont fontWithName:REGULAR_FONT size:14.f]} context:nil];
     
     return rect.size;
+}
+
+#pragma mark ----- 键盘处理
+- (void)keyboardWasShown:(NSNotification*)aNotification {
+    //获得键盘的大小
+    NSDictionary* info = [aNotification userInfo];
+    CGSize kbSize = [[info objectForKey:UIKeyboardFrameEndUserInfoKey] CGRectValue].size;
+    NSLog(@"%f ---- %f ---- %f ---- %f", SCREEN_SIZE_HEIGHT, kbSize.height, SCREEN_SIZE_HEIGHT - kbSize.height, self.mw_bottom);
+    if (self.mw_bottom > SCREEN_SIZE_HEIGHT - kbSize.height) {
+        [UIView beginAnimations:nil context:nil];
+        [UIView setAnimationDuration:0.25];
+        [UIView setAnimationCurve:7];
+        self.center = CGPointMake(self.mw_centerX, SCREEN_SIZE_HEIGHT - kbSize.height - self.mw_height / 2 - 50.f);
+        [UIView commitAnimations];
+    }
+}
+
+- (void)keyboardWillBeHidden:(NSNotification*)aNotification {
+    self.center = self.becloudView.center;
+    
+    [UIView beginAnimations:nil context:nil];
+    [UIView setAnimationDuration:0.25];
+    [UIView setAnimationCurve:7];
+    [UIView commitAnimations];
+}
+
+
+-(void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 @end

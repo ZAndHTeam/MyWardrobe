@@ -31,7 +31,7 @@
 - (instancetype)initWithVM:(MWNewClothesVM *)vm {
     self = [super init];
     if (self) {
-        _viewModel = vm;
+        _viewModel = [[MWNewClothesVM alloc] initWithData:vm.signalClothesModel];
     }
     return self;
 }

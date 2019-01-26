@@ -139,10 +139,10 @@ static NSString * const kSettingBrand = @"setting_brand";
     
     if ([array[indexPath.row] isEqualToString:kSettingCatogary]) {
         MWDragTagView *tagView = [[MWDragTagView alloc] initWithFrame:CGRectMake(15.f, 5.f, SCREEN_SIZE_WIDTH - 30.f, 24.f)
-                                                            imageName:@"tag_highlighted"
+                                                            imageName:@"tag_normal"
                                                                  edit:YES
                                                            tagNameArr:[MWDataManager dataManager].catogaryNameArr];
-        tagView.tagTextColor = [UIColor whiteColor];
+        tagView.tagTextColor = [UIColor blackColor];
         @weakify(self, tagView);
         [tagView.reloadSubject
          subscribeNext:^(NSNumber *height) {
@@ -159,10 +159,10 @@ static NSString * const kSettingBrand = @"setting_brand";
         return cell;
     } else if ([array[indexPath.row] isEqualToString:kSettingBrand]) {
         MWDragTagView *tagView = [[MWDragTagView alloc] initWithFrame:CGRectMake(15.f, 5.f, SCREEN_SIZE_WIDTH - 30.f, 24.f)
-                                                            imageName:@"tag_highlighted"
+                                                            imageName:@"tag_normal"
                                                                  edit:YES
                                                            tagNameArr:[MWDataManager dataManager].brandArr];
-        tagView.tagTextColor = [UIColor whiteColor];
+        tagView.tagTextColor = [UIColor blackColor];
         @weakify(self, tagView);
         [tagView.reloadSubject
          subscribeNext:^(NSNumber *height) {
@@ -270,10 +270,10 @@ static NSString * const kSettingBrand = @"setting_brand";
                     [array containsObject:kSettingBrand] ? [array removeObject:kSettingBrand] : [array insertObject:kSettingBrand atIndex:2];
                     [self.dataArray replaceObjectAtIndex:0 withObject:array];
                     
-                    if ([array containsObject:kSettingBrand]) {
-                        [self.tableView insertRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:2 inSection:0]] withRowAnimation:YES];
+                    if ([array containsObject:kSettingBrand]) { 
+                        [self.tableView insertRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:2 inSection:0]] withRowAnimation:NO];
                     } else {
-                        [self.tableView deleteRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:2 inSection:0]] withRowAnimation:YES];
+                        [self.tableView deleteRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:2 inSection:0]] withRowAnimation:NO];
                     }
                 }
             }

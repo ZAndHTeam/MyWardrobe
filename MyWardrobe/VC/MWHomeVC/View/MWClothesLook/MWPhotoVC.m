@@ -11,11 +11,13 @@
 #import "MWSignalClothesModel.h"
 #import "MWNewClothesVC.h"
 #import "MWNewClothesVM.h"
+
 @interface MWPhotoVC ()<UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout>
 
 @property (nonatomic, strong) UICollectionView *collectionView;
 @property (nonatomic, strong) NSMutableArray *dataArray;
 @property (nonatomic, assign) NSInteger index;
+
 @end
 
 @implementation MWPhotoVC
@@ -62,12 +64,17 @@
                     @strongify(self);
                     [self.collectionView setContentOffset:CGPointMake(SCREEN_SIZE_WIDTH * self.index, 0) animated:YES];
                     self.collectionView.userInteractionEnabled = YES;
-                    [[NSUserDefaults standardUserDefaults]setObject:@YES forKey:@"isfirst"];
+                    [[NSUserDefaults standardUserDefaults] setObject:@YES forKey:@"isfirst"];
                 }];
             }
             
         }];
     }
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    [self.collectionView reloadData];
 }
 
 - (void)layoutNavi {
@@ -78,6 +85,8 @@
                                                           @strongify(self);
                                                           [self.navigationController popViewControllerAnimated:YES];                                                          
                                                       }];
+    
+    // 删除按钮
     UIButton *rightButton1 = [UIButton buttonWithType:UIButtonTypeCustom];
     [self.navigationView addSubview:rightButton1];
     rightButton1.mw_width = 24;
@@ -86,12 +95,14 @@
     rightButton1.mw_centerY = self.navigationView.navTitleLabel.mw_centerY;
     [rightButton1 setImage:[UIImage imageNamed:@"navigation_icon_delect"] forState:UIControlStateNormal];
     [rightButton1 setImage:[UIImage imageNamed:@"navigation_icon_delect"] forState:UIControlStateHighlighted];
-    [[rightButton1 rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
+    [[rightButton1 rac_signalForControlEvents:UIControlEventTouchUpInside]
+     subscribeNext:^(id x) {
         @strongify(self);
         [[MWDataManager dataManager] removeSignalClothes:self.dataArray[self.index]];
         [self.navigationController popViewControllerAnimated:YES];
     }];
     
+    // 编辑按钮
     UIButton *rightButton2 = [UIButton buttonWithType:UIButtonTypeCustom];
     [self.navigationView addSubview:rightButton2];
     rightButton2.mw_width = 24;

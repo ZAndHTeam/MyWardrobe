@@ -28,7 +28,7 @@
         if (data
             && [data isKindOfClass:[MWSignalClothesModel class]]) {
             self.viewType = MWNewClothesVMType_Edit;
-            _signalClothesModel = (MWSignalClothesModel *)data;
+            _signalClothesModel = [(MWSignalClothesModel *)data mutableCopy];
         } else if (!data) {
             self.viewType = MWNewClothesVMType_New;
             _signalClothesModel = [MWSignalClothesModel new];

@@ -11,6 +11,7 @@
 #pragma mark - views
 #import "MWScrollTagView.h"
 #import "MWColorPickerView.h"
+#import "MBProgressHUD+SimpleLoad.h"
 
 #pragma mark - vm
 #import "MWNewClothesVM.h"
@@ -254,7 +255,8 @@
 // 颜色
 - (void)configPickColor {
     [self addMarginViewWithTitle:@"颜色"];
-    MWColorPickerView *colorView = [[MWColorPickerView alloc] initWithWidth:SCREEN_SIZE_WIDTH - 15.f];
+    MWColorPickerView *colorView = [[MWColorPickerView alloc] initWithWidth:SCREEN_SIZE_WIDTH - 15.f
+                                                           selectedColorArr:self.viewModel.signalClothesModel.color ? @[self.viewModel.signalClothesModel.color] :@[]];
     [colorView configureLayoutWithBlock:^(YGLayout * _Nonnull layout) {
         layout.isEnabled = YES;
         layout.height = YGPointValue(32.f);
@@ -311,12 +313,13 @@
     textFiled.tag = 10;
     textFiled.placeholder = @"添加价格";
     textFiled.text = self.viewModel.signalClothesModel.price;
+    textFiled.keyboardType = UIKeyboardTypeDecimalPad;
     textFiled.font = [UIFont fontWithName:REGULAR_FONT size:17.f];
     [textFiled configureLayoutWithBlock:^(YGLayout * _Nonnull layout) {
         layout.isEnabled = YES;
         layout.marginLeft = YGPointValue(15.f);
         layout.height = YGPointValue(26.f);
-        layout.width = YGPointValue(200.f);
+        layout.width = YGPointValue(SCREEN_SIZE_WIDTH - 30.f);
     }];
     
     [self.bgView addSubview:textFiled];
@@ -336,7 +339,7 @@
         layout.isEnabled = YES;
         layout.marginLeft = YGPointValue(15.f);
         layout.height = YGPointValue(26.f);
-        layout.width = YGPointValue(200.f);
+        layout.width = YGPointValue(SCREEN_SIZE_WIDTH - 30.f);
     }];
     
     [self.bgView addSubview:textFiled];
@@ -345,12 +348,59 @@
 - (void)textFieldDidEndEditing:(UITextField *)textField {
     switch (textField.tag) {
         case 10: {
+            if (textField.text.length > 20) {
+                @weakify(self, textField);
+                [[[MWAlertView alloc] initWithTitle:@"您确定这件衣服这么贵吗？"
+                                      confirmString:@"就是这个价钱"
+                                       cancelString:@"输错了"
+                                        confirBlock:^(NSString *inputString) {
+                                            @strongify(self, textField);
+                                            [self.viewModel savePrice:textField.text];
+                                        } cancelBlock:^{
+                                            @strongify(textField);
+                                            textField.text = nil;
+                                        }] showAlert];
+                
+                return;
+            }
+            
             [self.viewModel savePrice:textField.text];
         } break;
         case 11: {
+            if (textField.text.length > 200) {
+                [MBProgressHUD showLoadingWithTitle:@"备注过长，请精简一下~"];
+                textField.text = [textField.text substringToIndex:200];
+                return;
+            }
+            
             [self.viewModel saveMark:textField.text];
         } break;
     }
+}
+
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
+    NSString * inputString = [textField.text stringByReplacingCharactersInRange:range withString:string];
+    
+    switch (textField.tag) {
+        case 10: {
+            if (inputString.length > 20) {
+                textField.text = [textField.text substringToIndex:20];
+                return NO;
+            }
+            
+            [self.viewModel savePrice:textField.text];
+        } break;
+        case 11: {
+            if (inputString.length > 200) {
+                textField.text = [textField.text substringToIndex:200];
+                return NO;
+            }
+            
+            [self.viewModel saveMark:textField.text];
+        } break;
+    }
+    
+    return YES;
 }
 
 #pragma mark - 高度计算

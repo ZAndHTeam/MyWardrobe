@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface MWSignalClothesModel : NSObject
+@interface MWSignalClothesModel : NSObject<NSMutableCopying>
 
 /** 单品Id */
 @property (nonatomic, copy) NSString *signalClothesId;
@@ -18,7 +18,7 @@
 @property (nonatomic, strong) NSMutableArray<NSString *> *seasonArr;
 /** 图片 */
 @property (nonatomic, copy) NSArray <NSData *>*imageDataArr;
-/** 颜色（十六进制字符） */
+/** 颜色 */
 @property (nonatomic, copy) NSString *color;
 /** 价格 */
 @property (nonatomic, copy) NSString *price;
