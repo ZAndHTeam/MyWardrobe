@@ -142,7 +142,7 @@ static NSString * const kSettingBrand = @"setting_brand";
     if ([array[indexPath.row] isEqualToString:kSettingCatogary]) {
         MWDragTagView *tagView = [[MWDragTagView alloc] initWithFrame:CGRectMake(15.f, 5.f, SCREEN_SIZE_WIDTH - 30.f, 24.f)
                                                             imageName:@"tag_normal"
-                                                                 edit:YES
+                                                                 edit:NO
                                                            tagNameArr:[MWDataManager dataManager].catogaryNameArr];
         tagView.tagTextColor = [UIColor blackColor];
         @weakify(self, tagView);
@@ -174,7 +174,7 @@ static NSString * const kSettingBrand = @"setting_brand";
     } else if ([array[indexPath.row] isEqualToString:kSettingBrand]) {
         MWDragTagView *tagView = [[MWDragTagView alloc] initWithFrame:CGRectMake(15.f, 5.f, SCREEN_SIZE_WIDTH - 30.f, 24.f)
                                                             imageName:@"tag_normal"
-                                                                 edit:YES
+                                                                 edit:NO
                                                            tagNameArr:[MWDataManager dataManager].brandArr];
         tagView.tagTextColor = [UIColor blackColor];
         @weakify(self, tagView);
