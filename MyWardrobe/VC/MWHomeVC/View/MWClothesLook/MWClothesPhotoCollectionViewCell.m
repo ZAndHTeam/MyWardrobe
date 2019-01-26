@@ -55,6 +55,7 @@
     self.tagView = [[MWDragTagView alloc] initWithFrame:CGRectMake(15, self.imageView.mw_bottom + 20, SCREEN_SIZE_WIDTH - 30, 26)
                                               imageName:@"tag_highlighted"
                                                    edit:NO
+                                                canDrag:NO
                                              tagNameArr:@[@"adad", @"adad", @"adad", @"adad", @"adad", @"adad"]];
     self.tagView.tagTextColor = [UIColor whiteColor];
     

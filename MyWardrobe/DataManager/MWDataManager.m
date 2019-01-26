@@ -219,8 +219,16 @@ static NSString * const kBrandKey = @"brand";
     }
     
     MWClothesCatogaryModel *catogaryModel = [self.userData objectForKey:oldName];
-    [self.userData setObject:catogaryModel forKey:newName];
     
+    NSMutableArray *tmpClothesArr = catogaryModel.clothesArr.mutableCopy;
+    @weakify(newName);
+    [tmpClothesArr enumerateObjectsUsingBlock:^(MWSignalClothesModel *obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        @strongify(newName);
+        obj.catogaryName = newName;
+    }];
+    catogaryModel.clothesArr = tmpClothesArr.copy;
+    
+    [self.userData setObject:catogaryModel forKey:newName];
     [self.catogaryNameArr replaceObjectAtIndex:[self.catogaryNameArr indexOfObject:oldName] withObject:newName];
     
     // 更新本地数据
@@ -473,7 +481,12 @@ static NSString * const kBrandKey = @"brand";
     // 如果该分类有单品则移入"未分类"
     if ([self.userData objectForKey:catogaryName].clothesArr.count > 0) {
         MWClothesCatogaryModel *catogaryModel = [self.userData objectForKey:catogaryName];
-        NSArray *tmpArr = catogaryModel.clothesArr.copy;
+        NSMutableArray *tmpArr = catogaryModel.clothesArr.mutableCopy;
+        
+        [tmpArr enumerateObjectsUsingBlock:^(MWSignalClothesModel *obj, NSUInteger idx, BOOL * _Nonnull stop) {
+            obj.catogaryName = @"未分类";
+            [tmpArr replaceObjectAtIndex:idx withObject:obj];
+        }];
         
         NSMutableArray *uncategorizedArr = [self.userData objectForKey:@"未分类"].clothesArr.mutableCopy;
         [uncategorizedArr addObjectsFromArray:tmpArr];

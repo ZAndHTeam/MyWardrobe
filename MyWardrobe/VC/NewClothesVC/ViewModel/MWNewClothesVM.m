@@ -72,14 +72,22 @@
     if (season.length == 0) {
         return;
     }
-    [self.signalClothesModel.seasonArr addObject:season];
+    
+    NSMutableArray *tmpArr = self.signalClothesModel.seasonArr.mutableCopy;
+    [tmpArr addObject:season];
+    
+    self.signalClothesModel.seasonArr = tmpArr.copy;
 }
 
 - (void)deleteSeason:(NSString *)season {
     if (season.length == 0) {
         return;
     }
-    [self.signalClothesModel.seasonArr removeObject:season];
+    
+    NSMutableArray *tmpArr = self.signalClothesModel.seasonArr.mutableCopy;
+    [tmpArr removeObject:season];
+    
+    self.signalClothesModel.seasonArr = tmpArr.copy;
 }
 
 - (void)saveColor:(NSString *)colorName {

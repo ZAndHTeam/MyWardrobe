@@ -26,6 +26,7 @@ static NSString *lastItemidentity = @"lastItem";
 @property (nonatomic, strong) MWEqualSpaceFlowLayout *layout;
 @property (nonatomic, strong) UIButton *addButton;
 @property (nonatomic, assign) BOOL canEdit;
+@property (nonatomic, assign) BOOL canDrag;
 /** 外部传来的size */
 @property (nonatomic, assign) CGSize outSize;
 
@@ -40,12 +41,17 @@ static NSString *lastItemidentity = @"lastItem";
     [self reloadCollectionView];
 }
 
-- (instancetype)initWithFrame:(CGRect)frame imageName:(NSString *)imageName edit:(BOOL)canEdit tagNameArr:(NSArray *)tagNameArr {
+- (instancetype)initWithFrame:(CGRect)frame
+                    imageName:(NSString *)imageName
+                         edit:(BOOL)canEdit
+                      canDrag:(BOOL)canDrag
+                   tagNameArr:(NSArray *)tagNameArr {
     self = [super initWithFrame:frame];
     if (self) {
         _reloadSubject = [RACSubject subject];
         _bgImageName = imageName.copy;
         _canEdit = canEdit;
+        _canDrag = canDrag;
         _tagNameArr = [tagNameArr mutableCopy];
         _outSize = frame.size;
         [self configUI];
@@ -69,7 +75,7 @@ static NSString *lastItemidentity = @"lastItem";
     [collectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:lastItemidentity];
     collectionView.pagingEnabled = YES;
     
-    if (self.canEdit) {
+    if (self.canDrag) {
         //1.CollectionView 添加长按手势
         UILongPressGestureRecognizer *longTap = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(longHandle:)];
         [collectionView addGestureRecognizer:longTap];

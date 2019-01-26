@@ -24,7 +24,11 @@ typedef void(^TagUpdateBlock)(NSString *oldTagName, NSString *newTagName);
 /** tag增加事件 */
 @property (nonatomic, copy) TagClickBlock addBlock;
 
-- (instancetype)initWithFrame:(CGRect)frame imageName:(NSString *)imageName edit:(BOOL)canEdit tagNameArr:(NSArray *)tagNameArr;
+- (instancetype)initWithFrame:(CGRect)frame
+                    imageName:(NSString *)imageName
+                         edit:(BOOL)canEdit
+                      canDrag:(BOOL)canDrag
+                   tagNameArr:(NSArray *)tagNameArr;
 
 - (void)configUI;
 
