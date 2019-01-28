@@ -43,7 +43,7 @@ static NSString * const kSettingBrand = @"setting_brand";
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor whiteColor];
     self.dataArray = [NSMutableArray arrayWithObjects:[NSMutableArray arrayWithObjects:@"分类", @"品牌", nil],
-                      [NSMutableArray arrayWithObjects:@"分类", @"品牌", nil],
+                      [NSMutableArray arrayWithObjects:@"数量", @"价格", nil],
                       nil];
     [self crateHeaderView];//设置
     //创建tableView

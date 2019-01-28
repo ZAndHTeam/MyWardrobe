@@ -123,6 +123,9 @@ static NSInteger const kColorViewTagBeginNumner = 10000;
             UIImageView *imageView = [UIImageView new];
             imageView.userInteractionEnabled = YES;
             imageView.image = [UIImage imageNamed:@"check"];
+            if ([self.colorNameArr[idx] isEqualToString:@"黑色系"]) {
+                imageView.image = [UIImage imageNamed:@"icon_white_selected"];
+            }
             [imageView configureLayoutWithBlock:^(YGLayout * _Nonnull layout) {
                 layout.isEnabled = YES;
                 layout.width = layout.height = YGPointValue(24.f);
@@ -152,6 +155,9 @@ static NSInteger const kColorViewTagBeginNumner = 10000;
             UIImageView *imageView = [UIImageView new];
             imageView.userInteractionEnabled = YES;
             imageView.image = [UIImage imageNamed:@"check"];
+            if ([colorName isEqualToString:@"黑色系"]) {
+                imageView.image = [UIImage imageNamed:@"icon_white_selected"];
+            }
             [imageView configureLayoutWithBlock:^(YGLayout * _Nonnull layout) {
                 layout.isEnabled = YES;
                 layout.width = layout.height = YGPointValue(24.f);
