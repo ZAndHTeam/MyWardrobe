@@ -378,11 +378,23 @@
     }
 }
 
+#pragma mark - textField代理
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
     NSString * inputString = [textField.text stringByReplacingCharactersInRange:range withString:string];
-    
     switch (textField.tag) {
         case 10: {
+            // .不可重复
+            if ([textField.text containsString:@"."]
+                && [string isEqualToString:@"."]) {
+                return NO;
+            }
+            
+            // .后的字符不能大于两位
+            if ([inputString componentsSeparatedByString:@"."].lastObject.length > 2) {
+                return NO;
+            }
+            
+            // 长度不能大于20
             if (inputString.length > 20) {
                 textField.text = [textField.text substringToIndex:20];
                 return NO;

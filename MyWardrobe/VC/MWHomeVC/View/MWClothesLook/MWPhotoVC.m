@@ -7,10 +7,15 @@
 //
 
 #import "MWPhotoVC.h"
+
+#pragma mark - views
 #import "MWClothesPhotoCollectionViewCell.h"
 #import "MWSignalClothesModel.h"
 #import "MWNewClothesVC.h"
 #import "MWNewClothesVM.h"
+
+#pragma mark - utils
+#import "MBProgressHUD+SimpleLoad.h"
 
 @interface MWPhotoVC ()<UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout>
 
@@ -111,6 +116,8 @@
          } else {
              [self.navigationController popViewControllerAnimated:YES];
          }
+         
+         [MBProgressHUD showLoadingWithTitle:@"删除成功"];
     }];
     
     // 编辑按钮
