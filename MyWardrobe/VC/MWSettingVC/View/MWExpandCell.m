@@ -16,7 +16,7 @@
 
 - (void)awakeFromNib {
     [super awakeFromNib];
-    // Initialization code
+    
 }
 
 - (void)setCustomAccessoryType:(UITableViewCellAccessoryType)accessoryType {
